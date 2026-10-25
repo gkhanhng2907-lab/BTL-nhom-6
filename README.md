@@ -32,6 +32,14 @@ Nhân viên 3 (IT/Dev): http://localhost:8023
 
 Nhân viên 4 (Kinh doanh): http://localhost:8024
 
+Tại trang quản trị admin: bấm phát động chiến dịch
+- Hệ thống sẽ random gửi các phishing mail cũng như các mail thật tới các địa chị mail của từng nhân viên
+
+tại trang empoyee portal: các nhân viên sẽ bấm report dựa trên mã thư
+
+tại trang quản trị: theo dõi điểm của các nhân viên và dashboard
+
+
 Bước 4: Tắt hệ thống khi không sử dụng
 Để dừng và xóa toàn bộ các container một cách an toàn, chạy lệnh:
 
