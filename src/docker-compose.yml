@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  admin-portal:
+    build: .
+    container_name: admin-portal
+    ports:
+      - "5000:5000"
+    environment:
+      - USE_DOCKER=1
+    depends_on:
+      - employee-1
+      - employee-2
+      - employee-3
+      - employee-4
+
+  employee-1:
+    image: axllent/mailpit
+    container_name: employee-1
+    ports:
+      - "8021:8025"
+      - "1021:1025"
+
+  employee-2:
+    image: axllent/mailpit
+    container_name: employee-2
+    ports:
+      - "8022:8025"
+      - "1022:1025"
+
+  employee-3:
+    image: axllent/mailpit
+    container_name: employee-3
+    ports:
+      - "8023:8025"
+      - "1023:1025"
+
+  employee-4:
+    image: axllent/mailpit
+    container_name: employee-4
+    ports:
+      - "8024:8025"
+      - "1024:1025"
