@@ -352,12 +352,12 @@ def employee_portal():
     employees = conn.execute("SELECT id, employee_code, name, email, webmail_port FROM employees").fetchall()
     conn.close()
     return render_template("portal.html", employees=employees)
+
 @app.route("/admin")
 def admin_dashboard():
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    # 1. Lấy bảng xếp hạng nhân viên (đã sắp xếp từ cao xuống thấp)
     leaderboard = cursor.execute("""
         SELECT 
             e.id, e.employee_code, e.name, e.email, e.webmail_port, e.score,
@@ -372,8 +372,7 @@ def admin_dashboard():
         ORDER BY e.score DESC
     """).fetchall()
 
-    # 2. Thống kê theo loại kịch bản lừa đảo cho biểu đồ
-    chart_stats_rows = cursor.execute("""
+    chart_stats = cursor.execute("""
         SELECT 
             et.category,
             SUM(CASE WHEN cl.reported = 1 THEN 1 ELSE 0 END) as reported_count,
@@ -383,52 +382,13 @@ def admin_dashboard():
         WHERE et.is_phishing = 1
         GROUP BY et.category
     """).fetchall()
-    chart_stats = [dict(row) for row in chart_stats_rows]
 
-    # 3. Kiểm tra trạng thái kết thúc chiến dịch và tổng số nhân viên tham gia
-    log_summary = cursor.execute("""
-        SELECT 
-            COUNT(*) as total_logs,
-            SUM(CASE WHEN is_scored = 0 THEN 1 ELSE 0 END) as unscored_logs,
-            COUNT(DISTINCT employee_id) as participating_employees
-        FROM campaign_logs
-    """).fetchone()
-
-    is_finalized = (log_summary["total_logs"] > 0 and log_summary["unscored_logs"] == 0)
-    participating_count = log_summary["participating_employees"] or 0
-
-    # 4. Tìm nhân viên điểm cao nhất & thấp nhất (xử lý cả trường hợp đồng điểm)
-    highest_emps = []
-    lowest_emps = []
-    if leaderboard:
-        max_score = leaderboard[0]["score"]
-        min_score = leaderboard[-1]["score"]
-        highest_emps = [dict(emp) for emp in leaderboard if emp["score"] == max_score]
-        lowest_emps = [dict(emp) for emp in leaderboard if emp["score"] == min_score]
-
-    # 5. Tìm loại mail lừa đảo được Report nhiều nhất & Bỏ sót nhiều nhất
-    most_reported_cats = []
-    most_missed_cats = []
-    if chart_stats:
-        max_rep = max(item["reported_count"] for item in chart_stats)
-        max_mis = max(item["missed_count"] for item in chart_stats)
-        if max_rep > 0:
-            most_reported_cats = [item for item in chart_stats if item["reported_count"] == max_rep]
-        if max_mis > 0:
-            most_missed_cats = [item for item in chart_stats if item["missed_count"] == max_mis]
     conn.close()
     return render_template(
         "admin.html",
         leaderboard=leaderboard,
-        chart_stats=chart_stats,
-        is_finalized=is_finalized,
-        participating_count=participating_count,
-        highest_emps=highest_emps,
-        lowest_emps=lowest_emps,
-        most_reported_cats=most_reported_cats,
-        most_missed_cats=most_missed_cats
+        chart_stats=[dict(row) for row in chart_stats]
     )
-
 
 if __name__ == "__main__":
     init_db()
