@@ -1,47 +1,80 @@
-# Bài tập lớn nhóm 6
-Phân tích 10 loại mail lừa đảo phổ biến nhất, và tạo ra một hệ thống nhằm nâng cao nhận thức về các loại mail lừa đảo cho các nhân viên trong công ty
+# 🛡️ Phishing Simulation & Awareness System
 
-requirements: docker installed
-Bước 1:
-cd BTl-nhom-6/src
+Hệ thống diễn tập và đào tạo nhận thức An toàn thông tin nội bộ doanh nghiệp (**Phishing Simulation & Awareness System**). Hệ thống giúp giả lập các chiến dịch email lừa đảo trong môi trường cô lập bằng Docker, hỗ trợ nhân viên thực hành nhận biết và báo cáo mối đe dọa an toàn thông tin một cách an toàn.
 
-bước 2: chạy docker
-docker-compose up -d --build
+---
 
-Bước 3: Truy cập các thành phần của hệ thống
-Khi các container đã chạy thành công (Started), có thể mở trình duyệt và truy cập:
+## 1. 🌟 Giới Thiệu Sơ Qua Về Sản Phẩm
 
-⚙️ Trang Quản trị viên (Admin Dashboard):
+### 🎯 Mục đích & Tính năng nổi bật
+* **Mô phỏng chiến dịch lừa đảo**: Tự động gửi ngẫu nhiên các kịch bản email lừa đảo (trà trộn cùng email thật) tới hòm thư nhân viên qua giao thức SMTP nội bộ.
+* **Cổng Báo cáo & Phản hồi giáo dục**: Nhân viên nhận diện mail nghi ngờ, nhập mã thư tại Cổng Nhân viên (`/portal`) và nhận ngay điểm thưởng/trừ kèm giải thích dấu hiệu nhận biết (`red_flags`).
+* **Bảng điều khiển Quản trị (Admin Dashboard)**: Cho phép Quản trị viên khởi chạy chiến dịch, kết thúc/chốt điểm, xem bảng xếp hạng thứ hạng nhân viên và theo dõi biểu đồ thống kê Chart.js.
+* **Xuất báo cáo PDF**: Tổng kết kết quả chiến dịch diễn tập dưới dạng tệp PDF trực quan (`/export-pdf`).
+* **Môi trường cô lập an toàn 100%**: Đóng gói hoàn toàn bằng Docker Compose trong mạng ảo Bridge nội bộ, tuyệt đối không gửi email ra Internet hay Gmail thực tế.
 
-URL: http://localhost:5000/admin
+### 🛠️ Công nghệ sử dụng
+* **Backend**: Python 3.9+, Flask 3.0.0, SQLite3 (`phishing_system.db`), `fpdf2`.
+* **Frontend**: HTML5, Bootstrap 5, Chart.js.
+* **Hạ tầng & Mail Server**: Docker, Docker Compose, Mailpit (`axllent/mailpit`).
 
-Chức năng: Bấm Phát động Chiến dịch (trộn và bắn mail ngẫu nhiên qua SMTP), bấm Kết thúc & Chốt điểm (trừ điểm mail bị bỏ sót), xem Bảng xếp hạng điểm số và 2 biểu đồ cột Chart.js.
+---
 
-🛡️ Trang Cổng Nhân viên (Employee Submit Portal):
+## 2. 🚀 Hướng Dẫn Cách Chạy Bài Lab (Quickstart)
 
-URL: http://localhost:5000/portal (hoặc http://localhost:5000)
+### 📋 Yêu cầu tiên quyết
+* Máy tính đã cài đặt và đang mở phần mềm **Docker Desktop**.
 
-Chức năng: Nhân viên mở hộp thư Mailpit của mình, đọc thư, lấy mã định danh (VD: #MAIL-5), nhập Mã ID nhân viên (VD: EMP01) và mã thư để Submit báo cáo, đồng thời nhận ngay hộp phản hồi giáo dục (Awareness Feedback) giải thích các dấu hiệu lừa đảo (red_flags).
+---
 
-📬 Hộp thư Mailpit của 4 nhân viên:
+### 🏃‍♂️ Bước 1: Khởi chạy hệ thống
 
-Nhân viên 1 (Kế toán): http://localhost:8021
+Khởi chạy nhanh hệ thống bằng tệp script tự động hóa tại thư mục gốc của dự án:
 
-Nhân viên 2 (Nhân sự): http://localhost:8022
+#### 🔹 Trên Windows:
+Nhấp đúp chuột vào file **`start.bat`** (hoặc mở Terminal CMD/PowerShell tại thư mục gốc và gõ `.\start.bat`).
 
-Nhân viên 3 (IT/Dev): http://localhost:8023
+#### 🔹 Trên macOS / Linux:
+Mở Terminal tại thư mục gốc và chạy lệnh:
+```bash
+chmod +x start.sh end.sh
+./start.sh
+```
 
-Nhân viên 4 (Kinh doanh): http://localhost:8024
+> 💡 **Lưu ý:** Script sẽ tự động gọi Docker Compose để xây dựng 5 container ngầm, sau đó tự động mở trình duyệt web lên các trang giao diện tương ứng.
 
-Tại trang quản trị admin: bấm phát động chiến dịch
-- Hệ thống sẽ random gửi các phishing mail cũng như các mail thật tới các địa chị mail của từng nhân viên
+---
 
-tại trang empoyee portal: các nhân viên sẽ bấm report dựa trên mã thư
+### 🌐 Bước 2: Các đường dẫn truy cập Web
 
-tại trang quản trị: theo dõi điểm của các nhân viên và dashboard
+| Thành phần giao diện | Địa chỉ URL trên trình duyệt | Chức năng chính |
+| :--- | :--- | :--- |
+| **Admin Dashboard** | `http://localhost:5000/admin` | Phát động/chốt chiến dịch, xem bảng xếp hạng & biểu đồ |
+| **Cổng Nhân viên** | `http://localhost:5000/portal` | Nhân viên đăng ký/nhập mã NV và gửi báo cáo email lừa đảo |
+| **WebMail NV 1 (Kế toán)** | `http://localhost:8021` | Xem hòm thư diễn tập của Nhân viên 1 |
+| **WebMail NV 2 (Nhân sự)** | `http://localhost:8022` | Xem hòm thư diễn tập của Nhân viên 2 |
+| **WebMail NV 3 (IT/Dev)** | `http://localhost:8023` | Xem hòm thư diễn tập của Nhân viên 3 |
+| **WebMail NV 4 (Kinh doanh)** | `http://localhost:8024` | Xem hòm thư diễn tập của Nhân viên 4 |
 
+---
 
-Bước 4: Tắt hệ thống khi không sử dụng
-Để dừng và xóa toàn bộ các container một cách an toàn, chạy lệnh:
+### 🔄 Bước 3: Quy trình Demo / Thực hành diễn tập
 
-docker-compose down
+1. **Gửi mail diễn tập**:
+   * Truy cập `http://localhost:5000/admin` và bấm nút **✉️ Gửi mail** (hoặc nhân viên vào `/portal` nhập mã `mnv...` để tự đăng ký nhận mail).
+2. **Đọc mail trên Mailpit**:
+   * Truy cập các hòm thư WebMail (từ `http://localhost:8021` đến `8024`) để kiểm tra email gửi đến và ghi nhớ **Mã định danh thư** (ví dụ: `#MAIL-5` hoặc `5`).
+3. **Báo cáo email lừa đảo**:
+   * Vào `http://localhost:5000/portal`, nhập **Mã NV** và **Mã thư**, sau đó bấm **Submit Báo Cáo**.
+   * Hệ thống sẽ hiển thị kết quả cộng (+10đ) hoặc trừ điểm (-5đ) kèm giải thích chi tiết dấu hiệu lừa đảo (`red_flags`).
+4. **Chốt chiến dịch & Xem thống kê**:
+   * Quay lại `http://localhost:5000/admin`, bấm **🏁 Kết thúc** để chốt điểm các thư bị bỏ sót (-10đ), theo dõi Bảng xếp hạng, Biểu đồ Chart.js và bấm **📄 Xuất báo cáo PDF**.
+
+---
+
+### 🛑 Bước 4: Tắt và dọn dẹp hệ thống
+
+Sau khi kết thúc bài lab / demo:
+
+* **Trên Windows**: Nhấp đúp chuột vào file **`end.bat`** (hoặc gõ `.\end.bat`).
+* **Trên macOS / Linux**: Chạy lệnh `./end.sh`.
