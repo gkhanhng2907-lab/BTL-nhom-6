@@ -352,7 +352,33 @@ def employee_portal():
     employees = conn.execute("SELECT id, employee_code, name, email, webmail_port FROM employees").fetchall()
     conn.close()
     return render_template("portal.html", employees=employees)
+
+from functools import wraps
+from flask import Response
+
+# 👉 ĐỔI TÀI KHOẢN VÀ MẬT KHẨU TẠI 2 DÒNG NÀY:
+ADMIN_USERNAME = "admin"
+ADMIN_PASSWORD = "password4admin" 
+
+def check_admin_auth(username, password):
+    return username == ADMIN_USERNAME and password == ADMIN_PASSWORD
+
+def requires_admin(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth = request.authorization
+        if not auth or not check_admin_auth(auth.username, auth.password):
+            return Response(
+                "⚠️ Truy cập bị từ chối! Bạn không có quyền truy cập trang Quản trị này.",
+                401,
+                {"WWW-Authenticate": 'Basic realm="Admin Login Required"'}
+            )
+        return f(*args, **kwargs)
+    return decorated
+
+
 @app.route("/admin")
+@requires_admin
 def admin_dashboard():
     conn = get_db_connection()
     cursor = conn.cursor()
