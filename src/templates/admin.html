@@ -1,21 +1,41 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-bs-theme="light">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin Dashboard - Quản trị Chiến dịch Phishing</title>
+  <!-- Áp dụng chế độ sáng/tối trước khi vẽ trang để không bị nháy -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('pg-theme'); } catch (e) {}
+      if (!t) t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-bs-theme', t);
+    })();
+  </script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- Thư viện xuất file PDF trực tiếp trên trình duyệt -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     .pdf-section { page-break-inside: avoid; margin-bottom: 18px; }
+    .thead-soft th { background-color: var(--bs-tertiary-bg) !important; color: var(--bs-body-color) !important; }
+    .emp-link { cursor: pointer; text-decoration: none; }
+    .emp-link:hover { text-decoration: underline; }
+    .tpl-scroll { max-height: 480px; overflow-y: auto; }
+    .tpl-scroll thead th { position: sticky; top: 0; z-index: 1; }
+    .tpl-off { opacity: .55; }
+    .count-input { max-width: 110px; }
   </style>
 </head>
-<body class="bg-light">
+<body class="bg-body-tertiary">
   <nav class="navbar navbar-dark bg-dark mb-4">
     <div class="container">
       <span class="navbar-brand mb-0 h1">⚙️ Bảng Điều Khiển Quản Trị (Admin Dashboard)</span>
-      <a href="/portal" class="btn btn-outline-info btn-sm">← Sang Cổng Nhân viên</a>
+      <div class="d-flex gap-2">
+        <button type="button" id="themeToggle" class="btn btn-outline-light btn-sm" title="Đổi chế độ sáng/tối" aria-label="Đổi chế độ sáng/tối">🌙 Chế độ tối</button>
+        <a href="/portal" class="btn btn-outline-info btn-sm">← Sang Cổng Nhân viên</a>
+      </div>
     </div>
   </nav>
 
@@ -25,36 +45,43 @@
       <div class="card-body d-flex justify-content-between align-items-center flex-wrap gap-2">
         <div>
           <h5 class="mb-1">Điều khiển Chiến dịch Diễn tập</h5>
-          <small class="text-muted">Phát ngẫu nhiên email qua SMTP, chốt điểm bỏ sót và xuất báo cáo tổng kết</small>
+          <small class="text-muted">Cấu hình số thư và điểm, phát email qua SMTP, chốt điểm bỏ sót và xuất báo cáo tổng kết</small>
         </div>
         <div class="d-flex flex-wrap gap-2">
-          <button class="btn btn-primary fw-bold" onclick="callApi('/start-campaign')">🚀 Bắt đầu</button>
-          <button class="btn btn-warning fw-bold" onclick="callApi('/finalize-campaign')">🏁 Kết thúc & Chốt điểm</button>
+          <button class="btn btn-primary fw-bold" onclick="openCampaignModal()">🚀 Bắt đầu</button>
+          <button class="btn btn-warning fw-bold" onclick="runAction('/finalize-campaign')">🏁 Kết thúc & Chốt điểm</button>
           {% if is_finalized %}
             <button class="btn btn-danger fw-bold" onclick="exportPDF()">📄 Xuất Báo Cáo PDF</button>
           {% endif %}
-          <button class="btn btn-secondary fw-bold" onclick="callApi('/reset')">🔄 Reset Dữ liệu</button>
+          {% if has_logs %}
+            <a class="btn btn-success fw-bold" href="/admin/export.csv" title="Toàn bộ lịch sử campaign_logs, mở được bằng Excel">⬇️ Tải CSV</a>
+            <a class="btn btn-outline-success fw-bold" href="/admin/export.xlsx">⬇️ Tải Excel</a>
+          {% endif %}
+          <button class="btn btn-secondary fw-bold" onclick="resetData()">🔄 Reset Dữ liệu</button>
         </div>
       </div>
     </div>
 
     <!-- Bảng xếp hạng tổng hợp điểm số nhân viên -->
     <div class="card shadow-sm mb-4">
-      <div class="card-header bg-white">
+      <div class="card-header bg-body d-flex justify-content-between align-items-center flex-wrap gap-1">
         <h5 class="mb-0">🏆 Bảng Xếp Hạng & Tổng Hợp Kết Quả Nhân Viên</h5>
+        <small class="text-muted">Bấm vào tên nhân viên để xem chi tiết từng thư</small>
       </div>
       <div class="card-body p-0">
+        <div class="table-responsive">
         <table class="table table-bordered table-hover mb-0 text-center align-middle">
-          <thead class="table-light">
+          <thead class="thead-soft">
             <tr>
               <th>Hạng</th>
               <th>Mã NV</th>
               <th class="text-start">Nhân viên</th>
               <th>Hộp thư Mailpit</th>
               <th>Tổng mail lừa đảo nhận</th>
-              <th>Report đúng (+10đ)</th>
-              <th>Bỏ sót (-10đ)</th>
-              <th>Report nhầm (-5đ)</th>
+              <th>Report đúng (+{{ cfg.points_correct }}đ)</th>
+              <th>Bỏ sót (-{{ cfg.points_missed }}đ)</th>
+              <th>Report nhầm (-{{ cfg.points_false_positive }}đ)</th>
+              <th>Đã bấm link</th>
               <th>Tổng điểm</th>
             </tr>
           </thead>
@@ -63,22 +90,26 @@
             <tr>
               <td><b>#{{ loop.index }}</b></td>
               <td><code>{{ emp.employee_code }}</code></td>
-              <td class="text-start fw-semibold">{{ emp.name }}</td>
+              <td class="text-start fw-semibold">
+                <a class="emp-link" role="button" tabindex="0" onclick="openDrill({{ emp.id }})" onkeydown="if(event.key==='Enter')openDrill({{ emp.id }})">{{ emp.name }}</a>
+              </td>
               <td><a href="http://localhost:{{ emp.webmail_port }}" target="_blank" class="btn btn-sm btn-outline-primary">Cổng {{ emp.webmail_port }}</a></td>
               <td>{{ emp.total_phishing_received or 0 }}</td>
               <td class="text-success fw-bold">{{ emp.correct_reports or 0 }}</td>
               <td class="text-danger fw-bold">{{ emp.missed_phishing or 0 }}</td>
               <td class="text-warning fw-bold">{{ emp.false_reports or 0 }}</td>
+              <td class="fw-bold">{{ emp.clicked_links or 0 }}</td>
               <td class="fs-5 fw-bold">{{ emp.score }}</td>
             </tr>
             {% endfor %}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
 
     <!-- Khu vực 2 Biểu đồ thống kê Chart.js -->
-    <div class="row g-4">
+    <div class="row g-4 mb-4">
       <div class="col-md-6">
         <div class="card shadow-sm h-100">
           <div class="card-body">
@@ -94,12 +125,224 @@
         </div>
       </div>
     </div>
+
+    <!-- ========================================================= -->
+    <!-- TRÌNH TẠO KỊCH BẢN (TEMPLATE EDITOR)                       -->
+    <!-- ========================================================= -->
+    <div class="card shadow-sm">
+      <div class="card-header bg-body d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div>
+          <h5 class="mb-0">📝 Trình tạo kịch bản email (Template Editor)</h5>
+          <small class="text-muted" id="tplSummary">Bấm "Mở danh sách" để xem các mẫu thư</small>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-secondary btn-sm" id="tplToggleBtn" onclick="toggleTemplatePanel()">📂 Mở danh sách</button>
+          <button class="btn btn-primary btn-sm fw-bold" onclick="openTemplateModal()">➕ Thêm kịch bản</button>
+        </div>
+      </div>
+      <div class="card-body" id="tplPanel" style="display:none;">
+        <div class="row g-2 mb-3">
+          <div class="col-md-3">
+            <select id="fType" class="form-select form-select-sm" onchange="renderTemplates()">
+              <option value="">Tất cả loại thư</option>
+              <option value="1">Thư lừa đảo</option>
+              <option value="0">Thư hợp lệ</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <select id="fCat" class="form-select form-select-sm" onchange="renderTemplates()">
+              <option value="">Tất cả danh mục</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <select id="fActive" class="form-select form-select-sm" onchange="renderTemplates()">
+              <option value="">Bật và tắt</option>
+              <option value="1">Đang bật</option>
+              <option value="0">Đang tắt</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <input id="fText" type="search" class="form-control form-control-sm" placeholder="Tìm theo tiêu đề, người gửi, nội dung..." oninput="renderTemplates()">
+          </div>
+        </div>
+        <div class="tpl-scroll border rounded">
+          <table class="table table-sm table-hover align-middle mb-0">
+            <thead class="thead-soft">
+              <tr>
+                <th style="width:50px">ID</th>
+                <th style="width:100px">Loại</th>
+                <th>Danh mục</th>
+                <th>Tiêu đề</th>
+                <th>Người gửi</th>
+                <th class="text-center" style="width:80px">Bật</th>
+                <th style="width:70px"></th>
+              </tr>
+            </thead>
+            <tbody id="tplBody"></tbody>
+          </table>
+        </div>
+        <small class="text-muted d-block mt-2">Kịch bản bị tắt sẽ không được chọn khi phát động chiến dịch mới. Thư đã gửi trước đó không bị ảnh hưởng.</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Modal: cấu hình chiến dịch ===== -->
+  <div class="modal fade" id="campaignModal" tabindex="-1" aria-labelledby="campaignModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="campaignModalTitle">🚀 Cấu hình chiến dịch</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+        </div>
+        <div class="modal-body">
+          {% if has_logs %}
+          <div class="alert alert-warning py-2 small">Đã có dữ liệu của một chiến dịch trước. Nếu phát động tiếp, thư mới sẽ cộng dồn vào dữ liệu hiện tại. Hãy bấm Reset nếu muốn bắt đầu lại từ đầu.</div>
+          {% endif %}
+          <h6 class="fw-bold">Số thư mỗi nhân viên nhận</h6>
+          <div class="row g-2 mb-1">
+            <div class="col-4">
+              <label class="form-label small mb-1" for="cSpear">SPEAR_COUNT</label>
+              <input type="number" min="0" max="20" class="form-control" id="cSpear" oninput="updateCampaignTotal()">
+              <div class="form-text">Phishing đúng phòng ban</div>
+            </div>
+            <div class="col-4">
+              <label class="form-label small mb-1" for="cOther">OTHER_PHISHING_COUNT</label>
+              <input type="number" min="0" max="20" class="form-control" id="cOther" oninput="updateCampaignTotal()">
+              <div class="form-text">Phishing đại trà</div>
+            </div>
+            <div class="col-4">
+              <label class="form-label small mb-1" for="cLegit">LEGIT_COUNT</label>
+              <input type="number" min="0" max="20" class="form-control" id="cLegit" oninput="updateCampaignTotal()">
+              <div class="form-text">Thư hợp lệ</div>
+            </div>
+          </div>
+          <p class="small mb-3">Tổng: <b id="cTotal">0</b> thư cho mỗi nhân viên. <span class="text-muted" id="cPools"></span></p>
+
+          <h6 class="fw-bold">Mức điểm</h6>
+          <div class="row g-2 mb-2">
+            <div class="col-4">
+              <label class="form-label small mb-1" for="pCorrect">Report đúng (cộng)</label>
+              <input type="number" min="0" max="100" class="form-control" id="pCorrect">
+            </div>
+            <div class="col-4">
+              <label class="form-label small mb-1" for="pFalse">Report nhầm (trừ)</label>
+              <input type="number" min="0" max="100" class="form-control" id="pFalse">
+            </div>
+            <div class="col-4">
+              <label class="form-label small mb-1" for="pMissed">Bỏ sót (trừ)</label>
+              <input type="number" min="0" max="100" class="form-control" id="pMissed">
+            </div>
+          </div>
+          <div class="form-text">Nhập số dương, hệ thống tự cộng hoặc trừ. Mức điểm này áp dụng cho các lượt chấm từ lúc phát động.</div>
+          <div id="cError" class="alert alert-danger py-2 mt-3 d-none"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary btn-sm me-auto" onclick="resetCampaignForm()">Đặt lại mặc định</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-primary fw-bold" id="cStartBtn" onclick="submitCampaign()">🚀 Phát động</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Modal: thêm/sửa kịch bản ===== -->
+  <div class="modal fade" id="templateModal" tabindex="-1" aria-labelledby="templateModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="templateModalTitle">Thêm kịch bản</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="tId">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label fw-semibold" for="tType">Loại thư</label>
+              <select class="form-select" id="tType" onchange="syncTypeFields()">
+                <option value="1">Thư lừa đảo</option>
+                <option value="0">Thư hợp lệ</option>
+              </select>
+            </div>
+            <div class="col-md-8">
+              <label class="form-label fw-semibold" for="tCat">Danh mục</label>
+              <input class="form-control" id="tCat" list="catList" placeholder="Chọn danh mục có sẵn hoặc gõ danh mục mới" maxlength="100">
+              <datalist id="catList"></datalist>
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-semibold" for="tSender">Người gửi</label>
+              <input class="form-control" id="tSender" placeholder="VD: Nguyễn Văn Hùng <hung.nguyen@abccorp-vn.com>" maxlength="200">
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-semibold" for="tSubject">Tiêu đề</label>
+              <input class="form-control" id="tSubject" maxlength="200">
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-semibold" for="tBody">Nội dung thư</label>
+              <textarea class="form-control" id="tBody" rows="8"></textarea>
+              <div class="form-text">Link dạng http://... trong thư được hệ thống theo dõi lượt bấm. Chữ hiển thị vẫn là tên miền bạn gõ, nhưng thực tế không truy cập ra ngoài Internet.</div>
+            </div>
+            <div class="col-12" id="tFlagsWrap">
+              <label class="form-label fw-semibold" for="tFlags">Giải thích dấu hiệu lừa đảo (red flags)</label>
+              <textarea class="form-control" id="tFlags" rows="4"></textarea>
+              <div class="form-text">Nội dung này hiện cho nhân viên sau khi họ báo cáo thư.</div>
+            </div>
+          </div>
+          <div id="tError" class="alert alert-danger py-2 mt-3 d-none"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-primary fw-bold" id="tSaveBtn" onclick="saveTemplate()">💾 Lưu kịch bản</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Modal: lịch sử chi tiết từng nhân viên ===== -->
+  <div class="modal fade" id="drillModal" tabindex="-1" aria-labelledby="drillTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="drillTitle">Chi tiết nhân viên</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+        </div>
+        <div class="modal-body">
+          <div id="drillSummary" class="d-flex flex-wrap gap-2 mb-3"></div>
+          <div class="table-responsive">
+            <table class="table table-sm table-hover align-middle mb-0">
+              <thead class="thead-soft">
+                <tr>
+                  <th>Mã thư</th>
+                  <th>Tiêu đề</th>
+                  <th>Danh mục</th>
+                  <th>Loại</th>
+                  <th>Trạng thái</th>
+                  <th class="text-center">Bấm link</th>
+                  <th class="text-end">Điểm</th>
+                </tr>
+              </thead>
+              <tbody id="drillBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Thông báo nhỏ -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:2000">
+    <div id="appToast" class="toast align-items-center border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="appToastBody"></div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Đóng"></button>
+      </div>
+    </div>
   </div>
 
   <!-- ========================================================= -->
   <!-- MẪU BÁO CÁO PDF ẨN (CHỈ DÙNG ĐỂ KẾT XUẤT FILE PDF A4)     -->
+  <!-- Luôn dùng giao diện sáng, kể cả khi đang bật chế độ tối    -->
   <!-- ========================================================= -->
-  <div id="pdf-report-template" style="display: none; background: white; padding: 20px; font-family: Arial, sans-serif; color: #222;">
+  <div id="pdf-report-template" data-bs-theme="light" style="display: none; background: white; padding: 20px; font-family: Arial, sans-serif; color: #222;">
     <div class="text-center border-bottom pb-3 mb-3">
       <h3 class="fw-bold text-uppercase mb-1" style="color: #0d6efd;">Báo Cáo Tổng Quan Chiến Dịch Diễn Tập Phishing</h3>
       <small class="text-muted">Thời gian xuất báo cáo: <span id="pdf-timestamp"></span></small>
@@ -182,9 +425,10 @@
             <th>Mã NV</th>
             <th class="text-start">Họ tên / Bộ phận</th>
             <th>Mail lừa đảo nhận</th>
-            <th>Report đúng (+10đ)</th>
-            <th>Bỏ sót (-10đ)</th>
-            <th>Report nhầm (-5đ)</th>
+            <th>Report đúng (+{{ cfg.points_correct }}đ)</th>
+            <th>Bỏ sót (-{{ cfg.points_missed }}đ)</th>
+            <th>Report nhầm (-{{ cfg.points_false_positive }}đ)</th>
+            <th>Đã bấm link</th>
             <th>Tổng điểm</th>
           </tr>
         </thead>
@@ -198,6 +442,7 @@
             <td>{{ emp.correct_reports or 0 }}</td>
             <td>{{ emp.missed_phishing or 0 }}</td>
             <td>{{ emp.false_reports or 0 }}</td>
+            <td>{{ emp.clicked_links or 0 }}</td>
             <td><b>{{ emp.score }}</b></td>
           </tr>
           {% endfor %}
@@ -206,17 +451,303 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    function callApi(url) {
-      fetch(url, { method: 'POST' })
-        .then(r => r.json())
-        .then(d => { alert(d.message); location.reload(); });
+    /* ---------- Tiện ích chung ---------- */
+    function esc(s) {
+      return String(s === null || s === undefined ? '' : s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
 
+    async function api(url, method, body) {
+      const opt = { method: method || 'POST', headers: { 'X-Requested-With': 'fetch' } };
+      if (body !== undefined) {
+        opt.headers['Content-Type'] = 'application/json';
+        opt.body = JSON.stringify(body);
+      }
+      let data = {};
+      try {
+        const r = await fetch(url, opt);
+        try { data = await r.json(); } catch (e) { data = {}; }
+        data._ok = r.ok;
+        if (!r.ok && !data.message) data.message = 'Lỗi ' + r.status + ' từ máy chủ.';
+      } catch (e) {
+        data = { _ok: false, message: 'Không kết nối được máy chủ.' };
+      }
+      return data;
+    }
+
+    function notify(message, kind) {
+      const el = document.getElementById('appToast');
+      el.className = 'toast align-items-center border-0 text-bg-' + (kind || 'success');
+      document.getElementById('appToastBody').textContent = message;
+      bootstrap.Toast.getOrCreateInstance(el, { delay: 4000 }).show();
+    }
+
+    function flashAndReload(message) {
+      try { sessionStorage.setItem('pg-flash', message); } catch (e) {}
+      location.reload();
+    }
+    (function showFlash() {
+      let m = null;
+      try { m = sessionStorage.getItem('pg-flash'); sessionStorage.removeItem('pg-flash'); } catch (e) {}
+      if (m) window.addEventListener('load', () => notify(m, 'success'));
+    })();
+
+    /* ---------- Chế độ tối ---------- */
+    function currentTheme() { return document.documentElement.getAttribute('data-bs-theme') || 'light'; }
+    function updateThemeButton() {
+      document.getElementById('themeToggle').textContent = currentTheme() === 'dark' ? '☀️ Chế độ sáng' : '🌙 Chế độ tối';
+    }
+    function chartPalette(theme) {
+      return theme === 'dark'
+        ? { text: '#dee2e6', grid: 'rgba(255,255,255,0.14)' }
+        : { text: '#212529', grid: 'rgba(0,0,0,0.1)' };
+    }
+    function applyChartTheme(theme) {
+      const p = chartPalette(theme);
+      Chart.defaults.color = p.text;
+      Chart.defaults.borderColor = p.grid;
+      [reportedChartInstance, missedChartInstance].forEach(ch => ch.update('none'));
+    }
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const next = currentTheme() === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-bs-theme', next);
+      try { localStorage.setItem('pg-theme', next); } catch (e) {}
+      updateThemeButton();
+      applyChartTheme(next);
+    });
+    updateThemeButton();
+
+    /* ---------- Điều khiển chiến dịch ---------- */
+    async function runAction(url) {
+      const d = await api(url, 'POST');
+      if (d._ok === false) { notify(d.message, 'danger'); return; }
+      flashAndReload(d.message);
+    }
+
+    function resetData() {
+      if (!confirm('Xóa toàn bộ lịch sử chiến dịch và đưa điểm của mọi nhân viên về 100?')) return;
+      runAction('/reset');
+    }
+
+    let campaignDefaults = null;
+    let campaignPools = { phishing_active: 0, legit_active: 0 };
+    const campaignFields = {
+      spear_count: 'cSpear', other_phishing_count: 'cOther', legit_count: 'cLegit',
+      points_correct: 'pCorrect', points_false_positive: 'pFalse', points_missed: 'pMissed'
+    };
+
+    function fillCampaignForm(cfg) {
+      Object.keys(campaignFields).forEach(k => { document.getElementById(campaignFields[k]).value = cfg[k]; });
+      updateCampaignTotal();
+    }
+
+    function updateCampaignTotal() {
+      const n = id => parseInt(document.getElementById(id).value, 10) || 0;
+      document.getElementById('cTotal').textContent = n('cSpear') + n('cOther') + n('cLegit');
+    }
+
+    async function openCampaignModal() {
+      document.getElementById('cError').classList.add('d-none');
+      const d = await api('/campaign-settings', 'GET');
+      if (d._ok === false) { notify(d.message, 'danger'); return; }
+      campaignDefaults = d.settings;
+      campaignPools = d.pools;
+      fillCampaignForm(d.settings);
+      document.getElementById('cPools').textContent =
+        'Đang bật ' + d.pools.phishing_active + ' thư lừa đảo và ' + d.pools.legit_active + ' thư hợp lệ trong kho kịch bản.';
+      bootstrap.Modal.getOrCreateInstance(document.getElementById('campaignModal')).show();
+    }
+
+    function resetCampaignForm() {
+      fillCampaignForm({
+        spear_count: 5, other_phishing_count: 3, legit_count: 4,
+        points_correct: 10, points_false_positive: 5, points_missed: 10
+      });
+    }
+
+    async function submitCampaign() {
+      const body = {};
+      Object.keys(campaignFields).forEach(k => { body[k] = document.getElementById(campaignFields[k]).value; });
+      const err = document.getElementById('cError');
+      const btn = document.getElementById('cStartBtn');
+      err.classList.add('d-none');
+      btn.disabled = true;
+      const d = await api('/start-campaign', 'POST', body);
+      btn.disabled = false;
+      if (d._ok === false) {
+        err.textContent = d.message;
+        err.classList.remove('d-none');
+        return;
+      }
+      let msg = d.message;
+      if (d.warnings && d.warnings.length) msg += ' Lưu ý: ' + d.warnings.join(' ');
+      flashAndReload(msg);
+    }
+
+    /* ---------- Template Editor ---------- */
+    let templates = [];
+    let templatesLoaded = false;
+
+    async function loadTemplates() {
+      const d = await api('/admin/templates', 'GET');
+      if (d._ok === false) { notify(d.message, 'danger'); return; }
+      templates = d;
+      templatesLoaded = true;
+      const cats = [...new Set(templates.map(t => t.category))].sort((a, b) => a.localeCompare(b, 'vi'));
+      const sel = document.getElementById('fCat');
+      const keep = sel.value;
+      sel.innerHTML = '<option value="">Tất cả danh mục</option>' + cats.map(c => '<option value="' + esc(c) + '">' + esc(c) + '</option>').join('');
+      sel.value = cats.includes(keep) ? keep : '';
+      document.getElementById('catList').innerHTML = cats.map(c => '<option value="' + esc(c) + '"></option>').join('');
+      renderTemplates();
+    }
+
+    function toggleTemplatePanel() {
+      const panel = document.getElementById('tplPanel');
+      const open = panel.style.display === 'none';
+      panel.style.display = open ? 'block' : 'none';
+      document.getElementById('tplToggleBtn').textContent = open ? '📁 Thu gọn' : '📂 Mở danh sách';
+      if (open && !templatesLoaded) loadTemplates();
+    }
+
+    function renderTemplates() {
+      const fType = document.getElementById('fType').value;
+      const fCat = document.getElementById('fCat').value;
+      const fActive = document.getElementById('fActive').value;
+      const q = document.getElementById('fText').value.trim().toLowerCase();
+
+      const rows = templates.filter(t =>
+        (fType === '' || String(t.is_phishing) === fType) &&
+        (fCat === '' || t.category === fCat) &&
+        (fActive === '' || String(t.is_active) === fActive) &&
+        (q === '' || (t.subject + ' ' + t.sender + ' ' + t.body).toLowerCase().includes(q))
+      );
+
+      document.getElementById('tplBody').innerHTML = rows.length ? rows.map(t => `
+        <tr class="${t.is_active ? '' : 'tpl-off'}">
+          <td>${t.id}</td>
+          <td><span class="badge ${t.is_phishing ? 'text-bg-danger' : 'text-bg-success'}">${t.is_phishing ? 'Lừa đảo' : 'Hợp lệ'}</span></td>
+          <td>${esc(t.category)}</td>
+          <td>${esc(t.subject)}</td>
+          <td class="small">${esc(t.sender)}</td>
+          <td class="text-center">
+            <div class="form-check form-switch d-flex justify-content-center m-0">
+              <input class="form-check-input" type="checkbox" role="switch" ${t.is_active ? 'checked' : ''}
+                     aria-label="Bật hoặc tắt kịch bản ${t.id}" onchange="toggleTemplate(${t.id}, this)">
+            </div>
+          </td>
+          <td><button class="btn btn-sm btn-outline-primary" onclick="openTemplateModal(${t.id})">Sửa</button></td>
+        </tr>`).join('') : '<tr><td colspan="7" class="text-center text-muted py-3">Không có kịch bản nào khớp bộ lọc.</td></tr>';
+
+      const on = templates.filter(t => t.is_active);
+      document.getElementById('tplSummary').textContent =
+        'Đang bật ' + on.length + '/' + templates.length + ' kịch bản (' +
+        on.filter(t => t.is_phishing).length + ' lừa đảo, ' + on.filter(t => !t.is_phishing).length + ' hợp lệ)';
+    }
+
+    async function toggleTemplate(id, checkbox) {
+      const d = await api('/admin/templates/' + id + '/toggle', 'POST');
+      if (d._ok === false) {
+        checkbox.checked = !checkbox.checked;
+        notify(d.message, 'danger');
+        return;
+      }
+      const t = templates.find(x => x.id === id);
+      if (t) t.is_active = d.is_active;
+      renderTemplates();
+    }
+
+    function syncTypeFields() {
+      document.getElementById('tFlagsWrap').style.display = document.getElementById('tType').value === '1' ? '' : 'none';
+    }
+
+    function openTemplateModal(id) {
+      const t = id ? templates.find(x => x.id === id) : null;
+      document.getElementById('tError').classList.add('d-none');
+      document.getElementById('templateModalTitle').textContent = t ? 'Sửa kịch bản #' + t.id : 'Thêm kịch bản';
+      document.getElementById('tId').value = t ? t.id : '';
+      document.getElementById('tType').value = t ? t.is_phishing : 1;
+      document.getElementById('tCat').value = t ? t.category : '';
+      document.getElementById('tSender').value = t ? t.sender : '';
+      document.getElementById('tSubject').value = t ? t.subject : '';
+      document.getElementById('tBody').value = t ? t.body : '';
+      document.getElementById('tFlags').value = t ? t.red_flags : '';
+      syncTypeFields();
+      const show = () => bootstrap.Modal.getOrCreateInstance(document.getElementById('templateModal')).show();
+      if (!templatesLoaded) { loadTemplates().then(show); } else { show(); }
+    }
+
+    async function saveTemplate() {
+      const id = document.getElementById('tId').value;
+      const body = {
+        is_phishing: document.getElementById('tType').value,
+        category: document.getElementById('tCat').value,
+        sender: document.getElementById('tSender').value,
+        subject: document.getElementById('tSubject').value,
+        body: document.getElementById('tBody').value,
+        red_flags: document.getElementById('tFlags').value
+      };
+      const err = document.getElementById('tError');
+      const btn = document.getElementById('tSaveBtn');
+      err.classList.add('d-none');
+      btn.disabled = true;
+      const d = id ? await api('/admin/templates/' + id, 'PUT', body) : await api('/admin/templates', 'POST', body);
+      btn.disabled = false;
+      if (d._ok === false) {
+        err.textContent = d.message;
+        err.classList.remove('d-none');
+        return;
+      }
+      bootstrap.Modal.getOrCreateInstance(document.getElementById('templateModal')).hide();
+      notify(d.message, 'success');
+      await loadTemplates();
+    }
+
+    /* ---------- Drill-down nhân viên ---------- */
+    const statusBadge = {
+      correct: 'text-bg-success',
+      false_positive: 'text-bg-warning',
+      clicked: 'text-bg-danger',
+      missed: 'text-bg-dark',
+      pending: 'text-bg-secondary',
+      legit: 'text-bg-info'
+    };
+
+    async function openDrill(empId) {
+      const d = await api('/admin/employee/' + empId + '/logs', 'GET');
+      if (d._ok === false) { notify(d.message, 'danger'); return; }
+      document.getElementById('drillTitle').textContent =
+        d.employee.employee_code + ' · ' + d.employee.name + ' · ' + d.total + ' bức thư · ' + d.employee.score + ' điểm';
+
+      document.getElementById('drillSummary').innerHTML = Object.keys(d.labels).map(k =>
+        '<span class="badge fs-6 ' + statusBadge[k] + '">' + esc(d.labels[k]) + ': ' + (d.counts[k] || 0) + '</span>').join('');
+
+      document.getElementById('drillBody').innerHTML = d.total ? d.logs.map(l => `
+        <tr>
+          <td><code>#MAIL-${l.log_id}</code></td>
+          <td>${esc(l.subject)}<div class="small text-muted">${esc(l.sender)}</div></td>
+          <td class="small">${esc(l.category)}</td>
+          <td><span class="badge ${l.is_phishing ? 'text-bg-danger' : 'text-bg-success'}">${l.is_phishing ? 'Lừa đảo' : 'Hợp lệ'}</span></td>
+          <td><span class="badge ${statusBadge[l.status]}">${esc(l.status_label)}</span>
+              ${l.status === 'clicked' && l.points < 0 ? '<div class="small text-muted">Không report, đã bị chốt bỏ sót</div>' : ''}</td>
+          <td class="text-center">${l.clicked ? '🔗 Có' : '—'}</td>
+          <td class="text-end fw-bold ${l.points > 0 ? 'text-success' : (l.points < 0 ? 'text-danger' : '')}">${l.points > 0 ? '+' : ''}${l.points}</td>
+        </tr>`).join('') : '<tr><td colspan="7" class="text-center text-muted py-3">Nhân viên này chưa nhận thư nào. Hãy phát động chiến dịch trước.</td></tr>';
+
+      bootstrap.Modal.getOrCreateInstance(document.getElementById('drillModal')).show();
+    }
+
+    /* ---------- Biểu đồ ---------- */
     const chartStats = {{ chart_stats | tojson }};
     const labels = chartStats.map(item => item.category);
     const reportedData = chartStats.map(item => item.reported_count);
     const missedData = chartStats.map(item => item.missed_count);
+
+    Chart.defaults.color = chartPalette(currentTheme()).text;
+    Chart.defaults.borderColor = chartPalette(currentTheme()).grid;
 
     const reportedChartInstance = new Chart(document.getElementById('reportedChart'), {
       type: 'bar',
@@ -254,11 +785,16 @@
       }
     });
 
+    /* ---------- Xuất PDF (luôn dùng màu sáng cho giấy trắng) ---------- */
     function exportPDF() {
-      // Gắn thời gian thực và chuyển 2 biểu đồ Chart.js thành ảnh nét cao cho PDF
+      const wasDark = currentTheme() === 'dark';
+      if (wasDark) applyChartTheme('light');
+
       document.getElementById('pdf-timestamp').innerText = new Date().toLocaleString('vi-VN');
       document.getElementById('pdf-reported-img').src = reportedChartInstance.toBase64Image();
       document.getElementById('pdf-missed-img').src = missedChartInstance.toBase64Image();
+
+      if (wasDark) applyChartTheme('dark');
 
       const element = document.getElementById('pdf-report-template');
       element.style.display = 'block';

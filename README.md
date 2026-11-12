@@ -14,7 +14,7 @@ Hệ thống diễn tập và đào tạo nhận thức An toàn thông tin nộ
 * **Môi trường cô lập an toàn 100%**: Đóng gói hoàn toàn bằng Docker Compose trong mạng ảo Bridge nội bộ, tuyệt đối không gửi email ra Internet hay Gmail thực tế.
 
 ### 🛠️ Công nghệ sử dụng
-* **Backend**: Python 3.9+, Flask 3.0.0, SQLite3 (`phishing_system.db`), `fpdf2`.
+* **Backend**: Python 3.9+, Flask 3.0.0, SQLite3 (`phishing_system.db`), `openpyxl` (xuất Excel).
 * **Frontend**: HTML5, Bootstrap 5, Chart.js.
 * **Hạ tầng & Mail Server**: Docker, Docker Compose, Mailpit (`axllent/mailpit`).
 
@@ -78,3 +78,25 @@ Sau khi kết thúc bài lab / demo:
 
 * **Trên Windows**: Nhấp đúp chuột vào file **`end.bat`** (hoặc gõ `.\end.bat`).
 * **Trên macOS / Linux**: Chạy lệnh `./end.sh`.
+
+---
+
+## 3. 🛠️ Trang Quản trị nâng cao (Admin Dashboard)
+
+Đăng nhập tại `http://localhost:5000/admin`. Mặc định tài khoản là `admin`, mật khẩu `password4admin`. Có thể đổi bằng biến môi trường `ADMIN_USERNAME` và `ADMIN_PASSWORD` trong `docker-compose.yml`.
+
+| Tính năng | Cách dùng |
+| --- | --- |
+| **Trình tạo kịch bản (Template Editor)** | Cuộn xuống khung **Trình tạo kịch bản email**. Bấm **Mở danh sách** để lọc, tìm kiếm, bật/tắt từng mẫu thư, bấm **Sửa** để chỉnh nội dung, hoặc **Thêm kịch bản** để soạn mẫu mới. Không cần sửa `emails.json` hay xóa database. Kịch bản bị tắt sẽ không được chọn ở các lần phát động sau. |
+| **Cấu hình chiến dịch** | Bấm **Bắt đầu** để mở hộp thoại. Chỉnh `SPEAR_COUNT`, `OTHER_PHISHING_COUNT`, `LEGIT_COUNT` và mức điểm cộng/trừ rồi bấm **Phát động**. Giá trị được lưu lại cho lần sau. |
+| **Xem chi tiết từng nhân viên** | Bấm vào tên nhân viên trong Bảng xếp hạng để xem từng thư và trạng thái: Đã Report đúng, Báo cáo nhầm, Đã bấm link độc hại, Bỏ sót. |
+| **Xuất dữ liệu thô** | Nút **Tải CSV** và **Tải Excel** tải toàn bộ `campaign_logs` kèm thông tin nhân viên và kịch bản. Nút **Xuất Báo Cáo PDF** vẫn hoạt động như cũ. |
+| **Chế độ tối** | Nút ở góc phải thanh tiêu đề, có trên cả trang Admin và Cổng Nhân viên. Lựa chọn được nhớ trong trình duyệt. |
+
+### Theo dõi lượt bấm link
+
+Mỗi thư được gửi kèm bản HTML. Chữ hiển thị của link vẫn là tên miền giả trong kịch bản, nhưng link thực tế trỏ về `/click/<mã thư>` của hệ thống nên không có truy cập nào ra Internet thật. Lượt bấm chỉ được ghi nhận khi nhân viên mở thư ở chế độ HTML trong Mailpit (mặc định). Nếu truy cập hệ thống từ máy khác, đặt biến môi trường `PUBLIC_BASE_URL` (ví dụ `http://192.168.1.10:5000`).
+
+### Lưu ý khi nâng cấp từ bản cũ
+
+Database cũ được tự động nâng cấp, không cần xóa file `phishing_system.db`. Điểm của các thư đã chấm trước đây được ghi lại theo luật gốc +10, -5, -10.
