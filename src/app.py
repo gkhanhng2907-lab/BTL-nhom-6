@@ -132,10 +132,22 @@ def send_smtp_email(smtp_host, smtp_port, sender, recipient, emp_code, subject, 
         print(f"[LỖI SMTP] Không gửi được tới {smtp_host}:{smtp_port} - {e}")
 
 # ==========================================
-# 2. LUỒNG PHÁT ĐỘNG CHIẾN DỊCH (12 MAIL / NHÂN VIÊN)
+# 2. LUỒNG PHÁT ĐỘNG CHIẾN DỊCH (SPEAR PHISHING - 12 MAIL / NHÂN VIÊN)
 # ==========================================
 @app.route("/start-campaign", methods=["POST"])
 def start_campaign():
+    # Tên danh mục đã được khớp chính xác 100% với file emails.json
+    DEPT_PRIORITY = {
+        "EMP01": ["Hóa đơn, thuế", "Giả mạo sếp", "Ngân hàng"],                 # Kế toán
+        "EMP02": ["Nhân sự, lương thưởng", "Giả mạo sếp"],                      # Nhân sự
+        "EMP03": ["IT Support", "Cảnh báo bảo mật tài khoản"],                  # IT/Dev
+        "EMP04": ["Hợp đồng, đối tác giả", "Chia sẻ tài liệu giả", "Giao hàng, bưu kiện"]  # Kinh doanh
+    }
+
+    SPEAR_COUNT = 5
+    OTHER_PHISHING_COUNT = 3
+    LEGIT_COUNT = 4
+
     conn = get_db_connection()
     cursor = conn.cursor()
 
@@ -156,16 +168,41 @@ def start_campaign():
 
     for emp in employees:
         selected_emails = []
+        emp_code = emp["employee_code"].upper()
+        priority_cats = DEPT_PRIORITY.get(emp_code, [])
 
-        for cat, mails in phishing_by_cat.items():
-            selected_emails.append(random.choice(mails))
-
-        needed_legit = max(0, 12 - len(selected_emails))
-        if legit_emails and needed_legit > 0:
-            if len(legit_emails) >= needed_legit:
-                selected_emails.extend(random.sample(legit_emails, needed_legit))
+        # 1. Chọn 5 mail Spear Phishing từ các danh mục trọng tâm của phòng ban
+        spear_pool = [
+            m for cat in priority_cats
+            if cat in phishing_by_cat
+            for m in phishing_by_cat[cat]
+        ]
+        if spear_pool:
+            if len(spear_pool) >= SPEAR_COUNT:
+                selected_emails.extend(random.sample(spear_pool, SPEAR_COUNT))
             else:
-                selected_emails.extend(legit_emails)
+                selected_emails.extend(spear_pool)
+                selected_emails.extend(random.choices(spear_pool, k=SPEAR_COUNT - len(spear_pool)))
+
+        # 2. Chọn 3 mail Phishing đại trà từ các danh mục lừa đảo còn lại (mỗi loại 1 mail)
+        other_cats = [
+            cat for cat in phishing_by_cat.keys()
+            if cat not in priority_cats and phishing_by_cat[cat]
+        ]
+        if len(other_cats) >= OTHER_PHISHING_COUNT:
+            chosen_other_cats = random.sample(other_cats, OTHER_PHISHING_COUNT)
+        else:
+            chosen_other_cats = other_cats
+
+        for cat in chosen_other_cats:
+            selected_emails.append(random.choice(phishing_by_cat[cat]))
+
+        # 3. Chọn 4 mail thật (Legit) từ 20 mẫu có sẵn ("Thông báo nội bộ" & "Công việc hằng ngày")
+        if legit_emails:
+            if len(legit_emails) >= LEGIT_COUNT:
+                selected_emails.extend(random.sample(legit_emails, LEGIT_COUNT))
+            else:
+                selected_emails.extend(random.choices(legit_emails, k=LEGIT_COUNT))
 
         random.shuffle(selected_emails)
         total_sent_per_emp = len(selected_emails)
@@ -192,9 +229,8 @@ def start_campaign():
     conn.close()
     return jsonify({
         "status": "success",
-        "message": f"Đã phát động chiến dịch! Mỗi nhân viên nhận đủ {total_sent_per_emp} email (đủ 10 loại lừa đảo + mail thật)."
+        "message": f"Đã phát động chiến dịch! Mỗi nhân viên nhận đủ {total_sent_per_emp} email (5 Spear Phishing + 3 Phishing khác + 4 mail thật)."
     })
-
 # ==========================================
 # 3. LUỒNG CHẤM ĐIỂM TỰ ĐỘNG & REPORT
 # ==========================================
