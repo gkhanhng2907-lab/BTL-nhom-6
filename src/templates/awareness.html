@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bạn vừa sập bẫy Phishing!</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container py-5" style="max-width: 720px;">
+    <div class="card shadow border-danger">
+      <div class="card-header bg-danger text-white py-3">
+        <h3 class="mb-0">⚠️ Bạn vừa sập bẫy Phishing!</h3>
+      </div>
+      <div class="card-body p-4">
+        <p class="fs-5">
+          {% if log.submitted_data %}
+            Bạn đã bấm vào liên kết lừa đảo và còn nhập tài khoản vào trang đăng nhập giả mạo.
+          {% else %}
+            Bạn đã bấm vào liên kết trong một email lừa đảo.
+          {% endif %}
+          Đây là bài diễn tập nên không có dữ liệu thật nào bị lấy đi. Mật khẩu bạn gõ, nếu có, không hề được gửi hay lưu lại.
+        </p>
+
+        <div class="alert alert-warning">
+          <b>Điểm bị trừ:</b> {{ log.employee_code }} mất {{ click_penalty }} điểm vì bấm link{% if log.submitted_data %}, cộng thêm {{ submit_penalty }} điểm vì nhập dữ liệu vào trang giả. Tổng cộng {{ total_penalty }} điểm.{% else %}.{% endif %}
+        </div>
+
+        <p class="mb-1"><b>📌 Tiêu đề thư:</b> {{ log.subject }}</p>
+        <p class="mb-1"><b>✉️ Người gửi:</b> {{ log.sender }}</p>
+        <p class="mb-3"><b>📂 Phân loại kịch bản:</b> {{ log.category }}</p>
+
+        <h5>🚩 Những dấu hiệu lẽ ra giúp bạn nhận ra</h5>
+        <ul class="mb-4">
+          {% for f in flags %}<li>{{ f }}</li>{% endfor %}
+        </ul>
+
+        <h5>✅ Lần sau hãy làm gì</h5>
+        <ul class="mb-4">
+          <li>Rê chuột lên liên kết để xem địa chỉ thật trước khi bấm.</li>
+          <li>Không nhập mật khẩu khi bạn đến trang từ một liên kết trong email.</li>
+          <li>Gặp yêu cầu gấp hoặc đòi giữ bí mật, hãy xác minh qua kênh khác như gọi điện trực tiếp.</li>
+          <li>Dùng nút báo cáo cuối thư để gửi thư nghi ngờ về cổng báo cáo.</li>
+        </ul>
+
+        <a href="/portal?emp={{ log.employee_code }}&mail=MAIL-{{ log.id }}" class="btn btn-outline-danger">🛡️ Mở cổng báo cáo</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

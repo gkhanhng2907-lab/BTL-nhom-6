@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ heading }} | Đăng nhập</title>
+  <style>
+    :root { --ink:#14213d; --brand:#1f4fd8; --line:#d5dbe6; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+           background:linear-gradient(160deg,#e9edf4 0%,#dbe3f1 100%); font-family:"Segoe UI",Arial,sans-serif; color:var(--ink); }
+    .card { width:100%; max-width:410px; background:#fff; border:1px solid var(--line); border-radius:10px;
+            padding:36px 36px 30px; box-shadow:0 10px 30px rgba(20,33,61,.10); }
+    .brand { display:flex; align-items:center; gap:12px; margin-bottom:26px; }
+    .brand-name { font-size:22px; font-weight:700; letter-spacing:.2px; line-height:1; }
+    .brand-name small { display:block; margin-top:4px; font-size:11px; font-weight:500; color:#5b6783; letter-spacing:.3px; }
+    h1 { font-size:19px; margin:0 0 6px; }
+    p.sub { margin:0 0 22px; font-size:14px; color:#4b5877; line-height:1.5; }
+    label { display:block; font-size:13px; font-weight:600; margin:0 0 6px; }
+    input { width:100%; padding:11px 12px; font-size:15px; border:1px solid var(--line); border-radius:6px; margin-bottom:16px; }
+    input:focus { outline:2px solid var(--brand); outline-offset:0; border-color:var(--brand); }
+    button { width:100%; padding:12px; font-size:15px; font-weight:600; color:#fff; background:var(--brand);
+             border:0; border-radius:6px; cursor:pointer; }
+    button:hover { filter:brightness(.88); }
+    button:focus-visible { outline:3px solid #9db6f5; outline-offset:2px; }
+    .foot { margin-top:18px; font-size:12px; color:#6b7691; text-align:center; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="brand">
+      <svg width="46" height="46" viewBox="0 0 46 46" role="img" aria-label="Logo BinGroup">
+        <rect width="46" height="46" rx="11" fill="#1f4fd8"/>
+        <path d="M23 6 L38 14.5 V31.5 L23 40 L8 31.5 V14.5 Z" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/>
+        <text x="23" y="29.5" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="700" fill="#fff">B</text>
+      </svg>
+      <div class="brand-name">BinGroup<small>Cổng đăng nhập một lần (SSO)</small></div>
+    </div>
+
+    <h1>{{ heading }}</h1>
+    <p class="sub">{{ sub }}</p>
+
+    <!-- Không có thuộc tính name, và JS bên dưới không đọc giá trị: dữ liệu nhập không rời khỏi trình duyệt. -->
+    <form id="loginForm" autocomplete="off">
+      <label for="u">Email hoặc tên đăng nhập</label>
+      <input id="u" type="text" required autocomplete="off">
+      <label for="p">Mật khẩu</label>
+      <input id="p" type="password" required autocomplete="off">
+      <button type="submit" id="btn">Đăng nhập</button>
+    </form>
+  </main>
+  <div class="foot">© 2026 BinGroup. Bảo lưu mọi quyền.</div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('btn').disabled = true;
+      fetch('/track-submit/{{ log_id }}', { method: 'POST' })
+        .then(r => r.json())
+        .then(d => { window.location.href = d.redirect || '/awareness/{{ log_id }}'; })
+        .catch(() => { window.location.href = '/awareness/{{ log_id }}'; });
+    });
+  </script>
+</body>
+</html>

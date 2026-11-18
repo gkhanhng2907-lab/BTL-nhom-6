@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Cổng Nhân viên - Báo cáo Email Lừa đảo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <!-- Thanh tiêu đề đã được lược bỏ hoàn toàn nút sang trang Quản trị -->
+  <nav class="navbar navbar-dark bg-primary mb-4">
+    <div class="container justify-content-center">
+      <span class="navbar-brand mb-0 h1">🛡️ Cổng Báo Cáo An Toàn Thông Tin (Employee Portal)</span>
+    </div>
+  </nav>
+
+  <div class="container" style="max-width: 600px;">
+    <!-- Đã xóa bỏ hoàn toàn khung hiển thị danh sách nhân viên và hộp thư Mailpit ở đây -->
+
+    <!-- Form nhập Mã NV + Mã Mail và bấm Submit -->
+    <div class="card shadow">
+      <div class="card-header bg-danger text-white">
+        <h5 class="mb-0">🚨 Báo cáo Email Nghi ngờ Lừa đảo (Phishing Report)</h5>
+      </div>
+      <div class="card-body p-4">
+        <p class="text-muted">
+          Nhập <b>Mã Nhân viên</b> của bạn (ví dụ: <code>EMP01</code>) và <b>Mã định danh thư</b> xem trong hòm thư cá nhân (ví dụ: <code>#MAIL-5</code> hoặc <code>5</code>) rồi bấm <b>Submit</b>.
+        </p>
+
+        <form id="reportForm" onsubmit="submitReport(event)">
+          <div class="mb-3">
+            <label for="empCodeInput" class="form-label fw-bold">1. Mã ID Nhân viên:</label>
+            <input type="text" id="empCodeInput" class="form-control form-control-lg" placeholder="Nhập VD: EMP01, EMP02..." required>
+          </div>
+          <div class="mb-3">
+            <label for="mailCodeInput" class="form-label fw-bold">2. Mã định danh Email:</label>
+            <input type="text" id="mailCodeInput" class="form-control form-control-lg" placeholder="Nhập VD: #MAIL-5 hoặc 5" required>
+          </div>
+          <button type="submit" class="btn btn-danger btn-lg w-100 fw-bold">🚀 Submit Báo Cáo</button>
+        </form>
+
+        <!-- Hộp thông báo Phản hồi giáo dục (Awareness) -->
+        <div id="awarenessBox" class="mt-4 p-3 rounded" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Tự điền Mã NV và Mã Mail khi mở từ nút báo cáo trong email
+    (function () {
+      const q = new URLSearchParams(window.location.search);
+      if (q.get('emp')) document.getElementById('empCodeInput').value = q.get('emp');
+      if (q.get('mail')) document.getElementById('mailCodeInput').value = q.get('mail');
+    })();
+
+    function submitReport(event) {
+      event.preventDefault();
+      const empCode = document.getElementById('empCodeInput').value.trim().toUpperCase();
+      const mailCode = document.getElementById('mailCodeInput').value.trim();
+      const box = document.getElementById('awarenessBox');
+
+      fetch('/report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ employee_code: empCode, mail_code: mailCode })
+      })
+        .then(r => r.json())
+        .then(d => {
+          box.style.display = 'block';
+          if (d.status === 'error' || d.status === 'warning') {
+            box.className = 'mt-4 p-3 rounded alert alert-warning';
+            box.innerHTML = `<h5>⚠️ Thông báo</h5><p class="mb-0">${d.message}</p>`;
+          } else {
+            const isCorrect = d.feedback_type === 'correct';
+            box.className = 'mt-4 p-3 rounded alert ' + (isCorrect ? 'alert-success' : 'alert-danger');
+            box.innerHTML = `
+              <h5>🔔 Kết quả báo cáo: ${d.message}</h5>
+              <hr>
+              <p class="mb-1"><b>📌 Tiêu đề thư:</b> ${d.subject}</p>
+              <p class="mb-1"><b>📂 Phân loại kịch bản:</b> ${d.category}</p>
+              <p class="mb-0"><b>🚩 Giải thích dấu hiệu (Red Flags):</b><br>
+                ${d.red_flags ? d.red_flags : 'Không có dấu hiệu lừa đảo. Đây là email công việc nội bộ hoàn toàn hợp lệ!'}
+              </p>
+            `;
+            document.getElementById('mailCodeInput').value = '';
+          }
+        });
+    }
+  </script>
+</body>
+</html>
