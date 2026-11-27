@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thư hợp lệ</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background:#f4f5f7; color:#1f2937; font-family:"Segoe UI",Arial,sans-serif; }
+    .card { border:1px solid #dde1e7; border-radius:8px; box-shadow:none; }
+    .card-header { background:#fff; border-bottom:1px solid #dde1e7; color:#111827; }
+    .btn-main { background:#1f3a5f; border-color:#1f3a5f; color:#fff; }
+    .btn-main:hover { background:#17304f; border-color:#17304f; color:#fff; }
+    .btn-line { background:#fff; border:1px solid #9aa4b2; color:#374151; }
+    .btn-line:hover { background:#eef0f3; color:#111827; }
+    .note { border-left:4px solid #1f3a5f; background:#eef1f6; padding:10px 14px; border-radius:4px; }
+    .note-good { border-left-color:#3f7d58; background:#eef5f0; }
+    .note-warn { border-left-color:#a8741a; background:#f7f1e6; }
+    h5 { font-size:1.05rem; font-weight:600; }
+  </style>
+</head>
+<body>
+  <div class="container py-5" style="max-width: 640px;">
+    <div class="card">
+      <div class="card-header py-3"><h4 class="mb-0">Đây là liên kết của thư hợp lệ</h4></div>
+      <div class="card-body p-4">
+        <p>Thư <b>{{ log.subject }}</b> là thư thật trong bài diễn tập. Bạn không bị trừ điểm.</p>
+        <p class="text-muted mb-0">{{ (log.red_flags or '')|replace('Mail thật. ', '', 1) }}</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

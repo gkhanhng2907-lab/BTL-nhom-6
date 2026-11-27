@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bài diễn tập phishing</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background:#f4f5f7; color:#1f2937; font-family:"Segoe UI",Arial,sans-serif; }
+    .card { border:1px solid #dde1e7; border-radius:8px; box-shadow:none; }
+    .card-header { background:#fff; border-bottom:1px solid #dde1e7; color:#111827; }
+    .btn-main { background:#1f3a5f; border-color:#1f3a5f; color:#fff; }
+    .btn-main:hover { background:#17304f; border-color:#17304f; color:#fff; }
+    .btn-line { background:#fff; border:1px solid #9aa4b2; color:#374151; }
+    .btn-line:hover { background:#eef0f3; color:#111827; }
+    .note { border-left:4px solid #1f3a5f; background:#eef1f6; padding:10px 14px; border-radius:4px; }
+    .note-good { border-left-color:#3f7d58; background:#eef5f0; }
+    .note-warn { border-left-color:#a8741a; background:#f7f1e6; }
+    h5 { font-size:1.05rem; font-weight:600; }
+  </style>
+</head>
+<body>
+  <div class="container py-5" style="max-width: 720px;">
+    <div class="card">
+      <div class="card-header py-3">
+        <h4 class="mb-0">Đây là bài diễn tập phishing</h4>
+      </div>
+      <div class="card-body p-4">
+        <p class="fs-6">
+          {% if log.submitted_data %}
+            Bạn đã bấm vào liên kết trong một email lừa đảo và nhập tài khoản vào trang đăng nhập giả mạo.
+          {% elif via_attachment %}
+            Bạn đã mở tệp đính kèm trong một email lừa đảo.
+          {% else %}
+            Bạn đã bấm vào liên kết trong một email lừa đảo.
+          {% endif %}
+          Đây là bài diễn tập nên không có dữ liệu thật nào bị lấy đi. Mật khẩu bạn gõ, nếu có, không hề được gửi hay lưu lại.
+        </p>
+
+        <div class="note note-warn mb-4">
+          <b>Điểm bị trừ:</b> {{ log.employee_code }} mất {{ click_penalty }} điểm vì {% if via_attachment %}mở tệp đính kèm{% else %}bấm link{% endif %}{% if log.submitted_data %}, cộng thêm {{ submit_penalty }} điểm vì nhập dữ liệu vào trang giả. Tổng cộng {{ total_penalty }} điểm.{% else %}.{% endif %}
+          Thư đã bấm vào thì không thể báo cáo được nữa.
+        </div>
+
+        <p class="mb-1"><b>Tiêu đề thư:</b> {{ log.subject }}</p>
+        <p class="mb-1"><b>Người gửi:</b> {{ log.sender }}</p>
+        <p class="mb-1"><b>Phân loại kịch bản:</b> {{ log.category }}</p>
+        {% if shown_url %}
+        <p class="mb-3"><b>Địa chỉ hiển thị trong thư:</b> <code>{{ shown_url }}</code><br>
+          <span class="text-muted">Tên máy chủ trong địa chỉ hiển thị là <b>{{ shown_host }}</b>.</span></p>
+        {% else %}
+        <p class="mb-3"></p>
+        {% endif %}
+
+        <h5>Những điểm cần kiểm tra và xác minh</h5>
+        <p class="text-muted">Các điểm dưới đây giúp đánh giá rủi ro; một dấu hiệu riêng lẻ không đủ để kết luận thư là lừa đảo.</p>
+        <ul class="mb-4">
+          {% for f in flags %}<li>{{ f }}</li>{% endfor %}
+        </ul>
+
+        <h5>Lần sau nên làm gì</h5>
+        <ul class="mb-0">
+          {% if via_attachment %}
+          <li>Không mở tệp đính kèm khi chưa xác minh người gửi, nhất là tệp .zip, .exe, .iso, .docm, .xlsm hoặc tệp có hai đuôi liền nhau như .pdf.exe.</li>
+          {% else %}
+          <li>Rê chuột lên liên kết để xem địa chỉ thật trước khi bấm, rồi đối chiếu tên miền với địa chỉ chính thức đã được xác minh độc lập. Riêng trong bài diễn tập này, thanh trạng thái sẽ hiện địa chỉ localhost vì mọi liên kết đều đi qua máy chủ diễn tập để ghi nhận lượt bấm. Hãy đối chiếu với địa chỉ hiển thị trong thư nêu ở trên.</li>
+          {% endif %}
+          <li>Không nhập mật khẩu khi bạn đến trang từ một liên kết trong email.</li>
+          <li>Gặp yêu cầu gấp hoặc đòi giữ bí mật, hãy xác minh qua kênh khác như gọi điện trực tiếp.</li>
+          <li>Nếu thư nhắc đến đơn hàng, hóa đơn, hợp đồng hay cuộc thi, hãy đối chiếu với bộ phận phụ trách hoặc hệ thống nội bộ trước khi làm theo.</li>
+          <li>Dùng nút báo cáo cuối thư để gửi thư nghi ngờ trước khi bấm vào bất kỳ liên kết nào.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

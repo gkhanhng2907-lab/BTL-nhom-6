@@ -2,20 +2,28 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Dashboard - Quản trị Chiến dịch Phishing</title>
+  <title>Bảng điều khiển quản trị chiến dịch phishing</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
   <!-- Thư viện xuất file PDF trực tiếp trên trình duyệt -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
+    body { background:#f4f5f7; color:#1f2937; font-family:"Segoe UI",Arial,sans-serif; }
+    .card { border:1px solid #dde1e7; border-radius:8px; box-shadow:none; }
+    .card-header { background:#fff; border-bottom:1px solid #dde1e7; color:#111827; }
+    .btn-main { background:#1f3a5f; border-color:#1f3a5f; color:#fff; }
+    .btn-main:hover { background:#17304f; border-color:#17304f; color:#fff; }
+    .btn-line { background:#fff; border:1px solid #9aa4b2; color:#374151; }
+    .btn-line:hover { background:#eef0f3; color:#111827; }
     .pdf-section { page-break-inside: avoid; margin-bottom: 18px; }
   </style>
 </head>
-<body class="bg-light">
-  <nav class="navbar navbar-dark bg-dark mb-4">
+<body>
+  <nav class="navbar navbar-dark mb-4" style="background:#1f3a5f;">
     <div class="container">
-      <span class="navbar-brand mb-0 h1">⚙️ Bảng Điều Khiển Quản Trị (Admin Dashboard)</span>
-      <a href="/portal" class="btn btn-outline-info btn-sm">← Sang Cổng Nhân viên</a>
+      <span class="navbar-brand mb-0 h1">Bảng điều khiển quản trị</span>
+      <a href="/portal" class="btn btn-outline-light btn-sm">Sang cổng nhân viên</a>
     </div>
   </nav>
 
@@ -24,16 +32,16 @@
     <div class="card shadow-sm mb-4">
       <div class="card-body d-flex justify-content-between align-items-center flex-wrap gap-2">
         <div>
-          <h5 class="mb-1">Điều khiển Chiến dịch Diễn tập</h5>
+          <h5 class="mb-1">Điều khiển chiến dịch diễn tập</h5>
           <small class="text-muted">Phát ngẫu nhiên email qua SMTP, chốt điểm bỏ sót và xuất báo cáo tổng kết</small>
         </div>
         <div class="d-flex flex-wrap gap-2">
-          <button class="btn btn-primary fw-bold" onclick="callApi('/start-campaign')">🚀 Bắt đầu</button>
-          <button class="btn btn-warning fw-bold" onclick="callApi('/finalize-campaign')">🏁 Kết thúc & Chốt điểm</button>
+          <button class="btn btn-main" onclick="callApi('/start-campaign')">Bắt đầu</button>
+          <button class="btn btn-line" onclick="callApi('/finalize-campaign')">Kết thúc và chốt điểm</button>
           {% if is_finalized %}
-            <button class="btn btn-danger fw-bold" onclick="exportPDF()">📄 Xuất Báo Cáo PDF</button>
+            <button class="btn btn-line" onclick="exportPDF()">Xuất báo cáo PDF</button>
           {% endif %}
-          <button class="btn btn-secondary fw-bold" onclick="callApi('/reset')">🔄 Reset Dữ liệu</button>
+          <button class="btn btn-line" onclick="callApi('/reset')">Đặt lại dữ liệu</button>
         </div>
       </div>
     </div>
@@ -41,7 +49,7 @@
     <!-- Bảng xếp hạng tổng hợp điểm số nhân viên -->
     <div class="card shadow-sm mb-4">
       <div class="card-header bg-white">
-        <h5 class="mb-0">🏆 Bảng Xếp Hạng & Tổng Hợp Kết Quả Nhân Viên</h5>
+        <h5 class="mb-0">Bảng xếp hạng và tổng hợp kết quả nhân viên</h5>
       </div>
       <div class="card-body p-0">
         <table class="table table-bordered table-hover mb-0 text-center align-middle">
@@ -52,9 +60,10 @@
               <th class="text-start">Nhân viên</th>
               <th>Hộp thư Mailpit</th>
               <th>Tổng mail lừa đảo nhận</th>
-              <th>Report đúng (+10đ)</th>
+              <th>Báo cáo đúng (+10đ)</th>
+              <th>Bấm link (-15đ)</th>
               <th>Bỏ sót (-10đ)</th>
-              <th>Report nhầm (-5đ)</th>
+              <th>Báo cáo nhầm (-5đ)</th>
               <th>Tổng điểm</th>
             </tr>
           </thead>
@@ -64,11 +73,12 @@
               <td><b>#{{ loop.index }}</b></td>
               <td><code>{{ emp.employee_code }}</code></td>
               <td class="text-start fw-semibold">{{ emp.name }}</td>
-              <td><a href="http://localhost:{{ emp.webmail_port }}" target="_blank" class="btn btn-sm btn-outline-primary">Cổng {{ emp.webmail_port }}</a></td>
+              <td><a href="http://localhost:{{ emp.webmail_port }}" target="_blank" class="btn btn-sm btn-line">Cổng {{ emp.webmail_port }}</a></td>
               <td>{{ emp.total_phishing_received or 0 }}</td>
-              <td class="text-success fw-bold">{{ emp.correct_reports or 0 }}</td>
-              <td class="text-danger fw-bold">{{ emp.missed_phishing or 0 }}</td>
-              <td class="text-warning fw-bold">{{ emp.false_reports or 0 }}</td>
+              <td class="fw-semibold">{{ emp.correct_reports or 0 }}</td>
+              <td class="fw-semibold">{{ emp.clicked_phishing or 0 }}</td>
+              <td class="fw-semibold">{{ emp.missed_phishing or 0 }}</td>
+              <td class="fw-semibold">{{ emp.false_reports or 0 }}</td>
               <td class="fs-5 fw-bold">{{ emp.score }}</td>
             </tr>
             {% endfor %}
@@ -82,14 +92,20 @@
       <div class="col-md-6">
         <div class="card shadow-sm h-100">
           <div class="card-body">
-            <canvas id="reportedChart"></canvas>
+            <div style="position: relative; height: 380px;">
+              <canvas id="reportedChart"></canvas>
+              <div id="reportedEmpty" class="text-muted text-center position-absolute top-50 start-50 translate-middle" style="display:none;">Chưa có lượt báo cáo đúng nào</div>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="card shadow-sm h-100">
           <div class="card-body">
-            <canvas id="missedChart"></canvas>
+            <div style="position: relative; height: 380px;">
+              <canvas id="missedChart"></canvas>
+              <div id="missedEmpty" class="text-muted text-center position-absolute top-50 start-50 translate-middle" style="display:none;">Chưa có mail nào không được báo cáo</div>
+            </div>
           </div>
         </div>
       </div>
@@ -101,25 +117,25 @@
   <!-- ========================================================= -->
   <div id="pdf-report-template" style="display: none; background: white; padding: 20px; font-family: Arial, sans-serif; color: #222;">
     <div class="text-center border-bottom pb-3 mb-3">
-      <h3 class="fw-bold text-uppercase mb-1" style="color: #0d6efd;">Báo Cáo Tổng Quan Chiến Dịch Diễn Tập Phishing</h3>
+      <h3 class="fw-bold text-uppercase mb-1" style="color: #1f3a5f;">Báo cáo tổng quan chiến dịch diễn tập phishing</h3>
       <small class="text-muted">Thời gian xuất báo cáo: <span id="pdf-timestamp"></span></small>
     </div>
 
     <!-- 1. Tổng quan nhân sự & Vinh danh / Cảnh báo -->
     <div class="pdf-section">
-      <h5 class="fw-bold mb-2">1. Tổng quan Nhân sự & Điểm số nổi bật</h5>
+      <h5 class="fw-bold mb-2">1. Tổng quan nhân sự và điểm số nổi bật</h5>
       <div class="row g-2 text-center">
         <div class="col-4">
           <div class="border rounded p-2 bg-light h-100">
             <div class="text-muted small">Tổng nhân viên tham gia</div>
-            <div class="fs-4 fw-bold text-primary">{{ participating_count }} người</div>
+            <div class="fs-4 fw-bold">{{ participating_count }} người</div>
           </div>
         </div>
         <div class="col-4">
           <div class="border rounded p-2 bg-light h-100">
-            <div class="text-muted small">Điểm cao nhất (Xuất sắc)</div>
+            <div class="text-muted small">Điểm cao nhất</div>
             {% if highest_emps %}
-              <div class="fw-bold text-success">{{ highest_emps[0].score }} điểm</div>
+              <div class="fw-bold">{{ highest_emps[0].score }} điểm</div>
               <div class="small">{% for e in highest_emps %}{{ e.name }} ({{ e.employee_code }}){% if not loop.last %}, {% endif %}{% endfor %}</div>
             {% else %}
               <div class="small">Chưa có dữ liệu</div>
@@ -128,9 +144,9 @@
         </div>
         <div class="col-4">
           <div class="border rounded p-2 bg-light h-100">
-            <div class="text-muted small">Điểm thấp nhất (Cần lưu ý)</div>
+            <div class="text-muted small">Điểm thấp nhất</div>
             {% if lowest_emps %}
-              <div class="fw-bold text-danger">{{ lowest_emps[0].score }} điểm</div>
+              <div class="fw-bold">{{ lowest_emps[0].score }} điểm</div>
               <div class="small">{% for e in lowest_emps %}{{ e.name }} ({{ e.employee_code }}){% if not loop.last %}, {% endif %}{% endfor %}</div>
             {% else %}
               <div class="small">Chưa có dữ liệu</div>
@@ -142,16 +158,16 @@
 
     <!-- 2. Thống kê kịch bản Mail lừa đảo & Biểu đồ -->
     <div class="pdf-section">
-      <h5 class="fw-bold mb-2">2. Phân tích Kịch bản Email Lừa đảo</h5>
+      <h5 class="fw-bold mb-2">2. Phân tích kịch bản email lừa đảo</h5>
       <ul class="small mb-3">
         <li>
-          <b>Mail lừa đảo được Report nhiều nhất (Dễ nhận diện):</b>
+          <b>Mail lừa đảo được báo cáo nhiều nhất, dễ nhận diện:</b>
           {% if most_reported_cats %}
             {% for c in most_reported_cats %}{{ c.category }} ({{ c.reported_count }} lượt){% if not loop.last %}, {% endif %}{% endfor %}
           {% else %}Không có lượt báo cáo nào{% endif %}
         </li>
         <li>
-          <b>Mail lừa đảo bị bỏ sót nhiều nhất (Nguy hiểm nhất):</b>
+          <b>Mail lừa đảo không được báo cáo nhiều nhất, gồm cả thư bị bấm link, nguy hiểm nhất:</b>
           {% if most_missed_cats %}
             {% for c in most_missed_cats %}{{ c.category }} ({{ c.missed_count }} lượt){% if not loop.last %}, {% endif %}{% endfor %}
           {% else %}Không có mail nào bị bỏ sót{% endif %}
@@ -161,12 +177,12 @@
       <div class="row g-2 mb-2 text-center">
         <div class="col-6">
           <div class="border rounded p-2">
-            <img id="pdf-reported-img" style="width: 100%; height: auto;" alt="Biểu đồ Report">
+            <img id="pdf-reported-img" style="width: 100%; height: auto;" alt="Biểu đồ báo cáo">
           </div>
         </div>
         <div class="col-6">
           <div class="border rounded p-2">
-            <img id="pdf-missed-img" style="width: 100%; height: auto;" alt="Biểu đồ Bỏ sót">
+            <img id="pdf-missed-img" style="width: 100%; height: auto;" alt="Biểu đồ bỏ sót">
           </div>
         </div>
       </div>
@@ -174,17 +190,18 @@
 
     <!-- 3. Bảng xếp hạng nhân viên chi tiết -->
     <div class="pdf-section">
-      <h5 class="fw-bold mb-2">3. Bảng Xếp Hạng Chi Tiết Nhân Viên</h5>
+      <h5 class="fw-bold mb-2">3. Bảng xếp hạng chi tiết nhân viên</h5>
       <table class="table table-sm table-bordered text-center align-middle small mb-0">
         <thead class="table-light">
           <tr>
             <th>Hạng</th>
             <th>Mã NV</th>
-            <th class="text-start">Họ tên / Bộ phận</th>
+            <th class="text-start">Họ tên và bộ phận</th>
             <th>Mail lừa đảo nhận</th>
-            <th>Report đúng (+10đ)</th>
+            <th>Báo cáo đúng (+10đ)</th>
+            <th>Bấm link (-15đ)</th>
             <th>Bỏ sót (-10đ)</th>
-            <th>Report nhầm (-5đ)</th>
+            <th>Báo cáo nhầm (-5đ)</th>
             <th>Tổng điểm</th>
           </tr>
         </thead>
@@ -196,6 +213,7 @@
             <td class="text-start">{{ emp.name }}</td>
             <td>{{ emp.total_phishing_received or 0 }}</td>
             <td>{{ emp.correct_reports or 0 }}</td>
+            <td>{{ emp.clicked_phishing or 0 }}</td>
             <td>{{ emp.missed_phishing or 0 }}</td>
             <td>{{ emp.false_reports or 0 }}</td>
             <td><b>{{ emp.score }}</b></td>
@@ -214,45 +232,71 @@
     }
 
     const chartStats = {{ chart_stats | tojson }};
-    const labels = chartStats.map(item => item.category);
-    const reportedData = chartStats.map(item => item.reported_count);
-    const missedData = chartStats.map(item => item.missed_count);
 
-    const reportedChartInstance = new Chart(document.getElementById('reportedChart'), {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Số lần Report đúng (Dễ nhận diện)',
-          data: reportedData,
-          backgroundColor: 'rgba(25, 135, 84, 0.8)'
-        }]
-      },
-      options: {
-        animation: false,
-        responsive: true,
-        plugins: { title: { display: true, text: 'Kịch bản lừa đảo được Report nhiều nhất' } },
-        scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
-      }
-    });
+    // Mỗi kịch bản giữ một màu cố định ở cả hai biểu đồ để dễ đối chiếu
+    const palette = ['#1f3a5f', '#4a6fa5', '#8aa4c8', '#5f6b7a', '#9aa4b2',
+                     '#2f5d62', '#6f9a9d', '#7a6f5f', '#b3a99a', '#c7ced6'];
+    const colorOf = {};
+    chartStats.forEach((item, i) => { colorOf[item.category] = palette[i % palette.length]; });
 
-    const missedChartInstance = new Chart(document.getElementById('missedChart'), {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Số lần bị bỏ sót (Nguy hiểm nhất)',
-          data: missedData,
-          backgroundColor: 'rgba(220, 53, 69, 0.8)'
-        }]
-      },
-      options: {
-        animation: false,
-        responsive: true,
-        plugins: { title: { display: true, text: 'Kịch bản lừa đảo bị bỏ sót nhiều nhất' } },
-        scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+    function buildPie(canvasId, emptyId, field, title) {
+      // Chỉ vẽ những kịch bản có số lượt lớn hơn 0
+      const rows = chartStats.filter(item => item[field] > 0);
+      if (rows.length === 0) {
+        document.getElementById(emptyId).style.display = 'block';
       }
-    });
+      return new Chart(document.getElementById(canvasId), {
+        type: 'pie',
+        data: {
+          labels: rows.map(item => item.category),
+          datasets: [{
+            data: rows.map(item => item[field]),
+            backgroundColor: rows.map(item => colorOf[item.category]),
+            borderColor: '#ffffff',
+            borderWidth: 2
+          }]
+        },
+        plugins: [ChartDataLabels],
+        options: {
+          animation: false,
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            title: { display: true, text: title, font: { size: 15 } },
+            legend: { position: 'bottom', labels: { boxWidth: 14, padding: 12 } },
+            tooltip: {
+              callbacks: {
+                label: ctx => {
+                  const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                  const pct = Math.round(ctx.parsed / total * 100);
+                  return ' ' + ctx.label + ': ' + ctx.parsed + ' lượt (' + pct + '%)';
+                }
+              }
+            },
+            datalabels: {
+              // Chữ tối trên mảng màu nhạt, chữ trắng trên mảng màu đậm
+              color: ctx => {
+                const hex = ctx.dataset.backgroundColor[ctx.dataIndex].replace('#', '');
+                const lum = (parseInt(hex.substr(0,2),16)*299 + parseInt(hex.substr(2,2),16)*587 + parseInt(hex.substr(4,2),16)*114) / 1000;
+                return lum > 150 ? '#1f2937' : '#ffffff';
+              },
+              font: { weight: 'bold', size: 15 },
+              formatter: (value, ctx) => {
+                const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                return Math.round(value / total * 100) + '%';
+              }
+            }
+          }
+        }
+      });
+    }
+
+    const reportedChartInstance = buildPie(
+      'reportedChart', 'reportedEmpty', 'reported_count',
+      'Kịch bản lừa đảo được báo cáo nhiều nhất');
+    const missedChartInstance = buildPie(
+      'missedChart', 'missedEmpty', 'missed_count',
+      'Kịch bản lừa đảo không được báo cáo nhiều nhất');
 
     function exportPDF() {
       // Gắn thời gian thực và chuyển 2 biểu đồ Chart.js thành ảnh nét cao cho PDF

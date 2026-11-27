@@ -2,55 +2,70 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Cổng Nhân viên - Báo cáo Email Lừa đảo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cổng báo cáo email lừa đảo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background:#f4f5f7; color:#1f2937; font-family:"Segoe UI",Arial,sans-serif; }
+    .card { border:1px solid #dde1e7; border-radius:8px; box-shadow:none; }
+    .card-header { background:#fff; border-bottom:1px solid #dde1e7; color:#111827; }
+    .btn-main { background:#1f3a5f; border-color:#1f3a5f; color:#fff; }
+    .btn-main:hover { background:#17304f; border-color:#17304f; color:#fff; }
+    .btn-line { background:#fff; border:1px solid #9aa4b2; color:#374151; }
+    .btn-line:hover { background:#eef0f3; color:#111827; }
+    .note { border-left:4px solid #1f3a5f; background:#eef1f6; padding:10px 14px; border-radius:4px; }
+    .note-good { border-left-color:#3f7d58; background:#eef5f0; }
+    .note-warn { border-left-color:#a8741a; background:#f7f1e6; }
+    h5 { font-size:1.05rem; font-weight:600; }
+  </style>
 </head>
-<body class="bg-light">
-  <!-- Thanh tiêu đề đã được lược bỏ hoàn toàn nút sang trang Quản trị -->
-  <nav class="navbar navbar-dark bg-primary mb-4">
+<body>
+  <nav class="navbar mb-4" style="background:#1f3a5f;">
     <div class="container justify-content-center">
-      <span class="navbar-brand mb-0 h1">🛡️ Cổng Báo Cáo An Toàn Thông Tin (Employee Portal)</span>
+      <span class="navbar-brand mb-0 h1 text-white fs-5">Cổng báo cáo an toàn thông tin</span>
     </div>
   </nav>
-
   <div class="container" style="max-width: 600px;">
-    <!-- Đã xóa bỏ hoàn toàn khung hiển thị danh sách nhân viên và hộp thư Mailpit ở đây -->
-
-    <!-- Form nhập Mã NV + Mã Mail và bấm Submit -->
-    <div class="card shadow">
-      <div class="card-header bg-danger text-white">
-        <h5 class="mb-0">🚨 Báo cáo Email Nghi ngờ Lừa đảo (Phishing Report)</h5>
+    <div class="card">
+      <div class="card-header py-3">
+        <h5 class="mb-0">Báo cáo email nghi ngờ lừa đảo</h5>
       </div>
       <div class="card-body p-4">
         <p class="text-muted">
-          Nhập <b>Mã Nhân viên</b> của bạn (ví dụ: <code>EMP01</code>) và <b>Mã định danh thư</b> xem trong hòm thư cá nhân (ví dụ: <code>#MAIL-5</code> hoặc <code>5</code>) rồi bấm <b>Submit</b>.
+          Nhập <b>mã nhân viên</b> của bạn (ví dụ <code>EMP01</code>) và <b>mã định danh thư</b> xem trong hộp thư cá nhân (ví dụ <code>#MAIL-5</code> hoặc <code>5</code>) rồi bấm gửi báo cáo.
         </p>
-
         <form id="reportForm" onsubmit="submitReport(event)">
           <div class="mb-3">
-            <label for="empCodeInput" class="form-label fw-bold">1. Mã ID Nhân viên:</label>
-            <input type="text" id="empCodeInput" class="form-control form-control-lg" placeholder="Nhập VD: EMP01, EMP02..." required>
+            <label for="empCodeInput" class="form-label fw-semibold">Mã nhân viên</label>
+            <input type="text" id="empCodeInput" class="form-control form-control-lg" placeholder="Ví dụ EMP01" required>
           </div>
           <div class="mb-3">
-            <label for="mailCodeInput" class="form-label fw-bold">2. Mã định danh Email:</label>
-            <input type="text" id="mailCodeInput" class="form-control form-control-lg" placeholder="Nhập VD: #MAIL-5 hoặc 5" required>
+            <label for="mailCodeInput" class="form-label fw-semibold">Mã định danh email</label>
+            <input type="text" id="mailCodeInput" class="form-control form-control-lg" placeholder="Ví dụ #MAIL-5 hoặc 5" required>
           </div>
-          <button type="submit" class="btn btn-danger btn-lg w-100 fw-bold">🚀 Submit Báo Cáo</button>
+          <button type="submit" class="btn btn-main btn-lg w-100">Gửi báo cáo</button>
         </form>
-
-        <!-- Hộp thông báo Phản hồi giáo dục (Awareness) -->
-        <div id="awarenessBox" class="mt-4 p-3 rounded" style="display: none;"></div>
+        <div id="awarenessBox" class="mt-4" style="display: none;"></div>
       </div>
     </div>
   </div>
-
   <script>
+    // Tự điền mã nhân viên và mã thư khi mở với tham số trên địa chỉ
+    (function () {
+      const q = new URLSearchParams(window.location.search);
+      if (q.get('emp')) document.getElementById('empCodeInput').value = q.get('emp');
+      if (q.get('mail')) document.getElementById('mailCodeInput').value = q.get('mail');
+    })();
+    function esc(t) {
+      const el = document.createElement('div');
+      el.textContent = t == null ? '' : t;
+      return el.innerHTML;
+    }
     function submitReport(event) {
       event.preventDefault();
       const empCode = document.getElementById('empCodeInput').value.trim().toUpperCase();
       const mailCode = document.getElementById('mailCodeInput').value.trim();
       const box = document.getElementById('awarenessBox');
-
       fetch('/report', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -60,18 +75,18 @@
         .then(d => {
           box.style.display = 'block';
           if (d.status === 'error' || d.status === 'warning') {
-            box.className = 'mt-4 p-3 rounded alert alert-warning';
-            box.innerHTML = `<h5>⚠️ Thông báo</h5><p class="mb-0">${d.message}</p>`;
+            box.className = 'mt-4 note note-warn';
+            box.innerHTML = `<b>Thông báo</b><br>${esc(d.message)}`;
           } else {
             const isCorrect = d.feedback_type === 'correct';
-            box.className = 'mt-4 p-3 rounded alert ' + (isCorrect ? 'alert-success' : 'alert-danger');
+            box.className = 'mt-4 note ' + (isCorrect ? 'note-good' : 'note-warn');
             box.innerHTML = `
-              <h5>🔔 Kết quả báo cáo: ${d.message}</h5>
-              <hr>
-              <p class="mb-1"><b>📌 Tiêu đề thư:</b> ${d.subject}</p>
-              <p class="mb-1"><b>📂 Phân loại kịch bản:</b> ${d.category}</p>
-              <p class="mb-0"><b>🚩 Giải thích dấu hiệu (Red Flags):</b><br>
-                ${d.red_flags ? d.red_flags : 'Không có dấu hiệu lừa đảo. Đây là email công việc nội bộ hoàn toàn hợp lệ!'}
+              <b>Kết quả báo cáo: ${esc(d.message)}</b>
+              <hr class="my-2">
+              <p class="mb-1"><b>Tiêu đề thư:</b> ${esc(d.subject)}</p>
+              <p class="mb-1"><b>Phân loại kịch bản:</b> ${esc(d.category)}</p>
+              <p class="mb-0"><b>Các điểm cần kiểm tra:</b><br>
+                ${d.red_flags ? esc(d.red_flags) : 'Trong kịch bản này, thư được phân loại là hợp lệ. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết.'}
               </p>
             `;
             document.getElementById('mailCodeInput').value = '';
