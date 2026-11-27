@@ -6,6 +6,7 @@ import secrets
 import sqlite3
 import smtplib
 import urllib.request
+from urllib.parse import urlparse
 from email.message import EmailMessage
 import html as html_lib
 from flask import Flask, render_template, request, jsonify, redirect
@@ -99,9 +100,13 @@ def init_db():
             sender TEXT,
             subject TEXT,
             body TEXT,
-            red_flags TEXT
+            red_flags TEXT,
+            target TEXT
         )
     """)
+    tpl_cols = [col[1] for col in cursor.execute("PRAGMA table_info(email_templates)").fetchall()]
+    if "target" not in tpl_cols:
+        cursor.execute("ALTER TABLE email_templates ADD COLUMN target TEXT")
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS campaign_logs (
@@ -139,8 +144,8 @@ def init_db():
             VALUES (?, ?, ?, ?, ?, ?, ?)
         """, default_employees)
 
-    cursor.execute("SELECT COUNT(*) FROM email_templates")
-    if cursor.fetchone()[0] == 0 and os.path.exists("emails.json"):
+    # Luôn đồng bộ lại mẫu mail từ emails.json để sửa nội dung không cần xóa DB
+    if os.path.exists("emails.json"):
         with open("emails.json", "r", encoding="utf-8") as f:
             emails_data = json.load(f)
             for item in emails_data:
@@ -148,8 +153,9 @@ def init_db():
                 if isinstance(red_flags_val, list):
                     red_flags_val = " | ".join(red_flags_val)
                 cursor.execute("""
-                    INSERT INTO email_templates (id, category, is_phishing, sender, subject, body, red_flags)
-                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                    INSERT OR REPLACE INTO email_templates
+                        (id, category, is_phishing, sender, subject, body, red_flags, target)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
                     item["id"],
                     item["category"],
@@ -157,7 +163,8 @@ def init_db():
                     item["sender"],
                     item["subject"],
                     item["body"],
-                    red_flags_val
+                    red_flags_val,
+                    item.get("target", "")
                 ))
 
     conn.commit()
@@ -206,18 +213,31 @@ def body_to_html(body, log_id, token, track):
         pos = m.end()
     out.append(html_lib.escape(body[pos:]))
     text = "".join(out)
+    # Dòng "Đính kèm: tên_tệp": tệp không có thật, nên biến tên tệp thành liên kết theo dõi
+    # để việc mở tệp cũng được ghi nhận như một lượt bấm.
+    text = re.sub(
+        r"(?m)^(Đính kèm:\s*)(\S.*)$",
+        lambda m: f'{m.group(1)}<a href="{html_lib.escape(track_url)}" style="color:#1a56db;">{m.group(2)}</a>',
+        text,
+    )
     paras = [p.strip() for p in text.split("\n\n") if p.strip()]
     return "".join(
         f'<p style="margin:0 0 14px;">{p.replace(chr(10), "<br>")}</p>' for p in paras
     )
 
 
+COMPANY_DOMAIN_RE = re.compile(r"b[i1]n-?g+r[o0]+up")
+
+
 def build_html_mail(sender, body, log_id, token, emp_code, category, track):
     label, color = BRANDS.get(category, ("BinGroup", "#1f4fd8"))
+    color = "#1f3a5f"  # một màu chủ đạo cho mọi thư, không tô màu theo kịch bản
     name = sender.split("<")[0].strip().strip('"') or sender
     addr_match = re.search(r"<([^>]+)>", sender)
     addr = addr_match.group(1) if addr_match else sender
-    report_url = f"{BASE_URL}/portal?emp={emp_code}&mail=MAIL-{log_id}"
+    if not COMPANY_DOMAIN_RE.search(addr.split("@")[-1].lower()):
+        label = name  # hộp thư cá nhân hoặc bên ngoài: không có banner công ty
+    report_url = f"{BASE_URL}/report-mail/{log_id}?t={token}"
     return f"""<!DOCTYPE html>
 <html><body style="margin:0;padding:24px 12px;background:#f1f3f6;font-family:'Segoe UI',Arial,sans-serif;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
@@ -238,7 +258,7 @@ def build_html_mail(sender, body, log_id, token, emp_code, category, track):
   </td></tr>
   <tr><td style="padding:16px 28px;background:#f7f8fa;border-top:1px solid #e6e9ef;border-radius:0 0 8px 8px;font-size:12px;color:#6b7280;">
     Mã định danh thư: #MAIL-{log_id} (Người nhận: {html_lib.escape(emp_code)})<br>
-    <a href="{html_lib.escape(report_url)}" style="display:inline-block;margin-top:10px;padding:8px 14px;border:1px solid #c0392b;border-radius:6px;color:#c0392b;font-size:13px;text-decoration:none;">🛡️ Nghi ngờ lừa đảo? Bấm vào đây để báo cáo</a>
+    <a href="{html_lib.escape(report_url)}" style="display:inline-block;margin-top:10px;padding:8px 14px;border:1px solid #9aa4b2;border-radius:6px;color:#374151;font-size:13px;text-decoration:none;">Nghi ngờ lừa đảo? Bấm vào đây để báo cáo</a>
   </td></tr>
 </table>
 </td></tr></table>
@@ -257,6 +277,7 @@ def send_smtp_email(smtp_host, smtp_port, sender, recipient, emp_code, subject, 
     if track:
         track_url = track_link(log_id, token)
         plain_body = URL_RE.sub(lambda m: track_url + _split_trail(m.group(0))[1], body)
+        plain_body = re.sub(r"(?m)^(Đính kèm:.*)$", lambda m: f"{m.group(1)} ({track_url})", plain_body)
 
     msg.set_content(
         f"Mã định danh thư: #MAIL-{log_id} (Người nhận: {emp_code})\n"
@@ -275,6 +296,16 @@ def send_smtp_email(smtp_host, smtp_port, sender, recipient, emp_code, subject, 
 # ==========================================
 # 2. LUỒNG PHÁT ĐỘNG CHIẾN DỊCH (SPEAR PHISHING - 12 MAIL / NHÂN VIÊN)
 # ==========================================
+# Tên gọi thân mật dùng thay cho {ten} trong lời chào của mail
+FIRST_NAMES = {"EMP01": "Linh", "EMP02": "Hương", "EMP03": "Khang", "EMP04": "Duy"}
+
+
+def fits_employee(mail, emp_code):
+    """Mail có trường target chỉ gửi cho đúng phòng ban được ghi, để lời văn khớp người nhận."""
+    target = (mail["target"] or "").strip()
+    return not target or emp_code in [t.strip() for t in target.split(",")]
+
+
 @app.route("/start-campaign", methods=["POST"])
 def start_campaign():
     # Tên danh mục đã được khớp chính xác 100% với file emails.json
@@ -312,12 +343,17 @@ def start_campaign():
         selected_emails = []
         emp_code = emp["employee_code"].upper()
         priority_cats = DEPT_PRIORITY.get(emp_code, [])
+        emp_phishing = {
+            cat: [m for m in mails if fits_employee(m, emp_code)]
+            for cat, mails in phishing_by_cat.items()
+        }
+        emp_legit = [m for m in legit_emails if fits_employee(m, emp_code)]
 
         # 1. Chọn 5 mail Spear Phishing từ các danh mục trọng tâm của phòng ban
         spear_pool = [
             m for cat in priority_cats
-            if cat in phishing_by_cat
-            for m in phishing_by_cat[cat]
+            if cat in emp_phishing
+            for m in emp_phishing[cat]
         ]
         if spear_pool:
             if len(spear_pool) >= SPEAR_COUNT:
@@ -328,8 +364,8 @@ def start_campaign():
 
         # 2. Chọn 3 mail Phishing đại trà từ các danh mục lừa đảo còn lại (mỗi loại 1 mail)
         other_cats = [
-            cat for cat in phishing_by_cat.keys()
-            if cat not in priority_cats and phishing_by_cat[cat]
+            cat for cat in emp_phishing.keys()
+            if cat not in priority_cats and emp_phishing[cat]
         ]
         if len(other_cats) >= OTHER_PHISHING_COUNT:
             chosen_other_cats = random.sample(other_cats, OTHER_PHISHING_COUNT)
@@ -337,14 +373,14 @@ def start_campaign():
             chosen_other_cats = other_cats
 
         for cat in chosen_other_cats:
-            selected_emails.append(random.choice(phishing_by_cat[cat]))
+            selected_emails.append(random.choice(emp_phishing[cat]))
 
         # 3. Chọn 4 mail thật (Legit) từ 20 mẫu có sẵn ("Thông báo nội bộ" & "Công việc hằng ngày")
-        if legit_emails:
-            if len(legit_emails) >= LEGIT_COUNT:
-                selected_emails.extend(random.sample(legit_emails, LEGIT_COUNT))
+        if emp_legit:
+            if len(emp_legit) >= LEGIT_COUNT:
+                selected_emails.extend(random.sample(emp_legit, LEGIT_COUNT))
             else:
-                selected_emails.extend(random.choices(legit_emails, k=LEGIT_COUNT))
+                selected_emails.extend(random.choices(emp_legit, k=LEGIT_COUNT))
 
         random.shuffle(selected_emails)
         total_sent_per_emp = len(selected_emails)
@@ -364,7 +400,7 @@ def start_campaign():
                 recipient=emp["email"],
                 emp_code=emp["employee_code"],
                 subject=mail["subject"],
-                body=mail["body"],
+                body=mail["body"].replace("{ten}", FIRST_NAMES.get(emp_code, "bạn")),
                 log_id=log_id,
                 category=mail["category"],
                 is_phishing=mail["is_phishing"],
@@ -414,6 +450,10 @@ def report_email_by_employee():
         conn.close()
         return jsonify({"status": "warning", "message": f"Thư #MAIL-{log_id} không thuộc hộp thư của nhân viên {emp_code}!"}), 400
 
+    if log["clicked"] == 1:
+        conn.close()
+        return jsonify({"status": "warning", "message": f"Nhân viên {emp_code} đã bấm vào liên kết hoặc mở tệp của thư #MAIL-{log_id} nên không thể báo cáo thư này nữa."}), 400
+
     if log["is_scored"] == 1:
         conn.close()
         return jsonify({"status": "warning", "message": f"Thư #MAIL-{log_id} đã được báo cáo hoặc đã chốt điểm trước đó!"}), 400
@@ -459,6 +499,10 @@ def report_email(log_id):
         conn.close()
         return jsonify({"status": "error", "message": "Không tìm thấy mã thư này!"}), 404
 
+    if log["clicked"] == 1:
+        conn.close()
+        return jsonify({"status": "warning", "message": "Bạn đã bấm vào liên kết hoặc mở tệp của thư này nên không thể báo cáo thư này nữa."}), 400
+
     if log["is_scored"] == 1:
         conn.close()
         return jsonify({"status": "warning", "message": "Thư này đã được báo cáo hoặc đã chốt điểm trước đó!"}), 400
@@ -487,6 +531,50 @@ def report_email(log_id):
         "category": log["category"],
         "subject": log["subject"]
     })
+
+@app.route("/report-mail/<int:log_id>")
+def report_mail_direct(log_id):
+    """Nút báo cáo trong mail: ghi nhận báo cáo ngay và hiển thị kết quả, không qua form nhập mã."""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    log = _get_log_info(cursor, log_id)
+    if not log:
+        conn.close()
+        return "Không tìm thấy thư này trong chiến dịch.", 404
+    if not log["token"] or request.args.get("t", "") != log["token"]:
+        conn.close()
+        return ("Thư này thuộc một chiến dịch cũ nên nút báo cáo đã hết hiệu lực. "
+                "Hãy dùng thư mới nhận trong hộp thư.", 410)
+
+    is_phishing = log["is_phishing"] == 1
+    delta = 10 if is_phishing else -5
+    state = "new"
+    if log["clicked"] == 1:
+        state = "blocked"    # đã bấm link hoặc mở tệp trước khi báo cáo
+    elif log["is_scored"] == 0:
+        # Điều kiện is_scored = 0 bảo đảm một thư chỉ được tính điểm một lần dù bấm nhiều lần
+        cur = cursor.execute("UPDATE campaign_logs SET reported = 1, is_scored = 1 WHERE id = ? AND is_scored = 0", (log_id,))
+        if cur.rowcount:
+            cursor.execute("UPDATE employees SET score = score + ? WHERE id = ?", (delta, log["employee_id"]))
+        conn.commit()
+    elif log["reported"] == 1:
+        state = "again"      # đã báo cáo trước đó, mở lại trang kết quả
+    else:
+        state = "closed"     # chiến dịch đã chốt khi chưa báo cáo
+    conn.close()
+
+    flags = [f.strip() for f in re.split(r"\s*\|\s*|(?<=[.!?])\s+", log["red_flags"] or "") if f.strip()]
+    return render_template(
+        "report_result.html",
+        log=log,
+        flags=flags,
+        is_phishing=is_phishing,
+        delta=delta,
+        state=state,
+        clicked=log["clicked"] == 1,
+        token=log["token"],
+    )
+
 
 @app.route("/finalize-campaign", methods=["POST"])
 def finalize_campaign():
@@ -531,7 +619,7 @@ def reset_system():
 def _get_log_info(cursor, log_id):
     return cursor.execute("""
         SELECT cl.*, e.employee_code, et.category, et.is_phishing,
-               et.red_flags, et.subject, et.sender
+               et.red_flags, et.subject, et.sender, et.body
         FROM campaign_logs cl
         JOIN employees e ON e.id = cl.employee_id
         JOIN email_templates et ON et.id = cl.email_id
@@ -555,16 +643,28 @@ def track_click(log_id):
         conn.close()
         return render_template("legit_link.html", log=log)
 
+    if log["reported"] == 1:
+        # Đã báo cáo thư này rồi: liên kết bị vô hiệu, không trừ điểm
+        conn.close()
+        return redirect(f"/report-mail/{log_id}?t={log['token']}")
+
     if log["clicked"] == 0:
         cursor.execute("UPDATE employees SET score = score - ? WHERE id = ?",
                        (CLICK_PENALTY, log["employee_id"]))
-        cursor.execute("UPDATE campaign_logs SET clicked = 1 WHERE id = ?", (log_id,))
+        # is_scored = 1: thư đã được xử lý, không báo cáo được nữa và không bị tính thêm điểm bỏ sót
+        cursor.execute("UPDATE campaign_logs SET clicked = 1, is_scored = 1 WHERE id = ?", (log_id,))
         conn.commit()
     conn.close()
 
-    if is_company_mail(log) and log["submitted_data"] == 0:
+    if is_company_mail(log) and not is_attachment_mail(log) and log["submitted_data"] == 0:
         return redirect(f"/fake-login/{log_id}")
     return redirect(f"/awareness/{log_id}")
+
+
+def is_attachment_mail(log):
+    """Thư chỉ có tệp đính kèm, không có đường dẫn: lượt bấm là mở tệp, không phải vào trang đăng nhập."""
+    body = log["body"] or ""
+    return bool(re.search(r"(?m)^Đính kèm:", body)) and not URL_RE.search(body)
 
 
 COMPANY_CATEGORIES = {"Giả mạo sếp", "IT Support", "Nhân sự, lương thưởng"}
@@ -574,7 +674,7 @@ def is_company_mail(log):
     """Thư giả danh BinGroup: thuộc nhóm giả danh nội bộ hoặc người gửi có tên miền na ná bingroup."""
     addr = re.search(r"<([^>]+)>", log["sender"])
     domain = addr.group(1).split("@")[-1].lower() if addr else ""
-    return (log["category"] in COMPANY_CATEGORIES or "bingroup" in domain or "b1ngroup" in domain)
+    return (log["category"] in COMPANY_CATEGORIES or bool(COMPANY_DOMAIN_RE.search(domain)))
 
 
 @app.route("/fake-login/<int:log_id>")
@@ -618,10 +718,20 @@ def awareness(log_id):
     if not log or log["is_phishing"] != 1 or log["clicked"] == 0:
         return redirect("/portal")
     flags = [f.strip() for f in re.split(r"\s*\|\s*|(?<=[.!?])\s+", log["red_flags"] or "") if f.strip()]
+    # Địa chỉ đầu tiên hiển thị trong nội dung thư gốc, để người dùng đối chiếu tên miền
+    # (liên kết thật trong mail được chuyển qua máy chủ diễn tập để ghi nhận lượt bấm).
+    shown_url, shown_host = None, None
+    m = URL_RE.search(log["body"] or "")
+    if m:
+        shown_url = _split_trail(m.group(0))[0]
+        shown_host = urlparse(shown_url).hostname
     return render_template(
         "awareness.html",
         log=log,
         flags=flags,
+        shown_url=shown_url,
+        shown_host=shown_host,
+        via_attachment=is_attachment_mail(log),
         click_penalty=CLICK_PENALTY,
         submit_penalty=SUBMIT_PENALTY,
         total_penalty=CLICK_PENALTY + (SUBMIT_PENALTY if log["submitted_data"] else 0),
@@ -642,7 +752,7 @@ def employee_portal():
 from functools import wraps
 from flask import Response
 
-# 👉 ĐỔI TÀI KHOẢN VÀ MẬT KHẨU TẠI 2 DÒNG NÀY:
+# ĐỔI TÀI KHOẢN VÀ MẬT KHẨU TẠI 2 DÒNG NÀY:
 ADMIN_USERNAME = "admin"
 ADMIN_PASSWORD = "password4admin" 
 
@@ -655,7 +765,7 @@ def requires_admin(f):
         auth = request.authorization
         if not auth or not check_admin_auth(auth.username, auth.password):
             return Response(
-                "⚠️ Truy cập bị từ chối! Bạn không có quyền truy cập trang Quản trị này.",
+                "Truy cập bị từ chối! Bạn không có quyền truy cập trang Quản trị này.",
                 401,
                 {"WWW-Authenticate": 'Basic realm="Admin Login Required"'}
             )
@@ -675,7 +785,8 @@ def admin_dashboard():
             e.id, e.employee_code, e.name, e.email, e.webmail_port, e.score,
             SUM(CASE WHEN et.is_phishing = 1 THEN 1 ELSE 0 END) as total_phishing_received,
             SUM(CASE WHEN et.is_phishing = 1 AND cl.reported = 1 THEN 1 ELSE 0 END) as correct_reports,
-            SUM(CASE WHEN et.is_phishing = 1 AND cl.reported = 0 AND cl.is_scored = 1 THEN 1 ELSE 0 END) as missed_phishing,
+            SUM(CASE WHEN et.is_phishing = 1 AND cl.clicked = 1 THEN 1 ELSE 0 END) as clicked_phishing,
+            SUM(CASE WHEN et.is_phishing = 1 AND cl.reported = 0 AND cl.clicked = 0 AND cl.is_scored = 1 THEN 1 ELSE 0 END) as missed_phishing,
             SUM(CASE WHEN et.is_phishing = 0 AND cl.reported = 1 THEN 1 ELSE 0 END) as false_reports
         FROM employees e
         LEFT JOIN campaign_logs cl ON e.id = cl.employee_id
