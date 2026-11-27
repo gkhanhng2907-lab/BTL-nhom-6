@@ -3,181 +3,186 @@
     "id": 1,
     "category": "Giả mạo sếp",
     "is_phishing": 1,
-    "sender": "Nguyễn Văn Hùng <hung.nguyen@abccorp-vn.com>",
+    "sender": "Nguyễn Văn Hùng <hung.nguyen@bingroup-vn.com>",
     "subject": "Việc gấp, trả lời giúp anh ngay",
-    "body": "Chào em,\n\nAnh đang họp với đối tác bên ngoài nên không nghe máy được. Em có đang ở công ty không? Anh cần em xử lý một khoản thanh toán gấp trong chiều nay.\n\nEm trả lời mail này ngay khi đọc được, anh sẽ gửi thông tin chi tiết. Chuyện này tạm thời đừng nói với ai nhé.\n\nHùng",
-    "red_flags": "Tên miền người gửi là abccorp-vn.com, không phải tên miền chính thức của công ty. Người gửi nói không nghe máy được để em không thể gọi xác minh. Yêu cầu giữ bí mật và xử lý gấp là chiêu quen thuộc của lừa đảo giả mạo lãnh đạo."
+    "body": "Chào {ten},\n\nAnh đang họp với đối tác bên ngoài nên không nghe máy được. Em có đang ở công ty không? Anh cần em xử lý một khoản thanh toán gấp trong chiều nay.\n\nEm trả lời mail này ngay khi đọc được, anh sẽ gửi thông tin chi tiết. Chuyện này tạm thời đừng nói với ai nhé.\n\nHùng",
+    "red_flags": "Lý do không nghe máy được khiến người nhận khó gọi điện xác minh. Yêu cầu giữ kín và xử lý gấp là kịch bản quen thuộc của kiểu giả mạo lãnh đạo. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 2,
     "category": "Giả mạo sếp",
     "is_phishing": 1,
-    "sender": "Trần Thị Mai <mai.tran@abc-c0rp.vn>",
+    "sender": "Trần Thị Hồng <hong.tran@b1ngroup.vn>",
     "subject": "Chuyển khoản tiền đặt cọc hợp đồng",
-    "body": "Em ơi,\n\nChị vừa ký xong hợp đồng với nhà cung cấp mới nhưng bên đó yêu cầu đặt cọc 45.000.000 đồng trước 16h hôm nay, nếu không sẽ mất suất. Chị đang ở sân bay nên không vào hệ thống được.\n\nEm chuyển giúp chị theo số tài khoản bên dưới, xong gửi lại ảnh biên lai cho chị.\n\nSTK: 0451 2290 7788 \nNgân hàng: Techcombank\nChủ tài khoản: Lê Quốc Đạt\n\nCảm ơn em.",
-    "red_flags": "Tên miền abc-c0rp.vn thay chữ o bằng số 0, nhìn thoáng qua rất khó nhận ra. Chủ tài khoản nhận tiền là một cá nhân không liên quan đến nhà cung cấp. Lý do không vào được hệ thống và hạn chót trong ngày là cách tạo áp lực để nhân viên bỏ qua quy trình duyệt chi."
+    "body": "{ten} ơi,\n\nChị vừa ký xong hợp đồng với nhà cung cấp mới nhưng bên đó yêu cầu đặt cọc 45.000.000 đồng trước 16h hôm nay, nếu không sẽ mất suất. Chị đang ở sân bay nên không vào hệ thống được.\n\nEm chuyển giúp chị theo số tài khoản bên dưới, xong gửi lại ảnh biên lai cho chị.\n\nSTK: 0451 2290 7788 \nNgân hàng: Techvietbank\nChủ tài khoản: Lê Quốc Đạt\n\nCảm ơn em.",
+    "red_flags": "Thư không nêu tên nhà cung cấp hay số hợp đồng nào để đối chiếu. Lý do không vào được hệ thống và hạn chót trong ngày là cách tạo áp lực để nhân viên bỏ qua quy trình duyệt chi. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo.",
+    "target": "EMP01"
   },
   {
     "id": 3,
     "category": "Giả mạo sếp",
     "is_phishing": 1,
-    "sender": "Phạm Minh Tuấn <tuan.pham@abccorp.co>",
+    "sender": "Phạm Minh Tuấn <tuan.pham@bingroup.co>",
     "subject": "Mua giúp anh thẻ quà tặng",
-    "body": "Chào em,\n\nAnh cần mua một số thẻ quà tặng để tặng khách hàng quan trọng nhưng anh đang bận không tự làm được. Em mua giúp anh 5 thẻ Google Play loại 500.000 đồng, chụp ảnh mặt sau thẻ gửi lại anh qua mail này. Tiền anh sẽ hoàn lại cuối tháng.\n\nViệc này kín, em đừng hỏi lại ai nhé.\n\nTuấn",
-    "red_flags": "Tên miền abccorp.co khác tên miền thật của công ty. Yêu cầu mua thẻ quà tặng rồi chụp mã gửi qua mail không bao giờ là quy trình của một doanh nghiệp. Lời dặn đừng hỏi ai là dấu hiệu rõ nhất của lừa đảo."
+    "body": "Chào {ten},\n\nAnh cần mua một số thẻ quà tặng để tặng khách hàng quan trọng nhưng anh đang bận không tự làm được. Em mua giúp anh 5 thẻ Nimbo Play loại 500.000 đồng, chụp ảnh mặt sau thẻ gửi lại anh qua mail này. Tiền anh sẽ hoàn lại cuối tháng.\n\nViệc này kín, em đừng hỏi lại ai nhé.\n\nTuấn",
+    "red_flags": "Việc mua thẻ quà tặng rồi chụp mã gửi qua mail hiếm khi là quy trình hợp lệ của một doanh nghiệp. Lời dặn đừng hỏi ai nhằm ngăn người nhận xác minh. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 4,
     "category": "Giả mạo sếp",
     "is_phishing": 1,
-    "sender": "Lê Hoàng Nam <nam.le@gmail.com>",
+    "sender": "Lê Hoàng Nam <nam.le@mailnhanh.com>",
     "subject": "Cập nhật số tài khoản nhận lương của anh",
-    "body": "Em phòng nhân sự thân mến,\n\nAnh vừa đổi ngân hàng nên nhờ em cập nhật giúp số tài khoản nhận lương tháng này theo thông tin dưới đây. Do anh đi công tác nên dùng mail cá nhân gửi cho em, em thông cảm.\n\nTài khoản mới: 1903 8827 4410 (Vietcombank)\n\nEm xử lý trước ngày chốt lương nhé.",
-    "red_flags": "Lãnh đạo gửi từ địa chỉ Gmail cá nhân thay vì mail công ty. Thay đổi thông tin nhận lương phải được xác nhận qua kênh chính thức, không thể chỉ nhờ qua một email. Đây là kiểu lừa chuyển hướng lương rất hay gặp."
+    "body": "Chào {ten} phòng nhân sự,\n\nAnh vừa đổi ngân hàng nên nhờ em cập nhật giúp số tài khoản nhận lương tháng này theo thông tin dưới đây. Do anh đi công tác nên dùng mail cá nhân gửi cho em, em thông cảm.\n\nTài khoản mới: 1903 8827 4410 (Vietsenbank)\n\nEm xử lý trước ngày chốt lương nhé.",
+    "red_flags": "Lãnh đạo gửi từ địa chỉ Mailnhanh cá nhân thay vì mail công ty. Thay đổi thông tin nhận lương phải được xác nhận qua kênh chính thức, không thể chỉ nhờ qua một email. Đây là kiểu lừa chuyển hướng lương rất hay gặp.",
+    "target": "EMP02"
   },
   {
     "id": 5,
     "category": "Giả mạo sếp",
     "is_phishing": 1,
-    "sender": "Vũ Đức Thịnh <thinh.vu@abccorp-group.com>",
+    "sender": "Vũ Đức Thịnh <thinh.vu@bingroup-group.com>",
     "subject": "Gửi anh danh sách nhân viên và lương",
-    "body": "Chào em,\n\nBên kiểm toán đang yêu cầu anh gấp danh sách nhân viên kèm mức lương và số điện thoại để đối chiếu. Em xuất file Excel gửi anh qua mail này trong 30 phút nhé, anh sẽ chuyển tiếp cho họ.\n\nCảm ơn em.",
-    "red_flags": "Tên miền abccorp-group.com không phải tên miền công ty. Bên kiểm toán thật sẽ liên hệ qua đầu mối chính thức và quy trình bảo mật, không nhờ gửi dữ liệu lương qua mail thường. Hạn 30 phút là áp lực thời gian cố ý."
+    "body": "Chào {ten},\n\nBên kiểm toán đang yêu cầu anh gấp danh sách nhân viên kèm mức lương và số điện thoại để đối chiếu. Em xuất file Excel gửi anh qua mail này trong 30 phút nhé, anh sẽ chuyển tiếp cho họ.\n\nCảm ơn em.",
+    "red_flags": "Bên kiểm toán thường làm việc qua đầu mối chính thức và kênh bảo mật, hiếm khi nhờ gửi dữ liệu lương qua mail thường. Hạn 30 phút là áp lực thời gian cố ý. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo.",
+    "target": "EMP02"
   },
   {
     "id": 6,
     "category": "Giả mạo sếp",
     "is_phishing": 1,
-    "sender": "Đặng Quang Vinh <vinh.dang@abccorp-vn.com>",
+    "sender": "Đặng Quang Vinh <vinh.dang@bingr0up.vn>",
     "subject": "Em đang rảnh không?",
-    "body": "Em ơi, em đang rảnh không? Anh có việc nhờ em một chút, em nhắn lại ngay nhé.",
-    "red_flags": "Email rất ngắn, không nêu việc gì, mục đích chỉ là xem nạn nhân có trả lời không để lừa tiếp ở các email sau. Tên miền abccorp-vn.com có thêm gạch nối so với tên miền thật. Cần xác nhận lại với người này qua điện thoại hoặc kênh chat nội bộ."
+    "body": "{ten} ơi, em đang rảnh không? Anh có việc nhờ em một chút, em nhắn lại ngay nhé.",
+    "red_flags": "Email rất ngắn, không nêu việc gì, thường nhằm xem người nhận có trả lời không để lừa tiếp ở các email sau. Cần xác nhận lại với người này qua điện thoại hoặc kênh chat nội bộ. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 7,
     "category": "Giả mạo sếp",
     "is_phishing": 1,
-    "sender": "Bùi Thanh Sơn <son.bui@abccorp-vn.com>",
+    "sender": "Bùi Thanh Sơn <son.bui@bingroup-vn.com>",
     "subject": "Fwd: Hóa đơn nhà cung cấp cần thanh toán hôm nay",
-    "body": "Em xem email chuyển tiếp bên dưới rồi thanh toán giúp anh nhé. Anh đã đồng ý với bên đó từ tuần trước rồi, không cần xin duyệt thêm đâu cho nhanh.\n\n---------- Forwarded message ----------\nTừ: Kế toán nhà cung cấp\nKính gửi quý công ty, đính kèm là hóa đơn tháng 10, nhờ thanh toán trước 17h. Số tài khoản mới đã cập nhật trong file.\n\nĐính kèm: Hoadon_T10.pdf.exe",
-    "red_flags": "Yêu cầu bỏ qua bước xin duyệt chi để cho nhanh vi phạm quy trình tài chính. Tệp đính kèm có đuôi kép .pdf.exe thật ra là tệp thực thi. Số tài khoản mới nằm trong file đính kèm là cách chèn thông tin giả."
+    "body": "Em xem email chuyển tiếp bên dưới rồi thanh toán giúp anh nhé. Anh đã đồng ý với bên đó từ tuần trước rồi, không cần xin duyệt thêm đâu cho nhanh.\n\n---------- Forwarded message ----------\nTừ: Kế toán nhà cung cấp\nKính gửi quý công ty, đính kèm là hóa đơn tháng này, nhờ thanh toán trước 17h. Số tài khoản mới đã cập nhật trong file.\n\nĐính kèm: Hoadon_NCC.pdf.exe",
+    "red_flags": "Yêu cầu bỏ qua bước xin duyệt chi để cho nhanh vi phạm quy trình tài chính. Tệp đính kèm có đuôi kép .pdf.exe là tệp thực thi giả dạng PDF. Số tài khoản mới nằm trong tệp đính kèm khiến người đọc khó đối chiếu với thông tin đã có.",
+    "target": "EMP01"
   },
   {
     "id": 8,
     "category": "Giả mạo sếp",
     "is_phishing": 1,
-    "sender": "Ngô Thị Lan <lan.ngo@abccorp-vn.com>",
+    "sender": "Phan Thị Lệ <le.phan@bingroup-vn.com>",
     "subject": "Bảo mật: Xác nhận danh tính trước cuộc họp",
-    "body": "Chào em,\n\nTrước cuộc họp ban lãnh đạo chiều nay, hệ thống yêu cầu mỗi người xác nhận lại tài khoản. Em bấm vào đường dẫn sau và đăng nhập bằng tài khoản công ty để chị điểm danh:\n\nhttp://abccorp-vn.com/xac-nhan-hop\n\nAi chưa xác nhận sẽ bị loại khỏi danh sách tham dự.",
-    "red_flags": "Đường dẫn dùng giao thức http và tên miền không phải của công ty. Điểm danh họp không cần đăng nhập lại bằng mật khẩu tài khoản. Lời dọa bị loại khỏi danh sách là cách ép người đọc bấm vào nhanh."
+    "body": "Chào {ten},\n\nTrước cuộc họp ban lãnh đạo chiều nay, hệ thống yêu cầu mỗi người xác nhận lại tài khoản. Em bấm vào đường dẫn sau và đăng nhập bằng tài khoản công ty để chị điểm danh:\n\nhttp://bingroup-vn.com/xac-nhan-hop\n\nAi chưa xác nhận sẽ bị loại khỏi danh sách tham dự.",
+    "red_flags": "Đường dẫn sử dụng HTTP, không phù hợp để gửi thông tin nhạy cảm. Việc điểm danh họp thường không cần đăng nhập lại bằng mật khẩu tài khoản. Lời dọa bị loại khỏi danh sách nhằm ép người đọc bấm nhanh. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 9,
     "category": "Giả mạo sếp",
     "is_phishing": 1,
-    "sender": "Giám đốc Hùng <giamdoc.hung@outlook.com>",
+    "sender": "Giám đốc Hùng <giamdoc.hung@hopthu.com>",
     "subject": "Nhờ em đặt vé máy bay cho khách chiều nay",
-    "body": "Em ơi,\n\nAnh có hai khách nước ngoài cần bay ra Đà Nẵng tối nay mà anh đang kẹt họp. Em dùng thẻ công ty đặt giúp anh 2 vé, tổng khoảng 9.400.000đ, rồi gửi anh mã đặt chỗ. Anh sẽ làm thủ tục hoàn chi sau.\n\nGấp nhé, đừng gọi vì anh đang trong phòng họp.",
-    "red_flags": "Giám đốc gửi từ địa chỉ Outlook cá nhân chứ không phải mail công ty. Yêu cầu dùng thẻ công ty chi trước rồi hoàn sau trái quy trình chi tiêu. Lời dặn đừng gọi để nạn nhân không kiểm chứng được."
+    "body": "{ten} ơi,\n\nAnh có hai khách nước ngoài cần bay ra Đà Nẵng tối nay mà anh đang kẹt họp. Em dùng thẻ công ty đặt giúp anh 2 vé, tổng khoảng 9.400.000đ, rồi gửi anh mã đặt chỗ. Anh sẽ làm thủ tục hoàn chi sau.\n\nGấp nhé, đừng gọi vì anh đang trong phòng họp.",
+    "red_flags": "Giám đốc gửi từ địa chỉ Hopthu cá nhân chứ không phải mail công ty. Yêu cầu dùng thẻ công ty chi trước rồi hoàn sau trái quy trình chi tiêu. Lời dặn đừng gọi nhằm ngăn người nhận xác minh."
   },
   {
     "id": 10,
     "category": "Giả mạo sếp",
     "is_phishing": 1,
-    "sender": "Nguyễn Văn Hùng <hung.nguyen@abccorp.com.vn>",
+    "sender": "Nguyễn Văn Hùng <hung.nguyen@bingroup.com.vn>",
     "subject": "Chuyển tiền cho đối tác theo lệnh đính kèm",
-    "body": "Chào em,\n\nAnh đã duyệt lệnh chuyển tiền cho đối tác, ảnh chụp lệnh có chữ ký anh để trong file đính kèm. Em chuyển ngay 120.000.000đ vào tài khoản ghi trên lệnh, không cần qua phòng Kế toán vì hôm nay chị Mai nghỉ.\n\nĐính kèm: LenhChuyenTien.jpg",
-    "red_flags": "Tên miền abccorp.com.vn khác tên miền thật abccorp.vn. Việc bỏ qua phòng Kế toán vì có người nghỉ là cách bẻ quy trình. Ảnh chụp lệnh chuyển tiền rất dễ bị giả mạo."
+    "body": "Chào {ten},\n\nAnh đã duyệt lệnh chuyển tiền cho đối tác, ảnh chụp lệnh có chữ ký anh để trong file đính kèm. Em chuyển ngay 120.000.000đ vào tài khoản ghi trên lệnh, không cần xin chị Mai duyệt vì hôm nay chị nghỉ.\n\nĐính kèm: LenhChuyenTien.jpg",
+    "red_flags": "Việc bỏ qua bước duyệt của kế toán trưởng vì có người nghỉ là cách bẻ quy trình. Ảnh chụp lệnh chuyển tiền rất dễ bị giả mạo. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo.",
+    "target": "EMP01"
   },
   {
     "id": 11,
     "category": "IT Support",
     "is_phishing": 1,
-    "sender": "Hỗ trợ CNTT <it-support@abccorp-helpdesk.com>",
+    "sender": "Hỗ trợ CNTT <it-support@bingroup-helpdesk.com>",
     "subject": "Mật khẩu email sắp hết hạn trong 24 giờ",
-    "body": "Chào bạn,\n\nMật khẩu email của bạn sẽ hết hạn sau 24 giờ. Để không bị gián đoạn công việc, vui lòng bấm vào liên kết dưới đây và nhập mật khẩu hiện tại để gia hạn.\n\nhttp://abccorp-helpdesk.com/gia-han\n\nBộ phận CNTT",
-    "red_flags": "Tên miền abccorp-helpdesk.com không phải tên miền của công ty. Bộ phận IT thật không bao giờ yêu cầu nhập mật khẩu hiện tại qua một đường dẫn trong email. Hạn 24 giờ tạo áp lực để người đọc bấm ngay."
+    "body": "Chào {ten},\n\nMật khẩu email của bạn sẽ hết hạn sau 24 giờ. Để không bị gián đoạn công việc, vui lòng bấm vào liên kết dưới đây và nhập mật khẩu hiện tại để gia hạn.\n\nhttp://bingroup-helpdesk.com/gia-han\n\nBộ phận CNTT",
+    "red_flags": "Bộ phận IT hợp lệ không yêu cầu người dùng nhập mật khẩu hiện tại qua đường dẫn trong email, việc gia hạn thường làm ngay trên hệ thống đăng nhập. Hạn 24 giờ tạo áp lực để người đọc bấm ngay. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 12,
     "category": "IT Support",
     "is_phishing": 1,
-    "sender": "Bảo mật hệ thống <security@abccorp.vn.xacthuc-id.net>",
+    "sender": "Bảo mật hệ thống <security@bingroup.vn.xacthuc-id.net>",
     "subject": "Phát hiện đăng nhập bất thường vào tài khoản của bạn",
-    "body": "Hệ thống ghi nhận một lượt đăng nhập vào tài khoản của bạn từ địa chỉ IP lạ lúc 02:14 sáng nay.\n\nNếu đó không phải bạn, hãy xác minh ngay để tránh bị khóa tài khoản:\nhttps://xacthuc-id.net/abccorp/xac-minh\n\nTrân trọng,\nPhòng An ninh thông tin",
-    "red_flags": "Phần abccorp.vn nằm ở giữa địa chỉ nhưng tên miền thật là xacthuc-id.net. Đây là mẹo giả tên miền phụ để đánh lừa người đọc lướt nhanh. Nội dung dọa khóa tài khoản và đòi xác minh qua link lạ."
+    "body": "Hệ thống ghi nhận một lượt đăng nhập vào tài khoản của bạn từ địa chỉ IP lạ lúc 02:14 sáng nay.\n\nNếu đó không phải bạn, hãy xác minh ngay để tránh bị khóa tài khoản:\nhttps://xacthuc-id.net/bingroup/xac-minh\n\nTrân trọng,\nPhòng An ninh thông tin",
+    "red_flags": "Đây là mẹo giả tên miền phụ để đánh lừa người đọc lướt nhanh. Nội dung dọa khóa tài khoản và đòi xác minh qua link lạ. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 13,
     "category": "IT Support",
     "is_phishing": 1,
-    "sender": "Quản trị hộp thư <mailadmin@abccorp.vn>",
+    "sender": "Quản trị hộp thư <mailadmin@bingroup.vn>",
     "subject": "Hộp thư của bạn đã đầy 98%",
     "body": "Hộp thư của bạn sắp đạt giới hạn dung lượng và sẽ ngừng nhận thư mới. Để được nâng dung lượng miễn phí, vui lòng trả lời email này và ghi rõ tên đăng nhập cùng mật khẩu để quản trị viên xử lý.\n\nCảm ơn bạn.",
-    "red_flags": "Quản trị viên thật có thể tăng dung lượng mà không cần biết mật khẩu của bạn. Yêu cầu gửi tên đăng nhập và mật khẩu qua thư trả lời là dấu hiệu lừa đảo rõ ràng. Tên hiển thị trông giống thật nhưng nội dung đã lộ ý đồ."
+    "red_flags": "Thư yêu cầu gửi tên đăng nhập và mật khẩu qua email trả lời. Đây là yêu cầu không an toàn, kể cả khi địa chỉ người gửi trùng tên miền nội bộ. Hãy xác minh yêu cầu với bộ phận CNTT qua kênh đã biết."
   },
   {
     "id": 14,
     "category": "IT Support",
     "is_phishing": 1,
-    "sender": "Phòng IT <it@abccorp-update.com>",
+    "sender": "Phòng IT <it@bingroup-update.com>",
     "subject": "Cài bản vá bảo mật bắt buộc trước 17h hôm nay",
     "body": "Chào các bạn,\n\nCông ty vừa phát hiện lỗ hổng nghiêm trọng trên máy tính văn phòng. Mọi nhân viên phải cài bản vá đính kèm trước 17h hôm nay. Máy nào không cài sẽ bị ngắt khỏi mạng nội bộ.\n\nĐính kèm: Baove_Patch_2026.exe",
-    "red_flags": "Bản vá thật được triển khai tự động từ hệ thống quản lý, không gửi file .exe qua email. Tên miền abccorp-update.com là tên miền ngoài công ty. Dọa ngắt mạng là cách ép nhân viên chạy file ngay."
+    "red_flags": "Bản vá thường được triển khai tự động từ hệ thống quản lý, hiếm khi gửi tệp .exe qua email. Dọa ngắt mạng nhằm ép nhân viên chạy tệp ngay. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 15,
     "category": "IT Support",
     "is_phishing": 1,
-    "sender": "Hỗ trợ tài khoản <noreply@abccorp-2fa.com>",
+    "sender": "Hỗ trợ tài khoản <noreply@bingroup-2fa.com>",
     "subject": "Kích hoạt xác thực hai lớp trước thứ Sáu",
     "body": "Để tăng cường bảo mật, mọi tài khoản phải kích hoạt xác thực hai lớp trước thứ Sáu này. Bạn sẽ nhận một mã gồm 6 chữ số qua điện thoại. Vui lòng trả lời email này kèm mã đó để hoàn tất kích hoạt.\n\nPhòng CNTT",
-    "red_flags": "Mã xác thực chỉ được nhập vào hệ thống, không bao giờ gửi lại cho người khác qua email. Kẻ lừa đảo dùng mã này để đăng nhập vào tài khoản của bạn ngay lập tức. Tên miền abccorp-2fa.com không thuộc công ty."
+    "red_flags": "Mã xác thực chỉ nên nhập vào hệ thống đăng nhập, không gửi cho người khác qua email. Kẻ lừa đảo có thể dùng mã này để đăng nhập vào tài khoản của bạn ngay lập tức. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 16,
     "category": "IT Support",
     "is_phishing": 1,
-    "sender": "Helpdesk <ticket@abccorp-support.com>",
+    "sender": "Helpdesk <ticket@bingroup-support.com>",
     "subject": "Phiếu hỗ trợ #48213 đang chờ xác nhận",
-    "body": "Phiếu yêu cầu #48213 của bạn đã được xử lý. Vui lòng bấm vào đây để xác nhận hoàn tất và đánh giá dịch vụ:\n\nhttp://abccorp-support.com/ticket/48213\n\nNếu không xác nhận trong 12 giờ, phiếu sẽ bị đóng.",
-    "red_flags": "Bạn không hề tạo phiếu hỗ trợ nào gần đây nên đây là phiếu không tồn tại. Đường dẫn dùng http và tên miền ngoài công ty. Hạn 12 giờ chỉ để thúc giục bấm link."
+    "body": "Phiếu yêu cầu #48213 của bạn đã được xử lý. Vui lòng bấm vào đây để xác nhận hoàn tất và đánh giá dịch vụ:\n\nhttp://bingroup-support.com/ticket/48213\n\nNếu không xác nhận trong 12 giờ, phiếu sẽ bị đóng.",
+    "red_flags": "Phiếu chỉ có mã số, không nêu nội dung yêu cầu hay người xử lý. Đường dẫn sử dụng HTTP, không phù hợp để gửi thông tin nhạy cảm. Hạn 12 giờ có thể tạo thúc giục bấm link. Muốn kiểm tra phiếu hỗ trợ, hãy tra mã số trên hệ thống của công ty thay vì bấm link trong thư. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 17,
     "category": "IT Support",
     "is_phishing": 1,
-    "sender": "Quản trị mạng <vpn@abccorp-remote.com>",
+    "sender": "Quản trị mạng <vpn@bingroup-remote.com>",
     "subject": "Cập nhật ứng dụng VPN mới cho làm việc từ xa",
-    "body": "Công ty chuyển sang ứng dụng VPN phiên bản mới. Bạn vui lòng gỡ bản cũ và tải bản mới tại liên kết bên dưới, sau đó đăng nhập bằng tài khoản công ty.\n\nhttps://abccorp-remote.com/vpn-setup\n\nCảm ơn.",
-    "red_flags": "Ứng dụng nội bộ được phát hành qua kênh chính thức của công ty, không qua link lạ. Tải phần mềm từ tên miền ngoài có thể cài mã độc hoặc đánh cắp tài khoản. Không có thông báo nào từ lãnh đạo hay quản lý trước đó."
+    "body": "Công ty chuyển sang ứng dụng VPN phiên bản mới. Bạn vui lòng gỡ bản cũ và tải bản mới tại liên kết bên dưới, sau đó đăng nhập bằng tài khoản công ty.\n\nhttps://bingroup-remote.com/vpn-setup\n\nCảm ơn.",
+    "red_flags": "Ứng dụng nội bộ thường được phát hành qua kênh chính thức của công ty, không qua link lạ. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 18,
     "category": "IT Support",
     "is_phishing": 1,
-    "sender": "Hệ thống tài khoản <admin@abccorp.vn.noreply-mail.com>",
+    "sender": "Hệ thống tài khoản <admin@bingroup.vn.noreply-mail.com>",
     "subject": "Tài khoản của bạn sẽ bị vô hiệu hóa vì không hoạt động",
     "body": "Tài khoản email của bạn chưa được sử dụng trong 30 ngày và sẽ bị vô hiệu hóa vào ngày mai. Để giữ lại tài khoản, hãy đăng nhập tại đây:\n\nhttps://noreply-mail.com/dang-nhap\n\nSau thời hạn này dữ liệu sẽ bị xóa vĩnh viễn.",
-    "red_flags": "Bạn đang đọc email này nghĩa là tài khoản vẫn hoạt động, nên lý do không có cơ sở. Tên miền thật của đường dẫn là noreply-mail.com. Lời đe dọa xóa dữ liệu vĩnh viễn nhằm tạo hoảng sợ."
+    "red_flags": "Đường dẫn đăng nhập cũng nằm trên noreply-mail.com chứ không phải hệ thống thư của công ty. Lời đe dọa xóa dữ liệu vĩnh viễn trong một ngày nhằm tạo hoảng sợ. Muốn kiểm tra tình trạng tài khoản, hãy tự gõ địa chỉ hệ thống thư công ty hoặc hỏi phòng CNTT. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 19,
     "category": "IT Support",
     "is_phishing": 1,
-    "sender": "Phòng CNTT <chinhsach@abccorp-itpolicy.com>",
+    "sender": "Phòng CNTT <chinhsach@bingroup-itpolicy.com>",
     "subject": "Chính sách mật khẩu mới: đổi trước 17h hôm nay",
-    "body": "Theo chính sách mật khẩu mới, mọi nhân viên cần đổi mật khẩu trước 17h hôm nay. Vui lòng nhập mật khẩu cũ và mật khẩu mới tại biểu mẫu sau:\n\nhttps://abccorp-itpolicy.com/doi-mat-khau\n\nTài khoản không đổi kịp sẽ bị khóa.",
-    "red_flags": "Đổi mật khẩu thật được làm trực tiếp trong hệ thống đăng nhập, không qua biểu mẫu trên tên miền ngoài. Biểu mẫu thu cả mật khẩu cũ lẫn mật khẩu mới. Hạn 17h và lời dọa khóa tài khoản tạo áp lực."
+    "body": "Theo chính sách mật khẩu mới, mọi nhân viên cần đổi mật khẩu trước 17h hôm nay. Vui lòng nhập mật khẩu cũ và mật khẩu mới tại biểu mẫu sau:\n\nhttps://bingroup-itpolicy.com/doi-mat-khau\n\nTài khoản không đổi kịp sẽ bị khóa.",
+    "red_flags": "Biểu mẫu thu cả mật khẩu cũ lẫn mật khẩu mới. Hạn 17h và lời dọa khóa tài khoản tạo áp lực. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 20,
     "category": "IT Support",
     "is_phishing": 1,
-    "sender": "Bảo mật máy tính <canhbao@abccorp-antivirus.net>",
+    "sender": "Bảo mật máy tính <canhbao@bingroup-antivirus.net>",
     "subject": "Máy tính của bạn đã nhiễm virus, gọi ngay để xử lý",
-    "body": "Hệ thống phát hiện 3 virus nguy hiểm trên máy tính của bạn. Vui lòng không tắt máy và gọi ngay số hỗ trợ kỹ thuật 1900 6xxx để được nhân viên điều khiển từ xa xử lý.\n\nPhòng An ninh mạng",
-    "red_flags": "IT thật không báo virus qua email kèm số điện thoại lạ. Việc điều khiển từ xa để chiếm máy là chiêu lừa đảo hỗ trợ kỹ thuật phổ biến. Lời dặn không tắt máy gây hoảng sợ."
+    "body": "Hệ thống phát hiện 3 virus nguy hiểm trên máy tính của bạn. Vui lòng không tắt máy và gọi ngay số hỗ trợ kỹ thuật 1900 6321 để được nhân viên điều khiển từ xa xử lý.\n\nPhòng An ninh mạng",
+    "red_flags": "Bộ phận IT thường không báo nhiễm virus qua email kèm số điện thoại lạ để gọi. Yêu cầu gọi số này để được điều khiển máy từ xa là chiêu lừa đảo hỗ trợ kỹ thuật phổ biến. Lời dặn không tắt máy gây hoảng sợ."
   },
   {
     "id": 21,
@@ -186,7 +191,7 @@
     "sender": "Kế toán <ketoan@hoadon-dientu247.com>",
     "subject": "Hóa đơn điện tử số 0004127 chưa thanh toán",
     "body": "Kính gửi quý khách,\n\nHóa đơn điện tử số 0004127 đã quá hạn thanh toán. Xin vui lòng xem chi tiết trong tệp đính kèm và thanh toán sớm để tránh phát sinh phí phạt.\n\nĐính kèm: HoaDon_0004127.zip",
-    "red_flags": "Người gửi không rõ là nhà cung cấp nào và bạn không có giao dịch tương ứng. Hóa đơn điện tử thật thường là file PDF hoặc XML, không nén thành .zip. Dọa phí phạt để người đọc mở file."
+    "red_flags": "Thư không nêu tên nhà cung cấp, mã số thuế hay hàng hóa nào, chỉ chào chung chung là quý khách. Hóa đơn điện tử thường được gửi dưới dạng PDF hoặc XML hoặc qua cổng của nhà cung cấp, còn tệp nén .zip cần kiểm tra kỹ vì hay được dùng để giấu mã độc. Dọa phí phạt để người đọc vội mở tệp. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 22,
@@ -195,25 +200,27 @@
     "sender": "Thông báo thuế <thongbao@tongcucthue-vn.com>",
     "subject": "Thông báo nợ thuế, nộp phạt trong 48 giờ",
     "body": "Cơ quan thuế ghi nhận đơn vị của bạn còn nợ thuế kỳ trước. Vui lòng đóng khoản phạt trong 48 giờ qua đường dẫn sau, nếu không sẽ bị cưỡng chế.\n\nhttps://tongcucthue-vn.com/nop-phat",
-    "red_flags": "Cơ quan thuế chỉ dùng tên miền gov.vn và gửi thông báo qua cổng chính thức. Họ không yêu cầu nộp phạt qua đường dẫn trong thư. Từ cưỡng chế và hạn 48 giờ chỉ là đe dọa."
+    "red_flags": "Không nên nộp phạt qua đường dẫn trong thư. Các từ cưỡng chế và hạn 48 giờ nhằm tạo áp lực. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo.",
+    "target": "EMP01"
   },
   {
     "id": 23,
     "category": "Hóa đơn, thuế",
     "is_phishing": 1,
-    "sender": "Công nợ <congno@abccorp-ketoan.com>",
-    "subject": "Đối chiếu công nợ tháng 9",
-    "body": "Chào bạn,\n\nGửi bạn bảng đối chiếu công nợ tháng 9 để xác nhận. Khi mở file, bạn nhớ bấm Enable Content để xem đầy đủ số liệu nhé.\n\nĐính kèm: DoiChieu_T9.xlsm",
-    "red_flags": "Tên miền không phải của công ty. File .xlsm có chứa macro, và lời nhắc bật Enable Content là chiêu cho mã độc chạy. Bảng đối chiếu thường là .xlsx thông thường."
+    "sender": "Công nợ <congno@bingroup-ketoan.com>",
+    "subject": "Đối chiếu công nợ tháng trước",
+    "body": "Chào {ten},\n\nGửi bạn bảng đối chiếu công nợ tháng trước để xác nhận. Khi mở file, bạn nhớ bấm Enable Content để xem đầy đủ số liệu nhé.\n\nĐính kèm: DoiChieu_CongNo.xlsm",
+    "red_flags": "Tệp .xlsm có thể chứa macro, và lời nhắc bấm Enable Content là cách thường dùng để macro độc hại chạy được. Bảng đối chiếu công nợ thông thường chỉ cần tệp .xlsx. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo.",
+    "target": "EMP01"
   },
   {
     "id": 24,
     "category": "Hóa đơn, thuế",
     "is_phishing": 1,
     "sender": "Bán hàng <sales@vattu-anphat.net>",
-    "subject": "Hóa đơn đơn hàng vật tư 38.500.000đ",
+    "subject": "Hóa đơn cho đơn hàng vật tư 38.500.000đ",
     "body": "Cảm ơn quý công ty đã đặt hàng. Đơn hàng vật tư văn phòng của quý khách đã được xuất hóa đơn với tổng tiền 38.500.000đ. Vui lòng thanh toán trong 3 ngày làm việc theo thông tin trong file đính kèm.\n\nĐính kèm: Invoice_38500000.pdf",
-    "red_flags": "Công ty không có đơn đặt hàng nào với nhà cung cấp này. Số tiền lớn kèm hạn thanh toán ngắn là cách đánh vào người không kiểm tra lại. Cần đối chiếu với phòng mua hàng hoặc kế toán trước khi làm gì."
+    "red_flags": "Thư gọi chung là quý công ty, không nêu số đơn hàng, tên sản phẩm hay mã số thuế bên bán. Tên miền vattu-anphat.net cần được đối chiếu với danh sách nhà cung cấp của công ty. Tên tệp chỉ gồm số tiền, không có số hóa đơn. Hãy hỏi phòng Mua hàng hoặc Kế toán xem có đơn đặt hàng tương ứng không trước khi mở tệp hoặc thanh toán."
   },
   {
     "id": 25,
@@ -221,8 +228,9 @@
     "is_phishing": 1,
     "sender": "Nhà cung cấp Minh Phát <minhphat.sales@minhphat-vn.biz>",
     "subject": "Thông báo thay đổi tài khoản nhận thanh toán",
-    "body": "Kính gửi quý khách,\n\nTừ kỳ thanh toán này, chúng tôi chuyển sang tài khoản ngân hàng mới. Mong quý công ty cập nhật thông tin và chuyển khoản các khoản còn lại vào tài khoản mới dưới đây.\n\nTK mới: 0081 4455 9012 (Agribank)",
-    "red_flags": "Thay đổi tài khoản nhận tiền chỉ nhận qua email là rủi ro cao. Phải gọi lại cho đầu mối đã biết của nhà cung cấp để xác nhận. Tên miền đuôi .biz khác với tên miền mà nhà cung cấp thật vẫn dùng."
+    "body": "Kính gửi quý khách,\n\nTừ kỳ thanh toán này, chúng tôi chuyển sang tài khoản ngân hàng mới. Mong quý công ty cập nhật thông tin và chuyển khoản các khoản còn lại vào tài khoản mới dưới đây.\n\nTK mới: 0081 4455 9012 (Nongvietbank)",
+    "red_flags": "Thay đổi tài khoản nhận tiền chỉ nhận qua email là rủi ro cao. Phải gọi lại cho đầu mối đã biết của nhà cung cấp để xác nhận. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo.",
+    "target": "EMP01"
   },
   {
     "id": 26,
@@ -231,7 +239,7 @@
     "sender": "Bộ phận thu hồi công nợ <phapche@thuhoi-congno.vn>",
     "subject": "Nhắc nợ lần 3: hóa đơn quá hạn 15 ngày",
     "body": "Đây là lần nhắc cuối cùng. Hóa đơn của quý khách đã quá hạn 15 ngày. Nếu không thanh toán trong hôm nay, hồ sơ sẽ được chuyển sang bộ phận pháp chế và khởi kiện.\n\nXem chi tiết hóa đơn: http://thuhoi-congno.vn/xem",
-    "red_flags": "Không có lần nhắc thứ nhất hay thứ hai nào bạn từng nhận. Lời đe dọa kiện tụng dùng để gây hoảng sợ. Link dùng http và dẫn tới trang không rõ chủ."
+    "red_flags": "Thư không nêu tên chủ nợ, số hóa đơn hay số tiền nào, chỉ gọi chung là quý khách. Lời đe dọa kiện tụng dùng để gây hoảng sợ. Link dùng http và dẫn tới trang không rõ chủ."
   },
   {
     "id": 27,
@@ -240,61 +248,63 @@
     "sender": "Hoàn thuế <hoanthue@hoanthue-gtgt.com>",
     "subject": "Bạn đủ điều kiện hoàn thuế giá trị gia tăng",
     "body": "Chúng tôi xác nhận công ty bạn đủ điều kiện nhận hoàn thuế GTGT năm nay. Để nhận tiền, vui lòng điền thông tin thẻ ngân hàng và mã số thuế tại biểu mẫu sau:\n\nhttps://hoanthue-gtgt.com/bieu-mau",
-    "red_flags": "Hoàn thuế được thực hiện qua cổng thuế chính thức, không bao giờ đòi thông tin thẻ ngân hàng qua một biểu mẫu trong email. Tên miền không phải gov.vn. Lời hứa nhận tiền dùng để dụ người đọc."
+    "red_flags": "Hoàn thuế được xử lý qua cổng thuế chính thức, cơ quan thuế không đòi thông tin thẻ ngân hàng qua biểu mẫu trong email. Lời hứa nhận tiền dùng để dụ người đọc. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo.",
+    "target": "EMP01"
   },
   {
     "id": 28,
     "category": "Hóa đơn, thuế",
     "is_phishing": 1,
-    "sender": "Thanh toán <bienlai@abccorp-thanhtoan.com>",
+    "sender": "Thanh toán <bienlai@bingroup-thanhtoan.com>",
     "subject": "Biên lai thanh toán của bạn",
-    "body": "Cảm ơn bạn đã thanh toán. Biên lai chi tiết nằm trong file đính kèm. Vui lòng mở file bằng trình duyệt và đăng nhập tài khoản công ty để xem.\n\nĐính kèm: BienLai_20261022.html",
-    "red_flags": "File .html đính kèm có thể hiện ra một trang đăng nhập giả để lấy mật khẩu. Biên lai thật không yêu cầu đăng nhập tài khoản công ty. Bạn không nhớ đã thanh toán khoản nào."
+    "body": "Cảm ơn bạn đã thanh toán. Biên lai chi tiết nằm trong file đính kèm. Vui lòng mở file bằng trình duyệt và đăng nhập tài khoản công ty để xem.\n\nĐính kèm: BienLai_ThanhToan.html",
+    "red_flags": "Tệp .html đính kèm có thể hiện ra một trang đăng nhập giả để lấy mật khẩu. Biên lai thanh toán thông thường không yêu cầu đăng nhập bằng tài khoản công ty để xem. Thư không nêu khoản thanh toán, số tiền hay bên nhận nào, chỉ cảm ơn chung chung."
   },
   {
     "id": 29,
     "category": "Hóa đơn, thuế",
     "is_phishing": 1,
     "sender": "Quản lý tòa nhà <thutien@toanha-quanly.com>",
-    "subject": "Phiếu thu tiền điện nước văn phòng tháng 10",
-    "body": "Kính gửi quý công ty,\n\nBan quản lý tòa nhà gửi phiếu thu tiền điện nước tháng 10. Vui lòng mở tệp đính kèm để xem chi tiết và thanh toán trước ngày 05.\n\nĐính kèm: PhieuThu_T10.iso",
-    "red_flags": "File .iso là tệp ảnh đĩa, không phải định dạng của phiếu thu. Bạn nên hỏi lại phòng Hành chính hoặc Kế toán xem có nhận phiếu này không. Tên miền không phải của Ban quản lý mà công ty đang làm việc."
+    "subject": "Phiếu thu tiền điện nước văn phòng tháng này",
+    "body": "Kính gửi quý công ty,\n\nBan quản lý tòa nhà gửi phiếu thu tiền điện nước tháng này. Vui lòng mở tệp đính kèm để xem chi tiết và thanh toán trước ngày 05.\n\nĐính kèm: PhieuThu.iso",
+    "red_flags": "Tệp .iso là ảnh đĩa, hiếm khi được dùng để gửi phiếu thu và có thể dùng để chuyển mã độc. Thư không nêu tên tòa nhà, số phòng hay số tiền, chỉ gọi chung là quý công ty. Hãy hỏi lại phòng Hành chính hoặc Kế toán xem có nhận phiếu này không. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 30,
     "category": "Hóa đơn, thuế",
     "is_phishing": 1,
     "sender": "Nhà cung cấp Thành Đạt <ketoan@thanhdat-vattu.net>",
-    "subject": "Báo nhầm khoản thanh toán thừa, đề nghị hoàn lại",
-    "body": "Kính gửi quý công ty,\n\nKế toán chúng tôi phát hiện quý công ty đã chuyển dư 21.600.000đ trong kỳ thanh toán vừa rồi. Mong quý công ty hoàn lại khoản này vào tài khoản bên dưới trong 2 ngày.\n\nTài khoản: 0071 5539 2188, Ngân hàng Sacombank",
-    "red_flags": "Không có giao dịch chuyển thừa nào được ghi nhận. Kẻ gian tạo cảm giác lỗi nằm ở phía bạn để bạn chuyển tiền. Phải đối chiếu sổ sách và gọi lại số điện thoại đã biết của nhà cung cấp."
+    "subject": "Đề nghị hoàn lại khoản thanh toán thừa",
+    "body": "Kính gửi quý công ty,\n\nKế toán chúng tôi phát hiện quý công ty đã chuyển dư 21.600.000đ trong kỳ thanh toán vừa rồi. Mong quý công ty hoàn lại khoản này vào tài khoản bên dưới trong 2 ngày.\n\nTài khoản: 0071 5539 2188, Ngân hàng Namphongbank",
+    "red_flags": "Thư không nêu số hóa đơn, ngày chuyển hay mã giao dịch nào để đối chiếu. Kẻ gian tạo cảm giác lỗi nằm ở phía bạn để bạn chuyển tiền. Yêu cầu hoàn tiền vào một số tài khoản cho sẵn trong hạn 2 ngày là áp lực thời gian quen thuộc.",
+    "target": "EMP01"
   },
   {
     "id": 31,
     "category": "Nhân sự, lương thưởng",
     "is_phishing": 1,
-    "sender": "Phòng Nhân sự <nhansu@abccorp-hr.com>",
-    "subject": "Điều chỉnh lương tháng 11, xem bảng lương mới",
-    "body": "Chào bạn,\n\nBảng lương tháng 11 của bạn đã được điều chỉnh theo chính sách mới. Vui lòng đăng nhập tại liên kết dưới đây bằng tài khoản công ty để xem chi tiết.\n\nhttp://abccorp-hr.com/bang-luong",
-    "red_flags": "Tên miền abccorp-hr.com không thuộc công ty. Bảng lương thật được xem trong hệ thống nội bộ hoặc gửi trực tiếp, không qua link ngoài. Mồi nhử về thay đổi lương đánh vào sự tò mò."
+    "sender": "Phòng Nhân sự <nhansu@bin-group.vn>",
+    "subject": "Điều chỉnh lương tháng này, xem bảng lương mới",
+    "body": "Chào {ten},\n\nBảng lương tháng này của bạn đã được điều chỉnh theo chính sách mới. Vui lòng đăng nhập tại liên kết dưới đây bằng tài khoản công ty để xem chi tiết.\n\nhttp://bin-group.vn/bang-luong",
+    "red_flags": "Bảng lương thường được xem trong hệ thống nội bộ hoặc gửi trực tiếp, ít khi qua link ngoài. Mồi nhử về thay đổi lương đánh vào sự tò mò. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 32,
     "category": "Nhân sự, lương thưởng",
     "is_phishing": 1,
-    "sender": "Ban Giám đốc <thuong@abccorp-thuong.com>",
+    "sender": "Ban Giám đốc <thuong@bingroup-thuong.com>",
     "subject": "Thưởng cuối năm 2026: xác nhận thông tin nhận thưởng",
-    "body": "Công ty sẽ phát thưởng cuối năm vào tháng 12. Để không sót phần thưởng của bạn, vui lòng điền số tài khoản ngân hàng và số căn cước công dân tại biểu mẫu sau trước ngày 30.\n\nhttps://abccorp-thuong.com/form",
-    "red_flags": "Công ty đã có sẵn thông tin tài khoản của nhân viên nên không cần hỏi lại qua biểu mẫu. Thu thập số căn cước và tài khoản là để chiếm đoạt hoặc mạo danh. Đường dẫn nằm trên tên miền ngoài."
+    "body": "Công ty sẽ phát thưởng cuối năm vào tháng 12. Để không sót phần thưởng của bạn, vui lòng điền số tài khoản ngân hàng và số căn cước công dân tại biểu mẫu sau trước ngày 30.\n\nhttps://bingroup-thuong.com/form",
+    "red_flags": "Công ty thường đã có sẵn thông tin tài khoản của nhân viên nên ít khi hỏi lại qua biểu mẫu. Số căn cước và số tài khoản có thể bị dùng để mạo danh hoặc chiếm đoạt tiền. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 33,
     "category": "Nhân sự, lương thưởng",
     "is_phishing": 1,
-    "sender": "Chăm sóc nhân viên <phucloi@abccorp-welfare.com>",
+    "sender": "Chăm sóc nhân viên <phucloi@bingroup-welfare.com>",
     "subject": "Khảo sát phúc lợi: nhận ngay voucher 500.000đ",
-    "body": "Hoàn thành khảo sát phúc lợi chỉ trong 2 phút và nhận ngay voucher 500.000đ. Số lượng có hạn dành cho 100 nhân viên đầu tiên.\n\nBắt đầu khảo sát: https://abccorp-welfare.com/khao-sat",
-    "red_flags": "Quà tặng giá trị cao cho việc làm khảo sát ngắn là mồi nhử. Số lượng có hạn tạo cảm giác phải làm ngay. Khảo sát nội bộ thật nằm trên hệ thống của công ty."
+    "body": "Hoàn thành khảo sát phúc lợi chỉ trong 2 phút và nhận ngay voucher 500.000đ. Số lượng có hạn dành cho 100 nhân viên đầu tiên.\n\nBắt đầu khảo sát: https://bingroup-welfare.com/khao-sat",
+    "red_flags": "Quà tặng giá trị cao cho một khảo sát ngắn là mồi nhử. Số lượng có hạn tạo cảm giác phải làm ngay. Khảo sát nội bộ thường nằm trên hệ thống của công ty."
   },
   {
     "id": 34,
@@ -303,124 +313,124 @@
     "sender": "Bảo hiểm xã hội <hotro@baohiemxahoi-vn.com>",
     "subject": "Cập nhật hồ sơ bảo hiểm xã hội năm 2026",
     "body": "Hồ sơ bảo hiểm của bạn thiếu thông tin. Vui lòng chụp ảnh hai mặt căn cước công dân và gửi lại email này để chúng tôi cập nhật trước cuối tháng.",
-    "red_flags": "Cơ quan bảo hiểm không yêu cầu gửi ảnh căn cước qua email. Tên miền .com thay vì .gov.vn. Ảnh giấy tờ có thể bị dùng để mạo danh vay tiền hoặc mở tài khoản."
+    "red_flags": "Cơ quan bảo hiểm thường không yêu cầu gửi ảnh căn cước qua email, thông báo chính thức thường đến từ tên miền gov.vn thay vì .com. Ảnh giấy tờ có thể bị dùng để mạo danh vay tiền hoặc mở tài khoản."
   },
   {
     "id": 35,
     "category": "Nhân sự, lương thưởng",
     "is_phishing": 1,
-    "sender": "Phòng Nhân sự <hr@abccorp-nhansu.com>",
+    "sender": "Phòng Nhân sự <hr@bingroup-nhansu.com>",
     "subject": "Thông báo kỷ luật: vui lòng xem biên bản",
     "body": "Bạn có tên trong danh sách bị xem xét kỷ luật do vi phạm nội quy. Biên bản chi tiết đính kèm theo thư. Vui lòng mở và phản hồi trong ngày.\n\nĐính kèm: BienBan_KyLuat.doc.exe",
-    "red_flags": "Thông báo kỷ luật thật được trao đổi trực tiếp, không gửi qua file đính kèm lạ. Tệp có đuôi kép .doc.exe thật ra là chương trình. Nội dung gây lo lắng để người đọc mở file vội."
+    "red_flags": "Thông báo kỷ luật thường được trao đổi trực tiếp hoặc qua kênh chính thức, không gửi qua tệp đính kèm lạ. Tệp có đuôi kép .doc.exe là tệp thực thi giả dạng tài liệu. Nội dung gây lo lắng để người đọc mở tệp vội."
   },
   {
     "id": 36,
     "category": "Nhân sự, lương thưởng",
     "is_phishing": 1,
-    "sender": "Nguyễn Thị Hạnh <hanh.hr2026@gmail.com>",
+    "sender": "Nguyễn Thị Hạnh <hanh.hr2026@mailnhanh.com>",
     "subject": "Quyết định tăng lương của bạn đã có",
-    "body": "Chúc mừng bạn,\n\nCông ty vừa phê duyệt tăng lương cho bạn. Chị gửi quyết định ở link dưới, bạn xem và đăng nhập bằng tài khoản công ty để xác nhận nhé.\n\nhttp://tinyurl.example/qd-tangluong",
-    "red_flags": "Người gửi dùng Gmail cá nhân, không phải mail công ty. Link rút gọn che giấu đích đến thật. Chuyện tăng lương không được thông báo bằng một đường dẫn đăng nhập."
+    "body": "Chúc mừng {ten},\n\nCông ty vừa phê duyệt tăng lương cho bạn. Chị gửi quyết định ở link dưới, bạn xem và đăng nhập bằng tài khoản công ty để xác nhận nhé.\n\nhttp://tinyurl.com/qd-tangluong",
+    "red_flags": "Người gửi dùng Mailnhanh cá nhân, không phải mail công ty. Link rút gọn che giấu đích đến thật. Quyết định tăng lương thường được thông báo qua phòng Nhân sự hoặc hệ thống nội bộ, ít khi qua đường dẫn yêu cầu đăng nhập."
   },
   {
     "id": 37,
     "category": "Nhân sự, lương thưởng",
     "is_phishing": 1,
-    "sender": "Chăm sóc sức khỏe <khamsuckhoe@abccorp-health.com>",
+    "sender": "Chăm sóc sức khỏe <khamsuckhoe@bingroup-health.com>",
     "subject": "Đăng ký khám sức khỏe định kỳ 2026",
-    "body": "Công ty tổ chức khám sức khỏe định kỳ miễn phí. Để đăng ký, vui lòng nhập họ tên, ngày sinh và mã thẻ bảo hiểm y tế tại đây:\n\nhttps://abccorp-health.com/dang-ky\n\nHạn đăng ký: hết ngày mai.",
-    "red_flags": "Đăng ký khám thật do phòng hành chính hoặc nhân sự thông báo trong nội bộ. Thu thập mã thẻ bảo hiểm y tế và ngày sinh để lấy cắp danh tính. Hạn đăng ký quá gấp."
+    "body": "Công ty tổ chức khám sức khỏe định kỳ miễn phí. Để đăng ký, vui lòng nhập họ tên, ngày sinh và mã thẻ bảo hiểm y tế tại đây:\n\nhttps://bingroup-health.com/dang-ky\n\nHạn đăng ký: hết ngày mai.",
+    "red_flags": "Lịch khám sức khỏe thường do phòng Hành chính hoặc Nhân sự thông báo trong nội bộ. Mã thẻ bảo hiểm y tế và ngày sinh có thể bị dùng để lấy cắp danh tính. Hạn đăng ký quá gấp."
   },
   {
     "id": 38,
     "category": "Nhân sự, lương thưởng",
     "is_phishing": 1,
-    "sender": "Phòng Nhân sự <thuethunhap@abccorp-tax.com>",
+    "sender": "Phòng Nhân sự <thuethunhap@bingroup-tax.com>",
     "subject": "Hoàn thuế thu nhập cá nhân năm 2025",
     "body": "Bạn đủ điều kiện nhận hoàn thuế thu nhập cá nhân. Để chúng tôi làm hộ, vui lòng gửi lại tên đăng nhập và mật khẩu cổng thuế điện tử cá nhân của bạn qua thư này.",
-    "red_flags": "Không ai được phép yêu cầu bạn gửi mật khẩu tài khoản thuế. Phòng nhân sự thật không làm hộ bằng cách xin mật khẩu. Mồi nhử là tiền hoàn thuế để người đọc mất cảnh giác."
+    "red_flags": "Không đơn vị nào cần mật khẩu tài khoản thuế của bạn để làm thủ tục hoàn thuế. Quy trình hợp lệ không đòi gửi mật khẩu cá nhân qua email. Mồi nhử là tiền hoàn thuế để người đọc mất cảnh giác."
   },
   {
     "id": 39,
     "category": "Nhân sự, lương thưởng",
     "is_phishing": 1,
-    "sender": "Phòng Nhân sự <chinhsach@abccorp-remote.com>",
+    "sender": "Phòng Nhân sự <chinhsach@binggroup.vn>",
     "subject": "Quy định làm việc từ xa mới, ký xác nhận trước thứ Sáu",
-    "body": "Công ty ban hành quy định làm việc từ xa mới. Mọi nhân viên cần đọc và ký xác nhận điện tử trước thứ Sáu. Vui lòng đăng nhập bằng tài khoản công ty tại đường dẫn sau:\n\nhttps://abccorp-remote.com/ky-xac-nhan",
-    "red_flags": "Quy định thật được đăng trên cổng nội bộ của công ty. Tên miền abccorp-remote.com nằm ngoài hệ thống công ty. Link đăng nhập dùng để lấy mật khẩu tài khoản."
+    "body": "Công ty ban hành quy định làm việc từ xa mới. Mọi nhân viên cần đọc và ký xác nhận điện tử trước thứ Sáu. Vui lòng đăng nhập bằng tài khoản công ty tại đường dẫn sau:\n\nhttps://binggroup.vn/ky-xac-nhan",
+    "red_flags": "Quy định nội bộ thường được đăng trên cổng nội bộ của công ty. Link đăng nhập có thể dùng để lấy mật khẩu tài khoản. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 40,
     "category": "Nhân sự, lương thưởng",
     "is_phishing": 1,
-    "sender": "Ban Giám đốc <nhansu@abccorp-hrteam.com>",
+    "sender": "Ban Giám đốc <nhansu@bingroup-hrteam.com>",
     "subject": "Thông báo cắt giảm nhân sự: danh sách chi tiết",
     "body": "Do tình hình kinh doanh, công ty sẽ cắt giảm nhân sự đợt này. Danh sách các vị trí bị ảnh hưởng nằm trong tệp đính kèm, vui lòng mở và giữ bí mật.\n\nĐính kèm: DanhSach_CatGiam.pdf.exe",
-    "red_flags": "Thông tin nhạy cảm như vậy không được gửi hàng loạt qua email. Tệp có đuôi kép .pdf.exe thực chất là chương trình chạy. Nội dung gây lo lắng để người đọc vội mở."
+    "red_flags": "Thông tin nhạy cảm như vậy thường không được gửi hàng loạt qua email. Tệp có đuôi kép .pdf.exe là tệp thực thi giả dạng PDF. Nội dung gây lo lắng để người đọc vội mở tệp."
   },
   {
     "id": 41,
     "category": "Ngân hàng",
     "is_phishing": 1,
-    "sender": "Ngân hàng <canhbao@vietcombank-online.net>",
+    "sender": "Ngân hàng <canhbao@vietsenbank-online.net>",
     "subject": "Phát hiện giao dịch bất thường trên tài khoản của quý khách",
-    "body": "Kính gửi quý khách,\n\nChúng tôi phát hiện một giao dịch chuyển tiền 15.000.000 VND từ tài khoản của quý khách. Nếu không phải quý khách thực hiện, vui lòng xác nhận ngay để được bảo vệ:\n\nhttp://vietcombank-online.net/xac-nhan",
-    "red_flags": "Tên miền vietcombank-online.net không phải của ngân hàng. Lời chào chung chung quý khách, không có tên và không có số cuối tài khoản. Ngân hàng không bắt xác nhận qua đường dẫn trong thư."
+    "body": "Kính gửi quý khách,\n\nChúng tôi phát hiện một giao dịch chuyển tiền 15.000.000 VND từ tài khoản của quý khách. Nếu không phải quý khách thực hiện, vui lòng xác nhận ngay để được bảo vệ:\n\nhttp://vietsenbank-online.net/xac-nhan",
+    "red_flags": "Lời chào chung chung là quý khách, không có tên và không có số cuối tài khoản. Ngân hàng thường hướng dẫn xác nhận giao dịch qua ứng dụng hoặc tổng đài, không qua đường dẫn trong thư. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 42,
     "category": "Ngân hàng",
     "is_phishing": 1,
-    "sender": "Hỗ trợ khách hàng <cskh@bidv-baomat.com>",
+    "sender": "Hỗ trợ khách hàng <cskh@hkb-baomat.com>",
     "subject": "Tài khoản của quý khách tạm thời bị khóa",
-    "body": "Do phát hiện nhiều lần đăng nhập sai, tài khoản của quý khách đã bị khóa. Để mở khóa, vui lòng nhập lại thông tin đăng nhập và mã OTP tại trang sau:\n\nhttps://bidv-baomat.com/mokhoa",
-    "red_flags": "Ngân hàng thật không yêu cầu nhập mã OTP để mở khóa qua link trong email. Tên miền chứa tên ngân hàng nhưng không phải tên miền chính thức. Dọa khóa tài khoản để người đọc làm vội."
+    "body": "Do phát hiện nhiều lần đăng nhập sai, tài khoản của quý khách đã bị khóa. Để mở khóa, vui lòng nhập lại thông tin đăng nhập và mã OTP tại trang sau:\n\nhttps://hkb-baomat.com/mokhoa",
+    "red_flags": "Ngân hàng không yêu cầu khách hàng nhập mã OTP để mở khóa tài khoản qua link trong email. Dọa khóa tài khoản để người đọc làm vội. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 43,
     "category": "Ngân hàng",
     "is_phishing": 1,
-    "sender": "Ngân hàng điện tử <sinhtrachoc@techcombank-update.vn>",
-    "subject": "Cập nhật sinh trắc học trước 30/11 để tiếp tục giao dịch",
-    "body": "Theo quy định mới, quý khách cần cập nhật sinh trắc học. Vui lòng tải ứng dụng xác thực tại liên kết dưới đây và làm theo hướng dẫn trước ngày 30/11, nếu không tài khoản sẽ ngừng giao dịch.\n\nTải ứng dụng: http://techcombank-update.vn/app.apk",
-    "red_flags": "Ứng dụng ngân hàng chỉ tải từ kho ứng dụng chính thức, không qua file .apk trong email. File này có thể là phần mềm độc hại để chiếm quyền điều khiển điện thoại. Hạn chót làm người đọc gấp gáp."
+    "sender": "Ngân hàng điện tử <sinhtrachoc@techvietbank-update.vn>",
+    "subject": "Cập nhật sinh trắc học trước cuối tháng để tiếp tục giao dịch",
+    "body": "Theo quy định mới, quý khách cần cập nhật sinh trắc học. Vui lòng tải ứng dụng xác thực tại liên kết dưới đây và làm theo hướng dẫn trước cuối tháng, nếu không tài khoản sẽ ngừng giao dịch.\n\nTải ứng dụng: http://techvietbank-update.vn/app.apk",
+    "red_flags": "Ứng dụng ngân hàng nên được tải từ kho ứng dụng chính thức. Tệp .apk tải từ link trong thư có thể là phần mềm độc hại giúp kẻ gian chiếm quyền điều khiển điện thoại. Hạn chót làm người đọc gấp gáp. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 44,
     "category": "Ngân hàng",
     "is_phishing": 1,
-    "sender": "Thông báo số dư <bienDongSoDu@mbbank-thongbao.com>",
+    "sender": "Thông báo số dư <bienDongSoDu@hmbank-thongbao.com>",
     "subject": "Biến động số dư: +25.000.000 VND",
-    "body": "Tài khoản của quý khách vừa nhận 25.000.000 VND do chuyển nhầm. Vui lòng hoàn trả lại cho người gửi qua đường dẫn bên dưới trong 24 giờ để tránh vi phạm pháp luật.\n\nhttps://mbbank-thongbao.com/hoan-tra",
-    "red_flags": "Thông báo biến động số dư thật chỉ đến từ ứng dụng hoặc tin nhắn chính thức. Link hoàn tiền sẽ dẫn đến trang đòi thông tin thẻ. Dọa vi phạm pháp luật để ép người đọc làm theo."
+    "body": "Tài khoản của quý khách vừa nhận 25.000.000 VND do chuyển nhầm. Vui lòng hoàn trả lại cho người gửi qua đường dẫn bên dưới trong 24 giờ để tránh vi phạm pháp luật.\n\nhttps://hmbank-thongbao.com/hoan-tra",
+    "red_flags": "Thông báo biến động số dư thường đến từ ứng dụng hoặc tin nhắn chính thức của ngân hàng. Link hoàn tiền có thể dẫn đến trang đòi thông tin thẻ. Dọa vi phạm pháp luật để ép người đọc làm theo."
   },
   {
     "id": 45,
     "category": "Ngân hàng",
     "is_phishing": 1,
-    "sender": "Dịch vụ thẻ <thethanhtoan@agribank-the.net>",
+    "sender": "Dịch vụ thẻ <thethanhtoan@nongvietbank-the.net>",
     "subject": "Nâng cấp thẻ lên chip bắt buộc trước cuối tháng",
-    "body": "Thẻ từ của quý khách sẽ ngừng hoạt động. Vui lòng đăng ký đổi sang thẻ chip bằng cách điền số thẻ, ngày hết hạn và mã CVV tại biểu mẫu sau:\n\nhttps://agribank-the.net/doi-the",
-    "red_flags": "Không có quy trình đổi thẻ nào cần nhập mã CVV vào một biểu mẫu trên mạng. Tên miền agribank-the.net là giả. Ngân hàng thật hẹn đổi thẻ tại quầy hoặc qua ứng dụng."
+    "body": "Thẻ từ của quý khách sẽ ngừng hoạt động. Vui lòng đăng ký đổi sang thẻ chip bằng cách điền số thẻ, ngày hết hạn và mã CVV tại biểu mẫu sau:\n\nhttps://nongvietbank-the.net/doi-the",
+    "red_flags": "Ngân hàng không yêu cầu khách hàng nhập mã CVV vào biểu mẫu trong email. Việc đổi thẻ thường được hướng dẫn tại quầy hoặc qua ứng dụng chính thức. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 46,
     "category": "Ngân hàng",
     "is_phishing": 1,
-    "sender": "Ngân hàng <thongbao@acb-bieuphi.com>",
+    "sender": "Ngân hàng <thongbao@akb-bieuphi.com>",
     "subject": "Thông báo thay đổi biểu phí dịch vụ năm 2027",
-    "body": "Kính gửi quý khách,\n\nNgân hàng điều chỉnh biểu phí dịch vụ từ ngày 01/01/2027. Mời quý khách xem biểu phí mới và đồng ý điều khoản tại:\n\nhttp://acb-bieuphi.com/dieu-khoan\n\nNếu không phản hồi, quý khách xem như đồng ý.",
-    "red_flags": "Tên miền không phải của ngân hàng. Nội dung nghe có vẻ bình thường nên dễ khiến người đọc bấm vào cho xong. Thông báo phí thật được đăng trên trang chính thức và ứng dụng."
+    "body": "Kính gửi quý khách,\n\nNgân hàng điều chỉnh biểu phí dịch vụ từ ngày 01/01/2027. Mời quý khách xem biểu phí mới và đồng ý điều khoản tại:\n\nhttp://akb-bieuphi.com/dieu-khoan\n\nNếu không phản hồi, quý khách xem như đồng ý.",
+    "red_flags": "Thư yêu cầu xem và đồng ý điều khoản qua đường dẫn HTTP. Hãy kiểm tra thông báo biểu phí trực tiếp trên ứng dụng hoặc website ngân hàng mà bạn đã biết."
   },
   {
     "id": 47,
     "category": "Ngân hàng",
     "is_phishing": 1,
-    "sender": "Xác thực giao dịch <otp@vpbank-xacthuc.com>",
+    "sender": "Xác thực giao dịch <otp@tanphatbank-xacthuc.com>",
     "subject": "Giao dịch của quý khách đang chờ xác thực OTP",
     "body": "Quý khách có một giao dịch 7.800.000 VND đang chờ. Nhân viên của chúng tôi sẽ gọi để hỗ trợ. Khi được hỏi, vui lòng cung cấp mã OTP vừa nhận được qua tin nhắn.\n\nCảm ơn quý khách.",
-    "red_flags": "Mã OTP là bí mật tuyệt đối, ngân hàng không bao giờ hỏi mã này qua điện thoại hay email. Chuẩn bị tâm lý cho cuộc gọi lừa đảo tiếp theo. Tên miền giả mạo ngân hàng."
+    "red_flags": "Mã OTP là thông tin bí mật, ngân hàng không yêu cầu khách hàng cung cấp mã này qua điện thoại hay email. Thư báo trước sẽ có cuộc gọi để lấy mã, đây là kịch bản lừa đảo kết hợp email và điện thoại. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 48,
@@ -429,43 +439,43 @@
     "sender": "Tín dụng nhanh <vay@vaytindung-uudai.com>",
     "subject": "Ưu đãi vay không thế chấp lãi suất 0% trong 6 tháng",
     "body": "Chúc mừng quý khách đủ điều kiện vay tới 200.000.000 VND không cần thế chấp. Chỉ cần gửi ảnh căn cước và sao kê lương, giải ngân trong 30 phút.\n\nĐăng ký ngay: https://vaytindung-uudai.com/dangky",
-    "red_flags": "Lãi suất 0% và giải ngân trong 30 phút là điều không có thật. Yêu cầu gửi ảnh căn cước qua email hoặc biểu mẫu lạ. Người gửi không phải ngân hàng bạn đang dùng."
+    "red_flags": "Lãi suất 0% và giải ngân trong 30 phút là điều rất khó tin và thường gặp trong thư lừa đảo. Yêu cầu gửi ảnh căn cước qua email hoặc biểu mẫu lạ. Người gửi không phải ngân hàng bạn đang dùng."
   },
   {
     "id": 49,
     "category": "Ngân hàng",
     "is_phishing": 1,
-    "sender": "Thẻ tín dụng <canhbao@visa-thetindung.com>",
+    "sender": "Thẻ tín dụng <canhbao@vexa-thetindung.com>",
     "subject": "Giao dịch thẻ tín dụng vượt hạn mức, cần xác nhận",
-    "body": "Thẻ tín dụng của quý khách có một giao dịch 32.000.000 VND tại nước ngoài vượt hạn mức. Vui lòng xác nhận hoặc từ chối giao dịch tại đường dẫn sau trong 6 giờ.\n\nhttp://visa-thetindung.com/xac-nhan",
-    "red_flags": "Thư không nêu tên ngân hàng phát hành hay 4 số cuối thẻ. Tên miền không phải của ngân hàng nào. Ngân hàng thật dùng ứng dụng và tin nhắn chính thức để xác nhận giao dịch."
+    "body": "Thẻ tín dụng của quý khách có một giao dịch 32.000.000 VND tại nước ngoài vượt hạn mức. Vui lòng xác nhận hoặc từ chối giao dịch tại đường dẫn sau trong 6 giờ.\n\nhttp://vexa-thetindung.com/xac-nhan",
+    "red_flags": "Thư không nêu tên ngân hàng phát hành hay 4 số cuối thẻ. Ngân hàng thường dùng ứng dụng và tin nhắn chính thức để xác nhận giao dịch. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 50,
     "category": "Ngân hàng",
     "is_phishing": 1,
-    "sender": "Ngân hàng <thongbao@vietinbank-thuhoi.com>",
-    "subject": "Thông báo thu hồi thẻ, liên hệ nhân viên qua Zalo",
-    "body": "Thẻ của quý khách sẽ bị thu hồi do vi phạm điều khoản sử dụng. Để giải quyết, vui lòng kết bạn Zalo với nhân viên hỗ trợ theo số 09xx xxx xxx và cung cấp thông tin tài khoản.\n\nCảm ơn quý khách.",
-    "red_flags": "Ngân hàng không xử lý việc thẻ qua Zalo cá nhân. Yêu cầu cung cấp thông tin tài khoản cho một số điện thoại lạ. Tên miền giả mạo ngân hàng."
+    "sender": "Ngân hàng <thongbao@vietrungbank-thuhoi.com>",
+    "subject": "Thông báo thu hồi thẻ, liên hệ nhân viên qua Chatly",
+    "body": "Thẻ của quý khách sẽ bị thu hồi do vi phạm điều khoản sử dụng. Để giải quyết, vui lòng kết bạn Chatly với nhân viên hỗ trợ theo số 0903 481 276 và cung cấp thông tin tài khoản.\n\nCảm ơn quý khách.",
+    "red_flags": "Ngân hàng thường không xử lý vấn đề về thẻ qua tài khoản chat cá nhân. Yêu cầu cung cấp thông tin tài khoản cho một số điện thoại lạ. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 51,
     "category": "Trúng thưởng, khuyến mãi",
     "is_phishing": 1,
-    "sender": "Chương trình may mắn <winner@quatang-iphone.com>",
-    "subject": "Chúc mừng bạn trúng iPhone 17 Pro Max",
-    "body": "Chúc mừng bạn đã được chọn ngẫu nhiên trong số 1.000.000 người dùng email để nhận iPhone 17 Pro Max miễn phí. Vui lòng bấm vào đây và điền địa chỉ nhận hàng trong 24 giờ.\n\nhttp://quatang-iphone.com/nhan-qua",
-    "red_flags": "Bạn không hề tham gia chương trình nào. Chọn ngẫu nhiên người dùng email là cách nói chung chung để lừa. Địa chỉ nhận hàng chỉ là bước đầu để đòi thêm thông tin hoặc tiền."
+    "sender": "Chương trình may mắn <winner@quatang-phonex.com>",
+    "subject": "Chúc mừng bạn trúng phonex 17 Pro Max",
+    "body": "Chúc mừng bạn đã được chọn ngẫu nhiên trong số 1.000.000 người dùng email để nhận phonex 17 Pro Max miễn phí. Vui lòng bấm vào đây và điền địa chỉ nhận hàng trong 24 giờ.\n\nhttp://quatang-phonex.com/nhan-qua",
+    "red_flags": "Thư không nêu tên chương trình, thể lệ hay đơn vị tổ chức nào. Cách nói chọn ngẫu nhiên người dùng email rất chung chung và hay gặp trong thư lừa đảo. Hạn 24 giờ thúc người đọc bấm ngay. Địa chỉ nhận hàng thường chỉ là bước đầu để đòi thêm thông tin hoặc tiền."
   },
   {
     "id": 52,
     "category": "Trúng thưởng, khuyến mãi",
     "is_phishing": 1,
-    "sender": "Siêu thị Winmart <khuyenmai@winmart-tri-an.com>",
+    "sender": "Siêu thị Marta <khuyenmai@marta-tri-an.com>",
     "subject": "Bạn là khách hàng may mắn của tháng",
-    "body": "Bạn được tặng bộ quà trị giá 3.000.000đ. Chỉ cần thanh toán phí vận chuyển 250.000đ qua liên kết dưới đây để nhận quà tại nhà.\n\nhttps://winmart-tri-an.com/phi-van-chuyen",
-    "red_flags": "Quà tặng thật không bắt người nhận đóng phí trước. Tên miền giả mạo thương hiệu. Phí nhỏ 250.000đ nhằm lấy thông tin thẻ của bạn."
+    "body": "Bạn được tặng bộ quà trị giá 3.000.000đ. Chỉ cần thanh toán phí vận chuyển 250.000đ qua liên kết dưới đây để nhận quà tại nhà.\n\nhttps://marta-tri-an.com/phi-van-chuyen",
+    "red_flags": "Quà tặng hợp lệ thường không bắt người nhận đóng phí trước. Khoản phí nhỏ 250.000đ thường chỉ là cớ để lấy thông tin thẻ của bạn. Thư không nêu chương trình hay thể lệ nào. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 53,
@@ -473,8 +483,8 @@
     "is_phishing": 1,
     "sender": "Khảo sát khách hàng <ks@vouchers-gift.net>",
     "subject": "Phiếu mua hàng 2.000.000đ cho bạn",
-    "body": "Trả lời 3 câu hỏi khảo sát ngắn để nhận phiếu mua hàng 2.000.000đ từ siêu thị. Chương trình kết thúc trong hôm nay.",
-    "red_flags": "Phần thưởng quá lớn so với việc làm khảo sát. Khảo sát có thể dẫn đến trang đòi thông tin cá nhân hoặc cài phần mềm quảng cáo. Hạn trong hôm nay chỉ để thúc giục."
+    "body": "Trả lời 3 câu hỏi khảo sát ngắn để nhận phiếu mua hàng 2.000.000đ từ siêu thị. Chương trình kết thúc trong hôm nay.\n\nLàm khảo sát: https://khaosat-sieuthi.com/phieu-qua",
+    "red_flags": "Địa chỉ người gửi và đường dẫn sử dụng hai tên miền khác nhau, trong khi thư không nêu tên siêu thị tổ chức. Sự khác biệt này cần được xác minh, không tự chứng minh lừa đảo. Hạn trong hôm nay tạo áp lực xử lý."
   },
   {
     "id": 54,
@@ -483,7 +493,7 @@
     "sender": "Chăm sóc khách hàng <cskh@vienthong-triana.com>",
     "subject": "Quà tri ân khách hàng thân thiết: thẻ nạp 500.000đ",
     "body": "Cảm ơn bạn đã đồng hành cùng chúng tôi nhiều năm. Để nhận thẻ nạp điện thoại 500.000đ, hãy đăng nhập vào cổng khách hàng tại link dưới.\n\nhttp://vienthong-triana.com/dang-nhap",
-    "red_flags": "Nhà mạng thật gửi quà qua tin nhắn của tổng đài và ứng dụng chính thức. Link dẫn tới trang đăng nhập giả nhằm lấy mật khẩu. Không nêu tên nhà mạng cụ thể."
+    "red_flags": "Nhà mạng thường gửi quà qua tin nhắn của tổng đài hoặc ứng dụng chính thức. Hãy kiểm tra yêu cầu trực tiếp trên hệ thống đã biết trước khi đăng nhập. Thư không nêu tên nhà mạng cụ thể."
   },
   {
     "id": 55,
@@ -492,7 +502,7 @@
     "sender": "Ban tổ chức xổ số <office@intl-lottery-win.org>",
     "subject": "Thư chúc mừng giải thưởng xổ số quốc tế",
     "body": "Địa chỉ email của bạn đã trúng giải nhì xổ số quốc tế trị giá 850.000 USD. Để nhận thưởng, vui lòng gửi họ tên, số hộ chiếu và số tài khoản ngân hàng.\n\nTrân trọng,\nBan tổ chức",
-    "red_flags": "Không thể trúng xổ số mà mình chưa từng mua vé. Yêu cầu gửi hộ chiếu và tài khoản ngân hàng để lấy cắp danh tính. Đây là kiểu lừa đảo xổ số quốc tế rất cũ nhưng vẫn phổ biến."
+    "red_flags": "Thư không nêu tên cuộc xổ số, kỳ quay hay mã vé nào. Đây là kiểu lừa đảo xổ số quốc tế rất cũ nhưng vẫn phổ biến. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 56,
@@ -501,7 +511,7 @@
     "sender": "Kiếm tiền online <info@kiemtien-nhanh.net>",
     "subject": "Cơ hội nhận 500.000đ chỉ sau 1 phút",
     "body": "Tải ứng dụng của chúng tôi, đăng ký tài khoản và nhận ngay 500.000đ vào ví. Rút tiền không giới hạn. Ai cũng làm được!\n\nTải app: https://kiemtien-nhanh.net/app",
-    "red_flags": "Nhận tiền mà không cần làm gì là mồi nhử. Ứng dụng này có thể đòi quyền truy cập danh bạ và tin nhắn. Rút tiền sẽ bị yêu cầu nạp trước để mở khóa."
+    "red_flags": "Nhận tiền mà không cần làm gì là mồi nhử. Ứng dụng này có thể đòi quyền truy cập danh bạ và tin nhắn. Kịch bản này thường yêu cầu nạp tiền trước thì mới cho rút."
   },
   {
     "id": 57,
@@ -510,7 +520,7 @@
     "sender": "Du lịch giá rẻ <sale@vetour-phuquoc.com>",
     "subject": "Vé du lịch Phú Quốc miễn phí cho 2 người",
     "body": "Bạn đã trúng chuyến du lịch Phú Quốc 3 ngày 2 đêm cho 2 người. Chỉ cần đóng thuế thu nhập 1.800.000đ để hoàn tất thủ tục nhận thưởng.\n\nThanh toán tại: http://vetour-phuquoc.com/thue",
-    "red_flags": "Phải đóng thuế trước khi nhận thưởng là dấu hiệu lừa đảo kinh điển. Bạn không tham gia cuộc thi nào. Link thanh toán không thuộc công ty du lịch nào đã biết."
+    "red_flags": "Phải đóng thuế trước khi nhận thưởng là dấu hiệu lừa đảo thường gặp. Thư không nêu tên cuộc thi hay đơn vị tổ chức nào. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 58,
@@ -519,16 +529,16 @@
     "sender": "Nhà mạng <thuong@nhamang-quatang.com>",
     "subject": "Nhận thưởng cuối năm từ nhà mạng",
     "body": "Thuê bao của bạn được tặng 20GB data và 200.000đ vào tài khoản. Nhập mã OTP gửi về điện thoại tại trang dưới đây để kích hoạt ưu đãi.\n\nhttps://nhamang-quatang.com/kich-hoat",
-    "red_flags": "Nhập OTP vào trang lạ có thể làm kẻ gian chiếm tài khoản hoặc đăng ký dịch vụ tính phí. Ưu đãi thật do nhà mạng gửi tin nhắn từ đầu số chính thức. Tên miền không phải của nhà mạng."
+    "red_flags": "Nhập OTP vào trang lạ có thể khiến kẻ gian chiếm tài khoản hoặc đăng ký dịch vụ tính phí. Ưu đãi thật thường do nhà mạng gửi tin nhắn từ đầu số chính thức. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 59,
     "category": "Trúng thưởng, khuyến mãi",
     "is_phishing": 1,
-    "sender": "Shopee Ưu đãi <voucher@shopee-giamgia70.com>",
+    "sender": "Shoppio Ưu đãi <voucher@shoppio-giamgia70.com>",
     "subject": "Phiếu giảm giá 70% dành cho 500 khách hàng đầu tiên",
-    "body": "Shopee gửi tặng bạn phiếu giảm giá 70% cho mọi đơn hàng. Chỉ có 500 suất, nhận ngay trước khi hết bằng cách đăng nhập tại đây:\n\nhttps://shopee-giamgia70.com/nhan-voucher",
-    "red_flags": "Tên miền không phải của Shopee. Giảm giá sâu cùng số lượng có hạn là mồi nhử. Đăng nhập ở đây sẽ gửi mật khẩu cho kẻ gian."
+    "body": "Shoppio gửi tặng bạn phiếu giảm giá 70% cho mọi đơn hàng. Chỉ có 500 suất, nhận ngay trước khi hết bằng cách đăng nhập tại đây:\n\nhttps://shoppio-giamgia70.com/nhan-voucher",
+    "red_flags": "Giảm giá sâu cùng số lượng có hạn là mồi nhử. Đăng nhập ở đây có thể khiến mật khẩu rơi vào tay kẻ gian. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 60,
@@ -537,7 +547,7 @@
     "sender": "Hoàn tiền mua sắm <hoantien@cashback-vn.net>",
     "subject": "Chương trình hoàn tiền: nhận ngay 1.000.000đ",
     "body": "Bạn đủ điều kiện nhận hoàn tiền 1.000.000đ cho các giao dịch mua sắm gần đây. Để nhận tiền, vui lòng nhập số thẻ ngân hàng và ngày hết hạn tại biểu mẫu sau.\n\nhttps://cashback-vn.net/nhan-tien",
-    "red_flags": "Chương trình hoàn tiền thật không cần nhập số thẻ vào biểu mẫu từ email. Không nêu giao dịch nào được hoàn. Nhận tiền miễn phí là mồi nhử để lấy thông tin thẻ."
+    "red_flags": "Chương trình hoàn tiền hợp lệ thường không cần nhập số thẻ vào biểu mẫu từ email. Thư không nêu giao dịch nào được hoàn. Nhận tiền miễn phí là mồi nhử để lấy thông tin thẻ."
   },
   {
     "id": 61,
@@ -546,16 +556,16 @@
     "sender": "Giao hàng <thongbao@giaohang-nhanh247.com>",
     "subject": "Kiện hàng của bạn đang chờ giao",
     "body": "Kiện hàng mã VN66210984 đang chờ giao nhưng thiếu phí giao hàng 18.000đ. Vui lòng thanh toán tại liên kết dưới đây trước 18h hôm nay, nếu không kiện hàng sẽ bị hoàn.\n\nhttp://giaohang-nhanh247.com/thanh-toan",
-    "red_flags": "Bạn không đặt hàng nào đang chờ. Phí nhỏ 18.000đ chỉ để lấy thông tin thẻ. Đơn vị giao hàng thật không thu phí qua đường dẫn gửi trong email."
+    "red_flags": "Thư không nêu người gửi hàng, tên sản phẩm hay địa chỉ giao, chỉ có một mã vận đơn. Phí nhỏ 18.000đ thường chỉ là cớ để lấy thông tin thẻ. Không nên thanh toán phí qua đường dẫn trong thư, hãy kiểm tra đơn trên ứng dụng hoặc trang chính thức của đơn vị vận chuyển."
   },
   {
     "id": 62,
     "category": "Giao hàng, bưu kiện",
     "is_phishing": 1,
-    "sender": "Giao hàng <trangthai@vnpost-giao.com>",
+    "sender": "Giao hàng <trangthai@mekongpost-giao.com>",
     "subject": "Giao hàng thất bại lần 2, cập nhật địa chỉ ngay",
-    "body": "Shipper đã giao kiện hàng nhưng không gặp người nhận. Vui lòng cập nhật lại địa chỉ giao hàng tại link rút gọn bên dưới.\n\nhttp://bit.example/giao-lai",
-    "red_flags": "Link rút gọn che đi địa chỉ thật. Không nêu rõ đơn hàng nào và của ai. Tên miền giả mạo đơn vị bưu chính."
+    "body": "Shipper đã giao kiện hàng nhưng không gặp người nhận. Vui lòng cập nhật lại địa chỉ giao hàng tại link rút gọn bên dưới.\n\nhttp://bit.ly/giao-lai-kien-hang",
+    "red_flags": "Link rút gọn che đi địa chỉ thật. Không nêu rõ đơn hàng nào và của ai. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 63,
@@ -563,8 +573,8 @@
     "is_phishing": 1,
     "sender": "Hải quan <hotro@haiquan-thongbao.com>",
     "subject": "Hải quan giữ kiện hàng mã VN8821640",
-    "body": "Kiện hàng gửi cho bạn từ nước ngoài đang bị hải quan tạm giữ do thiếu giấy tờ. Vui lòng nộp phí thông quan 1.250.000đ qua tài khoản dưới đây để được giải phóng.\n\nChủ tài khoản: Trần Văn Lực",
-    "red_flags": "Hải quan chỉ thu phí qua cổng chính thức và xuất biên lai. Người nhận tiền là một cá nhân. Bạn không chờ kiện hàng quốc tế nào."
+    "body": "Kiện hàng gửi cho bạn từ nước ngoài đang bị hải quan tạm giữ do thiếu giấy tờ. Vui lòng nộp phí thông quan 1.250.000đ qua tài khoản dưới đây để được giải phóng.\n\nSố tài khoản: 0213 9087 6541 (Namphongbank)\nChủ tài khoản: Trần Văn Lực",
+    "red_flags": "Thư không nêu người gửi hay mô tả hàng hóa, chỉ có một mã vận đơn. Phí thông quan được nộp qua kênh chính thức và có chứng từ, còn thư này bảo chuyển tiền vào tài khoản cá nhân. Chủ tài khoản là một cá nhân chứ không phải cơ quan hải quan. Nếu đang có hàng gửi từ nước ngoài, hãy tra mã vận đơn trên trang của đơn vị vận chuyển thay vì làm theo thư."
   },
   {
     "id": 64,
@@ -579,28 +589,28 @@
     "id": 65,
     "category": "Giao hàng, bưu kiện",
     "is_phishing": 1,
-    "sender": "Bưu cục <buucuc@vnpost-phat.net>",
+    "sender": "Bưu cục <buucuc@mekongpost-phat.net>",
     "subject": "Bưu kiện chưa thể giao, hãy xác nhận thông tin thẻ",
-    "body": "Chúng tôi cần xác nhận thẻ thanh toán của bạn để hoàn tất giao bưu kiện. Vui lòng điền số thẻ, ngày hết hạn tại biểu mẫu sau.\n\nhttps://vnpost-phat.net/the",
-    "red_flags": "Việc giao hàng không cần thông tin thẻ thanh toán. Biểu mẫu nhập thẻ nằm trên tên miền lạ. Cách nói rất chung chung, không có tên người nhận."
+    "body": "Chúng tôi cần xác nhận thẻ thanh toán của bạn để hoàn tất giao bưu kiện. Vui lòng điền số thẻ, ngày hết hạn tại biểu mẫu sau.\n\nhttps://mekongpost-phat.net/the",
+    "red_flags": "Giao bưu kiện thông thường không cần bạn nhập thông tin thẻ qua biểu mẫu trong email. Cách nói rất chung chung, không có tên người nhận. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 66,
     "category": "Giao hàng, bưu kiện",
     "is_phishing": 1,
-    "sender": "Giao hàng tiết kiệm <noreply@ghtk-xacnhan.com>",
+    "sender": "Giao hàng Tiện Lợi <noreply@ghtl-xacnhan.com>",
     "subject": "Xác nhận nhận hàng để tránh hoàn đơn",
-    "body": "Đơn hàng của bạn sắp được giao. Vui lòng bấm vào nút xác nhận bên dưới để shipper gọi cho bạn. Nếu không xác nhận, đơn sẽ bị hoàn về người gửi.\n\n[XÁC NHẬN NGAY]",
-    "red_flags": "Nút bấm không cho thấy địa chỉ thật. Đơn vị giao hàng thật không cần bạn xác nhận qua email. Không có mã đơn hàng hay tên người gửi."
+    "body": "Đơn hàng của bạn sắp được giao. Vui lòng bấm vào liên kết xác nhận bên dưới để shipper gọi cho bạn. Nếu không xác nhận, đơn sẽ bị hoàn về người gửi.\n\nXác nhận nhận hàng: https://ghtl-xacnhan.com/xac-nhan",
+    "red_flags": "Thư không có mã đơn hàng hay tên người gửi. Đơn vị giao hàng thường không cần người nhận xác nhận qua email, nếu cần hãy kiểm tra trong ứng dụng hoặc trang chính thức. Dọa hoàn đơn để người đọc bấm vội. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 67,
     "category": "Giao hàng, bưu kiện",
     "is_phishing": 1,
-    "sender": "Phiếu giao hàng <phieugiao@abccorp-delivery.com>",
+    "sender": "Phiếu giao hàng <phieugiao@bingroup-delivery.com>",
     "subject": "Phiếu giao hàng đính kèm",
     "body": "Gửi bạn phiếu giao hàng của đơn gần nhất. Vui lòng giải nén và kiểm tra thông tin trước khi nhận hàng.\n\nĐính kèm: PhieuGiao_Oct.zip",
-    "red_flags": "File nén không rõ nội dung từ người gửi lạ. Phiếu giao hàng thật là PDF hoặc ảnh. Tên miền cố tình giống tên công ty."
+    "red_flags": "Tệp nén không rõ nội dung từ người gửi lạ. Phiếu giao hàng thường là PDF hoặc ảnh. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 68,
@@ -609,16 +619,16 @@
     "sender": "Shipper <noreply@shipper-lienhe.com>",
     "subject": "Shipper không liên hệ được với bạn",
     "body": "Shipper đã gọi nhưng không liên lạc được. Để nhận đơn, vui lòng bấm vào link sau và đăng nhập bằng số điện thoại và mã xác thực.\n\nhttps://shipper-lienhe.com/dang-nhap",
-    "red_flags": "Link đăng nhập bằng số điện thoại kèm mã xác thực dùng để chiếm tài khoản. Không có thông tin đơn hàng cụ thể. Mô tả quá chung chung."
+    "red_flags": "Link đăng nhập bằng số điện thoại kèm mã xác thực có thể dùng để chiếm tài khoản. Không có thông tin đơn hàng cụ thể. Mô tả quá chung chung."
   },
   {
     "id": 69,
     "category": "Giao hàng, bưu kiện",
     "is_phishing": 1,
-    "sender": "Giao hàng nhanh <qr@giaonhan-qrcode.com>",
-    "subject": "Mã QR nhận hàng của bạn đã sẵn sàng",
-    "body": "Đơn hàng của bạn đã về bưu cục. Vui lòng quét mã QR đính kèm tại quầy để nhận hàng, hoặc quét bằng điện thoại để xác nhận thông tin trước.\n\nĐính kèm: MaNhanHang_QR.png",
-    "red_flags": "Mã QR lạ có thể dẫn tới trang lừa đảo hoặc tải phần mềm độc hại. Không nêu tên hàng hay mã đơn cụ thể. Đơn vị giao hàng thật gửi mã nhận hàng qua ứng dụng của họ."
+    "sender": "Giao nhận <thongbao@tanphat-giaonhan.com>",
+    "subject": "Kiện hàng chưa được nhận, xác nhận lịch giao mới",
+    "body": "Chúng tôi đã cố gắng giao kiện hàng của bạn hai lần nhưng không thành công. Nếu không chọn lịch giao mới trong hôm nay, kiện hàng sẽ được chuyển về kho và tính phí lưu kho.\n\nChọn lịch giao mới: https://tanphat-giaonhan.com/lich-giao",
+    "red_flags": "Thư không nêu mã vận đơn, tên người gửi hay sản phẩm nào. Đe dọa tính phí lưu kho và hạn trong hôm nay nhằm thúc giục bấm nhanh. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 70,
@@ -627,25 +637,25 @@
     "sender": "Chăm sóc khách hàng <khieunai@vanchuyen-boithuong.com>",
     "subject": "Kiện hàng bị hư hỏng, yêu cầu bồi thường",
     "body": "Kiện hàng của bạn bị hư hỏng trong quá trình vận chuyển. Để được bồi thường, vui lòng điền số tài khoản ngân hàng và chụp ảnh sản phẩm tại link sau.\n\nhttps://vanchuyen-boithuong.com/boi-thuong",
-    "red_flags": "Bạn không có đơn hàng nào bị hư hỏng. Việc điền số tài khoản để nhận bồi thường là bước lấy thông tin. Tên miền chung chung, không thuộc đơn vị vận chuyển cụ thể."
+    "red_flags": "Thư không nêu mã đơn hàng, tên sản phẩm hay đơn vị vận chuyển nào. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 71,
     "category": "Chia sẻ tài liệu giả",
     "is_phishing": 1,
-    "sender": "Google Drive <drive-shares@googledrive-share.com>",
+    "sender": "Nimbo Drive <drive-shares@nimbodrive-share.com>",
     "subject": "Anh Tuấn đã chia sẻ tệp 'Bang_luong_Q4' với bạn",
-    "body": "Anh Tuấn đã chia sẻ một tệp với bạn trên Google Drive.\n\nBang_luong_Q4.xlsx\n\n[Mở trong Drive]\n\nĐể xem tệp, vui lòng đăng nhập bằng tài khoản Google của bạn.",
-    "red_flags": "Tên miền googledrive-share.com không phải của Google. Bạn không quen ai tên Tuấn chia sẻ tệp này. Tên tệp về bảng lương đánh vào sự tò mò."
+    "body": "Anh Tuấn đã chia sẻ một tệp với bạn trên Nimbo Drive.\n\nBang_luong_Q4.xlsx\n\nMở trong Drive: https://nimbodrive-share.com/open/bang-luong-q4\n\nĐể xem tệp, vui lòng đăng nhập bằng tài khoản Nimbo của bạn.",
+    "red_flags": "Thư chỉ ghi Anh Tuấn, không có họ tên đầy đủ hay email của người chia sẻ để kiểm tra. Tên tệp về bảng lương đánh vào sự tò mò, và liên kết yêu cầu đăng nhập bằng tài khoản Nimbo. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 72,
     "category": "Chia sẻ tài liệu giả",
     "is_phishing": 1,
-    "sender": "SharePoint <no-reply@sharepoint-docs.net>",
+    "sender": "Sharehub <no-reply@sharehub-docs.net>",
     "subject": "Hợp đồng_2026 đang chờ bạn xem",
-    "body": "Một tài liệu mới đã được chia sẻ với bạn. Vui lòng đăng nhập bằng email công ty để xem Hop_dong_2026.pdf.\n\nXem tài liệu: https://sharepoint-docs.net/view",
-    "red_flags": "SharePoint thật nằm trên tên miền của Microsoft hoặc của công ty. Không biết ai chia sẻ và vì sao. Trang đăng nhập giả sẽ lấy mật khẩu."
+    "body": "Một tài liệu mới đã được chia sẻ với bạn. Vui lòng đăng nhập bằng email công ty để xem Hop_dong_2026.pdf.\n\nXem tài liệu: https://sharehub-docs.net/view",
+    "red_flags": "Thư không nói ai là người chia sẻ và tài liệu phục vụ việc gì. Trang đăng nhập giả có thể lấy mật khẩu. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 73,
@@ -654,124 +664,124 @@
     "sender": "Dịch vụ fax <fax@efax-nhan.com>",
     "subject": "Bạn nhận được 1 fax mới",
     "body": "Bạn có 1 fax mới gồm 3 trang. Bấm vào link bên dưới để xem trên trình duyệt.\n\nhttp://efax-nhan.com/xem/3921",
-    "red_flags": "Ít ai còn dùng dịch vụ fax qua email. Thư không nêu người gửi hay nội dung. Link dùng http và dẫn tới trang giả."
+    "red_flags": "Dịch vụ nhận fax qua email ngày nay ít gặp trong công việc. Thư không nêu người gửi hay nội dung. Link dùng http và có thể dẫn tới trang giả."
   },
   {
     "id": 74,
     "category": "Chia sẻ tài liệu giả",
     "is_phishing": 1,
-    "sender": "Microsoft Teams <teams@teams-thongbao.com>",
-    "subject": "Bạn có 3 tin nhắn Teams chưa đọc",
-    "body": "Bạn có 3 tin nhắn mới chưa đọc trong Teams.\n\nTin nhắn gần nhất: 'Anh gửi lại file hợp đồng nhé'\n\n[Trả lời trên Teams]",
-    "red_flags": "Thông báo Teams thật đến từ chính ứng dụng, không từ tên miền teams-thongbao.com. Đoạn trích tin nhắn nhằm khiến bạn tò mò và bấm vào. Nút bấm dẫn tới trang đăng nhập giả."
+    "sender": "Teamly <teamly@teamly-thongbao.com>",
+    "subject": "Bạn có 3 tin nhắn Teamly chưa đọc",
+    "body": "Bạn có 3 tin nhắn mới chưa đọc trong Teamly.\n\nTin nhắn gần nhất: 'Anh gửi lại file hợp đồng nhé'\n\nTrả lời trên Teamly: https://teamly-thongbao.com/tin-nhan",
+    "red_flags": "Đoạn trích tin nhắn nhằm khiến bạn tò mò và bấm vào. Hãy kiểm tra yêu cầu trực tiếp trên hệ thống đã biết trước khi đăng nhập. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 75,
     "category": "Chia sẻ tài liệu giả",
     "is_phishing": 1,
-    "sender": "OneDrive <share@onedrive-baocao.com>",
+    "sender": "Unodrive <share@unodrive-baocao.com>",
     "subject": "Báo cáo doanh thu quý 3 đã được ghim cho bạn",
-    "body": "Chị Lan đã ghim báo cáo doanh thu quý 3 trong thư mục chung. Bấm để xem ngay:\n\nhttps://onedrive-baocao.com/q3",
-    "red_flags": "Tên miền giả mạo OneDrive. Chị Lan được nhắc tên cho quen thuộc, nhưng bạn có thể kiểm tra lại với chị qua kênh khác. Link yêu cầu đăng nhập tài khoản công ty."
+    "body": "Chị Quyên đã ghim báo cáo doanh thu quý 3 trong thư mục chung. Bấm để xem ngay:\n\nhttps://unodrive-baocao.com/q3",
+    "red_flags": "Tên đồng nghiệp được nhắc cho quen thuộc, nhưng bạn có thể kiểm tra lại với người đó qua kênh khác. Link yêu cầu đăng nhập tài khoản công ty. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 76,
     "category": "Chia sẻ tài liệu giả",
     "is_phishing": 1,
-    "sender": "Đối tác <partner.docs@gmail.com>",
+    "sender": "Đối tác <partner.docs@mailnhanh.com>",
     "subject": "Mời bạn chỉnh sửa tài liệu 'Kế hoạch đối tác 2027'",
-    "body": "Chào bạn,\n\nMình chia sẻ tài liệu kế hoạch hợp tác để bạn góp ý. Bạn mở bằng liên kết này nhé.\n\nhttps://docs-collab.example/ke-hoach",
-    "red_flags": "Người gửi dùng Gmail ẩn danh và bạn không biết là ai. Tài liệu hợp tác thật được thống nhất trước qua người phụ trách. Link dẫn đến trang đăng nhập giả."
+    "body": "Chào bạn,\n\nMình chia sẻ tài liệu kế hoạch hợp tác để bạn góp ý. Bạn mở bằng liên kết này nhé.\n\nhttps://docs-collab-share.com/ke-hoach",
+    "red_flags": "Thư không ghi tên người gửi, tên công ty hay lý do cần góp ý. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 77,
     "category": "Chia sẻ tài liệu giả",
     "is_phishing": 1,
-    "sender": "DocuSign <dse@docusign-xacnhan.com>",
+    "sender": "Signaro <dse@signaro-xacnhan.com>",
     "subject": "Tài liệu đang chờ chữ ký của bạn",
-    "body": "Có một tài liệu cần bạn ký điện tử gấp. Vui lòng xem lại và ký tại liên kết dưới đây trước 17h.\n\nXEM VÀ KÝ TÀI LIỆU",
-    "red_flags": "Bạn không chờ tài liệu nào cần ký. Tên miền không phải của DocuSign. Hạn 17h và nút bấm không hiện địa chỉ thật."
+    "body": "Có một tài liệu cần bạn ký điện tử gấp. Vui lòng xem lại và ký tại liên kết dưới đây trước 17h.\n\nXem và ký tài liệu: https://signaro-xacnhan.com/ky",
+    "red_flags": "Thư không nêu tên tài liệu, người gửi hay công ty cần ký. Hạn 17h tạo áp lực phải ký gấp. Nếu đang chờ một tài liệu cần ký, hãy tự mở nền tảng ký bằng địa chỉ đã biết thay vì bấm link trong thư. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 78,
     "category": "Chia sẻ tài liệu giả",
     "is_phishing": 1,
-    "sender": "Dropbox <no-reply@dropbox-tailieu.com>",
+    "sender": "Stashbox <no-reply@stashbox-tailieu.com>",
     "subject": "Tệp dung lượng lớn sắp hết hạn tải xuống",
-    "body": "Tệp ThietKe_Final.zip dung lượng 1.2GB sẽ hết hạn sau 6 giờ. Hãy đăng nhập Dropbox để tải về trước khi quá muộn.\n\nhttps://dropbox-tailieu.com/tai",
-    "red_flags": "Không rõ ai gửi tệp. Thời hạn 6 giờ để người đọc làm nhanh. Trang đăng nhập nằm trên tên miền giả mạo Dropbox."
+    "body": "Tệp ThietKe_Final.zip dung lượng 1.2GB sẽ hết hạn sau 6 giờ. Hãy đăng nhập Stashbox để tải về trước khi quá muộn.\n\nhttps://stashbox-tailieu.com/tai",
+    "red_flags": "Không rõ ai gửi tệp. Thời hạn 6 giờ để người đọc làm nhanh. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 79,
     "category": "Chia sẻ tài liệu giả",
     "is_phishing": 1,
-    "sender": "Canva <share@canva-thietke.com>",
+    "sender": "Pixelo <share@pixelo-thietke.com>",
     "subject": "Một thiết kế mới đã được chia sẻ với bạn",
-    "body": "Lan Anh vừa chia sẻ thiết kế 'Brochure_2027' với bạn trên Canva. Bấm vào nút bên dưới để xem và chỉnh sửa.\n\n[Mở thiết kế]",
-    "red_flags": "Tên miền canva-thietke.com không phải của Canva. Bạn không quen ai tên Lan Anh gửi thiết kế. Nút bấm dẫn đến trang đăng nhập giả."
+    "body": "Lan Anh vừa chia sẻ thiết kế 'Brochure_2027' với bạn trên Pixelo. Bấm vào liên kết bên dưới để xem và chỉnh sửa.\n\nMở thiết kế: https://pixelo-thietke.com/brochure-2027",
+    "red_flags": "Thư chỉ ghi tên Lan Anh, không có email hay thông tin nào của người chia sẻ để kiểm tra. Hãy kiểm tra yêu cầu trực tiếp trên hệ thống đã biết trước khi đăng nhập. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 80,
     "category": "Chia sẻ tài liệu giả",
     "is_phishing": 1,
-    "sender": "Notion <team@notion-workspace.net>",
+    "sender": "Notely <team@notely-workspace.net>",
     "subject": "Bạn được mời vào không gian làm việc 'Dự án Nova'",
-    "body": "Minh Khang đã mời bạn vào không gian làm việc 'Dự án Nova' trên Notion. Chấp nhận lời mời bằng cách đăng nhập với email công ty của bạn.\n\nhttps://notion-workspace.net/join",
-    "red_flags": "Bạn không tham gia dự án Nova và không biết người mời. Địa chỉ gửi không phải của Notion. Link dẫn tới trang đăng nhập giả để lấy mật khẩu."
+    "body": "Minh Khang đã mời bạn vào không gian làm việc 'Dự án Nova' trên Notely. Chấp nhận lời mời bằng cách đăng nhập với email công ty của bạn.\n\nhttps://notely-workspace.net/join",
+    "red_flags": "Thư yêu cầu đăng nhập bằng email công ty để chấp nhận lời mời. Link có thể dẫn tới trang đăng nhập giả để lấy mật khẩu. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 81,
     "category": "Cảnh báo bảo mật tài khoản",
     "is_phishing": 1,
-    "sender": "Facebook <security@facebook-baove.com>",
-    "subject": "Trang Facebook công việc của bạn sẽ bị khóa",
-    "body": "Chúng tôi nhận được báo cáo vi phạm tiêu chuẩn cộng đồng trên trang của bạn. Nếu không khiếu nại trong 24 giờ, trang sẽ bị khóa vĩnh viễn.\n\nKhiếu nại tại đây: http://facebook-baove.com/khieu-nai",
-    "red_flags": "Tên miền facebook-baove.com không phải của Facebook. Dọa khóa vĩnh viễn để người đọc hoảng sợ. Không chỉ rõ vi phạm nào."
+    "sender": "Faceloop <security@faceloop-baove.com>",
+    "subject": "Trang Faceloop công việc của bạn sẽ bị khóa",
+    "body": "Chúng tôi nhận được báo cáo vi phạm tiêu chuẩn cộng đồng trên trang của bạn. Nếu không khiếu nại trong 24 giờ, trang sẽ bị khóa vĩnh viễn.\n\nKhiếu nại tại đây: http://faceloop-baove.com/khieu-nai",
+    "red_flags": "Dọa khóa vĩnh viễn nhằm làm người đọc hoảng sợ. Không chỉ rõ vi phạm nào. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 82,
     "category": "Cảnh báo bảo mật tài khoản",
     "is_phishing": 1,
-    "sender": "LinkedIn <security@linkedin-canhbao.com>",
+    "sender": "Careerlink <security@careerlink-canhbao.com>",
     "subject": "Cảnh báo: có người đăng nhập từ nước ngoài",
-    "body": "Chúng tôi phát hiện một lượt đăng nhập vào tài khoản của bạn từ Nga. Nếu đó không phải bạn, hãy đổi mật khẩu ngay bằng cách bấm vào link bên dưới.",
-    "red_flags": "Link đổi mật khẩu dẫn tới trang giả. Nên tự mở LinkedIn rồi vào cài đặt thay vì bấm link trong thư. Tên miền giả mạo thương hiệu."
+    "body": "Chúng tôi phát hiện một lượt đăng nhập vào tài khoản của bạn từ Nga. Nếu đó không phải bạn, hãy đổi mật khẩu ngay bằng cách bấm vào link bên dưới.\n\nhttps://careerlink-canhbao.com/doi-mat-khau",
+    "red_flags": "Hãy kiểm tra yêu cầu trực tiếp trên hệ thống đã biết trước khi đăng nhập. Nên tự mở Careerlink rồi vào cài đặt thay vì bấm link trong thư. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 83,
     "category": "Cảnh báo bảo mật tài khoản",
     "is_phishing": 1,
-    "sender": "Zalo <hotro@zalo-xacminh.com>",
-    "subject": "Xác minh tài khoản Zalo để không bị khóa",
-    "body": "Tài khoản Zalo của bạn chưa được xác minh theo quy định mới. Vui lòng nhập số điện thoại và mã xác thực tại đây trong 12 giờ.\n\nhttps://zalo-xacminh.com/xac-minh",
-    "red_flags": "Zalo không xác minh qua email lạ. Nhập mã xác thực vào trang giả sẽ làm mất tài khoản. Hạn 12 giờ chỉ để gây áp lực."
+    "sender": "Chatly <hotro@chatly-xacminh.com>",
+    "subject": "Xác minh tài khoản Chatly để không bị khóa",
+    "body": "Tài khoản Chatly của bạn chưa được xác minh theo quy định mới. Vui lòng nhập số điện thoại và mã xác thực tại đây trong 12 giờ.\n\nhttps://chatly-xacminh.com/xac-minh",
+    "red_flags": "Hãy kiểm tra yêu cầu trực tiếp trên hệ thống đã biết trước khi đăng nhập. Hạn 12 giờ có thể gây áp lực. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 84,
     "category": "Cảnh báo bảo mật tài khoản",
     "is_phishing": 1,
-    "sender": "Google <no-reply@accounts-google-baomat.com>",
-    "subject": "Cảnh báo bảo mật nghiêm trọng cho tài khoản Google",
-    "body": "Tài khoản Google của bạn có thể đã bị xâm phạm. Vui lòng xác minh danh tính bằng cách đăng nhập tại liên kết sau để bảo vệ dữ liệu của bạn.\n\nhttps://accounts-google-baomat.com/verify",
-    "red_flags": "Tên miền thật của Google luôn kết thúc bằng google.com. Địa chỉ ở đây có nhiều từ lạ đi kèm. Cảnh báo chung chung không nêu thời điểm hay thiết bị cụ thể."
+    "sender": "Nimbo <no-reply@accounts-nimbo-baomat.com>",
+    "subject": "Cảnh báo bảo mật nghiêm trọng cho tài khoản Nimbo",
+    "body": "Tài khoản Nimbo của bạn có thể đã bị xâm phạm. Vui lòng xác minh danh tính bằng cách đăng nhập tại liên kết sau để bảo vệ dữ liệu của bạn.\n\nhttps://accounts-nimbo-baomat.com/verify",
+    "red_flags": "Thư yêu cầu đăng nhập để xác minh danh tính nhưng không nêu thời điểm hoặc thiết bị liên quan đến sự cố. Hãy tự mở ứng dụng hoặc website đã biết để kiểm tra cảnh báo bảo mật."
   },
   {
     "id": 85,
     "category": "Cảnh báo bảo mật tài khoản",
     "is_phishing": 1,
-    "sender": "Apple <appleid@apple-id-xacthuc.com>",
-    "subject": "Apple ID của bạn đã bị vô hiệu hóa",
-    "body": "Apple ID của bạn đã bị vô hiệu hóa vì lý do bảo mật. Để kích hoạt lại, vui lòng xác nhận thông tin thanh toán tại đây.\n\nhttp://apple-id-xacthuc.com/kich-hoat",
-    "red_flags": "Apple không bắt xác nhận thông tin thanh toán qua đường dẫn trong thư. Tên miền apple-id-xacthuc.com là giả. Thư thiếu tên chủ tài khoản."
+    "sender": "Pomelo <pomeloid@pomelo-id-xacthuc.com>",
+    "subject": "Pomelo ID của bạn đã bị vô hiệu hóa",
+    "body": "Pomelo ID của bạn đã bị vô hiệu hóa vì lý do bảo mật. Để kích hoạt lại, vui lòng xác nhận thông tin thanh toán tại đây.\n\nhttp://pomelo-id-xacthuc.com/kich-hoat",
+    "red_flags": "Thư yêu cầu xác nhận thông tin thanh toán để khôi phục tài khoản, nhưng không giải thích vì sao thông tin này cần thiết. Đường dẫn sử dụng HTTP, không phù hợp để gửi thông tin nhạy cảm. Hãy tự mở ứng dụng hoặc website Pomelo đã biết để kiểm tra trạng thái tài khoản."
   },
   {
     "id": 86,
     "category": "Cảnh báo bảo mật tài khoản",
     "is_phishing": 1,
-    "sender": "Microsoft <account@microsoft-hanche.com>",
-    "subject": "Tài khoản Microsoft của bạn bị hạn chế",
-    "body": "Một số tính năng trong tài khoản của bạn đã bị hạn chế. Vui lòng xác minh để khôi phục quyền truy cập Outlook và OneDrive.\n\nXÁC MINH NGAY",
-    "red_flags": "Nút bấm che địa chỉ đích. Không có chi tiết về hạn chế nào. Microsoft chỉ dùng tên miền microsoft.com hoặc live.com."
+    "sender": "Novasoft <account@novasoft-hanche.com>",
+    "subject": "Tài khoản Novasoft của bạn bị hạn chế",
+    "body": "Một số tính năng trong tài khoản của bạn đã bị hạn chế. Vui lòng xác minh để khôi phục quyền truy cập Hopthu và Unodrive.\n\nXác minh ngay: https://novasoft-hanche.com/xac-minh",
+    "red_flags": "Không có chi tiết về việc tài khoản bị hạn chế ở mục nào. Việc xác minh qua link trong thư để khôi phục quyền truy cập là cách thường dùng để lấy mật khẩu. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 87,
@@ -780,7 +790,7 @@
     "sender": "Fanpage Support <support@pages-banquyen.com>",
     "subject": "Thông báo vi phạm bản quyền trên fanpage",
     "body": "Fanpage của bạn bị tố cáo vi phạm bản quyền hình ảnh. Bạn có 24 giờ để gửi tài liệu chứng minh quyền sở hữu qua biểu mẫu sau, nếu không trang sẽ bị gỡ.\n\nhttps://pages-banquyen.com/bieu-mau",
-    "red_flags": "Biểu mẫu thu thập mật khẩu và tài liệu cá nhân. Dọa gỡ trang trong 24 giờ. Mạo danh bộ phận hỗ trợ nhưng không đúng tên miền."
+    "red_flags": "Biểu mẫu có thể thu thập mật khẩu và tài liệu cá nhân. Dọa gỡ trang trong 24 giờ. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 88,
@@ -789,16 +799,16 @@
     "sender": "Kiểm tra rò rỉ <alert@haveibeenleaked-vn.com>",
     "subject": "Mật khẩu của bạn đã bị lộ trong vụ rò rỉ dữ liệu",
     "body": "Chúng tôi phát hiện email của bạn xuất hiện trong một vụ rò rỉ dữ liệu lớn. Hãy đổi mật khẩu ngay tại liên kết dưới để bảo vệ tài khoản.\n\nhttps://haveibeenleaked-vn.com/doi-mat-khau",
-    "red_flags": "Dịch vụ lạ nhưng đưa ra cảnh báo khẩn cấp. Link đổi mật khẩu dẫn tới trang thu thập mật khẩu của bạn. Muốn kiểm tra rò rỉ nên dùng trang uy tín và tự gõ địa chỉ."
+    "red_flags": "Dịch vụ lạ nhưng đưa ra cảnh báo khẩn cấp. Link đổi mật khẩu có thể dẫn tới trang thu thập mật khẩu của bạn. Muốn kiểm tra rò rỉ nên dùng trang uy tín và tự gõ địa chỉ."
   },
   {
     "id": 89,
     "category": "Cảnh báo bảo mật tài khoản",
     "is_phishing": 1,
-    "sender": "Instagram <security@instagram-baove.com>",
+    "sender": "Picgram <security@picgram-baove.com>",
     "subject": "Tài khoản của bạn bị báo cáo vi phạm, kháng nghị ngay",
-    "body": "Tài khoản Instagram của bạn đã bị báo cáo vi phạm và sẽ bị xóa trong 24 giờ. Nếu cho rằng đây là nhầm lẫn, hãy gửi kháng nghị tại đường dẫn bên dưới.\n\nhttp://instagram-baove.com/khang-nghi",
-    "red_flags": "Tên miền không phải của Instagram. Dọa xóa tài khoản trong 24 giờ. Biểu mẫu kháng nghị sẽ lấy mật khẩu và mã xác thực."
+    "body": "Tài khoản Picgram của bạn đã bị báo cáo vi phạm và sẽ bị xóa trong 24 giờ. Nếu cho rằng đây là nhầm lẫn, hãy gửi kháng nghị tại đường dẫn bên dưới.\n\nhttp://picgram-baove.com/khang-nghi",
+    "red_flags": "Dọa xóa tài khoản trong 24 giờ. Biểu mẫu kháng nghị có thể lấy mật khẩu và mã xác thực. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 90,
@@ -807,7 +817,7 @@
     "sender": "Hosting Support <admin@hosting-chungchi.com>",
     "subject": "Chứng chỉ bảo mật website công ty sắp hết hạn",
     "body": "Chứng chỉ SSL của website công ty sẽ hết hạn sau 2 ngày. Vui lòng đăng nhập vào trang quản trị hosting và gia hạn tại đường dẫn sau để tránh website bị gián đoạn.\n\nhttps://hosting-chungchi.com/gia-han",
-    "red_flags": "Thư gửi chung chung, không nêu tên công ty hay tên miền website cụ thể. Gia hạn thật thực hiện trực tiếp trên trang quản trị đã dùng, không qua link trong email. Đây là kiểu lừa đảo nhắm vào bộ phận quản trị website."
+    "red_flags": "Việc gia hạn thường làm trực tiếp trên trang quản trị đã dùng, không qua link trong email. Đây là kiểu lừa đảo nhắm vào bộ phận quản trị website. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 91,
@@ -816,7 +826,7 @@
     "sender": "Công ty Hưng Thịnh <sales@hungthinh-phanphoi.com>",
     "subject": "Đề xuất hợp tác phân phối độc quyền",
     "body": "Kính gửi quý công ty,\n\nChúng tôi muốn đề xuất hợp tác phân phối với điều kiện ưu đãi. Chi tiết nằm trong tệp đính kèm, xin vui lòng xem và phản hồi sớm.\n\nĐính kèm: DeXuat_HopTac.docm",
-    "red_flags": "Không biết công ty này và chưa từng liên hệ trước. File .docm có chứa macro, thường là mã độc. Cách viết chung chung, không nói rõ sản phẩm."
+    "red_flags": "Thư chào chung chung, không nêu tên người gửi, sản phẩm hay điều kiện hợp tác cụ thể. Tệp .docm là tài liệu Word có thể chứa macro, một đường phổ biến để phát tán mã độc. Thúc giục phản hồi sớm khi chưa cung cấp thông tin gì để kiểm chứng."
   },
   {
     "id": 92,
@@ -824,8 +834,8 @@
     "is_phishing": 1,
     "sender": "Bán hàng <baogia@thietbi-vanphong.net>",
     "subject": "Báo giá sản phẩm theo yêu cầu của quý công ty",
-    "body": "Theo yêu cầu của quý công ty, chúng tôi xin gửi báo giá. Quý khách vui lòng mở file đính kèm và nhập mật khẩu 1234 để xem.\n\nĐính kèm: BaoGia.zip",
-    "red_flags": "Công ty chưa yêu cầu báo giá nào. File nén có mật khẩu giúp qua mặt phần mềm diệt virus. Mật khẩu đưa ngay trong thư là dấu hiệu quen thuộc của mã độc."
+    "body": "Theo yêu cầu của quý công ty, chúng tôi xin gửi báo giá. Quý khách vui lòng mở file đính kèm và nhập mật khẩu 7Kq29 để xem.\n\nĐính kèm: BaoGia.zip",
+    "red_flags": "Thư nói theo yêu cầu của quý công ty nhưng không nêu sản phẩm, số lượng hay người đã yêu cầu. Tệp nén có mật khẩu khiến phần mềm diệt virus khó quét nội dung bên trong. Gửi kèm mật khẩu ngay trong thư là thủ thuật hay gặp ở thư phát tán mã độc."
   },
   {
     "id": 93,
@@ -834,43 +844,44 @@
     "sender": "Quỹ đầu tư Pacific <invest@pacific-capital-fund.org>",
     "subject": "Lời mời đầu tư 2 triệu USD vào quý công ty",
     "body": "Quỹ chúng tôi quan tâm đến mô hình của quý công ty và sẵn sàng đầu tư 2 triệu USD. Để tiến hành, vui lòng đóng phí thẩm định ban đầu 3.000 USD.\n\nTrân trọng.",
-    "red_flags": "Quỹ đầu tư thật không thu phí thẩm định trước. Không có tên người liên hệ hay địa chỉ văn phòng cụ thể. Lời hứa số tiền lớn là mồi nhử."
+    "red_flags": "Quỹ đầu tư uy tín thường không thu phí thẩm định trước khi cam kết đầu tư. Không có tên người liên hệ hay địa chỉ văn phòng cụ thể. Lời hứa số tiền lớn là mồi nhử."
   },
   {
     "id": 94,
     "category": "Hợp đồng, đối tác giả",
     "is_phishing": 1,
-    "sender": "Nguyễn Văn Phúc <phuc.ungvien@gmail.com>",
+    "sender": "Nguyễn Văn Phúc <phuc.ungvien@mailnhanh.com>",
     "subject": "Nộp hồ sơ ứng tuyển vị trí kế toán",
     "body": "Kính gửi anh chị phòng Nhân sự,\n\nEm xin gửi CV và bảng điểm để ứng tuyển vị trí kế toán. Anh chị vui lòng mở file đính kèm.\n\nĐính kèm: CV_NguyenVanPhuc.pdf.exe",
-    "red_flags": "File có đuôi kép .pdf.exe thực chất là chương trình chạy. Ứng viên thật gửi CV dạng PDF hoặc DOCX. Vị trí tuyển dụng không được công ty đăng tin."
+    "red_flags": "Tệp có đuôi kép .pdf.exe là tệp thực thi giả dạng PDF. CV thường được gửi dạng PDF hoặc DOCX. Thư gửi từ hộp thư miễn phí và không nêu nguồn tin tuyển dụng. Dù đang tuyển kế toán, hãy yêu cầu ứng viên nộp hồ sơ qua kênh tuyển dụng chính thức của công ty thay vì mở tệp trong thư.",
+    "target": "EMP02"
   },
   {
     "id": 95,
     "category": "Hợp đồng, đối tác giả",
     "is_phishing": 1,
-    "sender": "Hội nghị trực tuyến <meeting@zoom-hopmeeting.com>",
+    "sender": "Hội nghị trực tuyến <meeting@meetzy-hopmeeting.com>",
     "subject": "Cuộc họp trực tuyến với đối tác Nhật Bản",
-    "body": "Bạn được mời tham gia cuộc họp trực tuyến với đối tác Nhật Bản lúc 14h hôm nay. Bấm vào đây để tham gia:\n\nhttps://zoom-hopmeeting.com/j/88219",
-    "red_flags": "Không có lịch họp nào trong lịch của bạn. Link không phải của Zoom và có thể đòi đăng nhập. Sát giờ để người đọc không kịp kiểm tra."
+    "body": "Bạn được mời tham gia cuộc họp trực tuyến với đối tác Nhật Bản lúc 14h hôm nay. Bấm vào đây để tham gia:\n\nhttps://meetzy-hopmeeting.com/j/88219",
+    "red_flags": "Thư không nêu người tổ chức, nội dung họp hay lời mời gửi qua hệ thống lịch. Sát giờ để người đọc không kịp kiểm tra. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 96,
     "category": "Hợp đồng, đối tác giả",
     "is_phishing": 1,
-    "sender": "Mua hàng <po@abccorp-purchasing.com>",
+    "sender": "Mua hàng <po@bingroup-purchasing.com>",
     "subject": "Xác nhận đơn đặt hàng PO 7742",
-    "body": "Kính gửi nhà cung cấp,\n\nVui lòng xem và xác nhận đơn đặt hàng PO 7742 tại tệp đính kèm trước 16h hôm nay để kịp giao.\n\nĐính kèm: PO_7742.html",
-    "red_flags": "Tên miền giống công ty nhưng không đúng. File .html mở ra trang đăng nhập giả. Không có tên người liên hệ hay phòng ban cụ thể."
+    "body": "Chào bạn,\n\nPhòng Mua hàng gửi đơn đặt hàng PO 7742 cần bạn xem và xác nhận số lượng tại tệp đính kèm trước 16h hôm nay để kịp giao.\n\nĐính kèm: PO_7742.html",
+    "red_flags": "Tệp .html có thể mở ra trang đăng nhập giả. Thư không nêu người lập đơn hay mã dự án. Hạn 16h hôm nay tạo áp lực xử lý gấp. Hãy hỏi lại phòng Mua hàng qua kênh nội bộ. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 97,
     "category": "Hợp đồng, đối tác giả",
     "is_phishing": 1,
-    "sender": "Chăm sóc khách hàng <khieunai@abccorp-cskh.com>",
+    "sender": "Chăm sóc khách hàng <khieunai@bingroup-cskh.com>",
     "subject": "Khiếu nại từ khách hàng, xem tệp đính kèm ngay",
     "body": "Có một khiếu nại nghiêm trọng từ khách hàng liên quan đến dịch vụ của chúng ta. Vui lòng xem tệp đính kèm và phản hồi trong hôm nay để tránh ảnh hưởng uy tín.\n\nĐính kèm: KhieuNai_KH.zip",
-    "red_flags": "Khiếu nại thật được chuyển qua hệ thống chăm sóc khách hàng của công ty. Người gửi không phải tên miền nội bộ. File .zip cùng giọng điệu khẩn cấp là dấu hiệu mã độc."
+    "red_flags": "Khiếu nại của khách hàng thường được chuyển qua hệ thống chăm sóc khách hàng của công ty. Người gửi không dùng tên miền nội bộ. Tệp .zip cùng giọng điệu khẩn cấp là tổ hợp đáng ngờ, vì tệp nén hay được dùng để giấu mã độc."
   },
   {
     "id": 98,
@@ -878,8 +889,8 @@
     "is_phishing": 1,
     "sender": "Hội thảo Doanh nghiệp <info@hoithao-doanhnghiep.net>",
     "subject": "Thư mời tham dự hội thảo miễn phí về chuyển đổi số",
-    "body": "Mời quý anh chị tham dự hội thảo miễn phí. Số lượng chỗ có hạn, vui lòng đăng ký tại đường dẫn dưới đây và điền đầy đủ thông tin công ty cùng mật khẩu email để nhận vé.\n\nhttps://hoithao-doanhnghiep.net/dang-ky",
-    "red_flags": "Đăng ký hội thảo không cần mật khẩu email. Số lượng chỗ có hạn tạo cảm giác phải làm ngay. Mục đích là thu thập thông tin để lừa đảo tiếp."
+    "body": "Mời quý anh chị tham dự hội thảo miễn phí. Số lượng chỗ có hạn, vui lòng đăng ký tại đường dẫn dưới đây và điền đầy đủ thông tin công ty và đăng nhập bằng email công ty để nhận vé.\n\nhttps://hoithao-doanhnghiep.net/dang-ky",
+    "red_flags": "Đăng ký hội thảo không cần đăng nhập bằng tài khoản email công ty. Số lượng chỗ có hạn tạo cảm giác phải làm ngay."
   },
   {
     "id": 99,
@@ -888,7 +899,7 @@
     "sender": "Công ty Đại Nam <phapche@daiNam-hoptac.net>",
     "subject": "Hợp đồng nguyên tắc để quý công ty ký",
     "body": "Kính gửi quý công ty,\n\nSau cuộc trao đổi sơ bộ, chúng tôi gửi bản hợp đồng nguyên tắc để quý công ty xem và ký. Vui lòng bấm vào liên kết và đăng nhập để ký điện tử.\n\nhttps://daiNam-hoptac.net/ky-hop-dong",
-    "red_flags": "Không có cuộc trao đổi sơ bộ nào trước đó. Ký hợp đồng thật không yêu cầu đăng nhập tài khoản email công ty. Tên miền lạ, không rõ chủ."
+    "red_flags": "Thư nhắc đến cuộc trao đổi sơ bộ nhưng không nêu người liên hệ, ngày trao đổi hay nội dung nào. Ký hợp đồng điện tử thường dùng nền tảng ký riêng, không cần đăng nhập bằng tài khoản email công ty. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 100,
@@ -897,169 +908,171 @@
     "sender": "Ban Đấu thầu <thamdinh@dauthau-phanmem.com>",
     "subject": "Thư mời thầu dự án phần mềm quản lý",
     "body": "Chúng tôi trân trọng mời quý công ty tham gia đấu thầu dự án phần mềm quản lý. Hồ sơ yêu cầu được đặt trên cổng thông tin riêng, vui lòng đăng nhập bằng tài khoản email công ty để tải.\n\nhttps://dauthau-phanmem.com/ho-so",
-    "red_flags": "Công ty chưa đăng ký hay được mời đấu thầu qua kênh nào. Tải hồ sơ không cần đăng nhập bằng mật khẩu email. Địa chỉ cổng thông tin là tên miền lạ."
+    "red_flags": "Thư mời thầu không nêu tên dự án, chủ đầu tư hay mã gói thầu. Việc phải đăng nhập bằng mật khẩu email công ty để tải hồ sơ có thể bị dùng để lấy cắp tài khoản. Đối chiếu tên miền với địa chỉ đã biết hoặc kênh chính thức được xác minh độc lập; tên miền khác hoặc chưa quen không tự chứng minh thư lừa đảo."
   },
   {
     "id": 101,
     "category": "Thông báo nội bộ",
     "is_phishing": 0,
-    "sender": "Phòng Hành chính <hanhchinh@abccorp.vn>",
+    "sender": "Phòng Hành chính <hanhchinh@bingroup.vn>",
     "subject": "Lịch nghỉ Tết Dương lịch 2027",
     "body": "Kính gửi toàn thể nhân viên,\n\nCông ty nghỉ Tết Dương lịch từ thứ Sáu 01/01/2027 đến hết Chủ nhật 03/01/2027. Các bộ phận trực theo lịch đã thống nhất sẽ nhận thông báo riêng.\n\nTrân trọng,\nPhòng Hành chính",
-    "red_flags": "Mail thật. Gửi từ đúng tên miền abccorp.vn, nội dung thông báo lịch nghỉ thông thường, không có đường dẫn hay yêu cầu thông tin cá nhân."
+    "red_flags": "Mail thật. Gửi từ đúng tên miền bingroup.vn, nội dung thông báo lịch nghỉ thông thường, không có đường dẫn hay yêu cầu thông tin cá nhân. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 102,
     "category": "Thông báo nội bộ",
     "is_phishing": 0,
-    "sender": "Ban Giám đốc <bgd@abccorp.vn>",
+    "sender": "Ban Giám đốc <bgd@bingroup.vn>",
     "subject": "Họp toàn công ty sáng thứ Sáu",
     "body": "Chào cả nhà,\n\nCông ty họp tổng kết quý 3 lúc 9h sáng thứ Sáu tại phòng họp tầng 5. Mọi người tham dự đúng giờ. Ai vắng mặt xin báo trước cho quản lý trực tiếp.\n\nBan Giám đốc",
-    "red_flags": "Mail thật. Địa chỉ gửi đúng tên miền công ty, có giờ giấc và địa điểm cụ thể, không có link lạ."
+    "red_flags": "Mail thật. Địa chỉ gửi đúng tên miền công ty, có giờ giấc và địa điểm cụ thể, không có link lạ. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 103,
     "category": "Thông báo nội bộ",
     "is_phishing": 0,
-    "sender": "Phòng Hành chính <hanhchinh@abccorp.vn>",
+    "sender": "Phòng Hành chính <hanhchinh@bingroup.vn>",
     "subject": "Thay đổi giờ làm việc mùa đông",
-    "body": "Từ ngày 01/11, giờ làm việc buổi sáng chuyển thành 8h15 đến 12h, buổi chiều từ 13h30 đến 17h15. Giờ mới áp dụng đến hết tháng 3 năm sau.\n\nPhòng Hành chính",
-    "red_flags": "Mail thật. Nội dung là thông báo thay đổi giờ làm, người gửi và tên miền khớp với công ty."
+    "body": "Từ thứ Hai tuần sau, giờ làm việc buổi sáng chuyển thành 8h15 đến 12h, buổi chiều từ 13h30 đến 17h15. Giờ mới áp dụng đến hết tháng 3 năm sau.\n\nPhòng Hành chính",
+    "red_flags": "Mail thật. Nội dung là thông báo thay đổi giờ làm, người gửi và tên miền khớp với công ty. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 104,
     "category": "Thông báo nội bộ",
     "is_phishing": 0,
-    "sender": "Ban An toàn <antoan@abccorp.vn>",
+    "sender": "Ban An toàn <antoan@bingroup.vn>",
     "subject": "Diễn tập phòng cháy chữa cháy chiều thứ Tư",
     "body": "Công ty tổ chức diễn tập phòng cháy chữa cháy lúc 14h chiều thứ Tư. Khi nghe chuông, mọi người tắt máy và di chuyển theo lối thoát hiểm đã niêm yết ra sân sau.\n\nBan An toàn",
-    "red_flags": "Mail thật. Có thời gian, địa điểm rõ ràng và không đòi hỏi bất kỳ thông tin hay hành động nào qua email."
+    "red_flags": "Mail thật. Có thời gian, địa điểm rõ ràng và không đòi hỏi bất kỳ thông tin hay hành động nào qua email. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 105,
     "category": "Thông báo nội bộ",
     "is_phishing": 0,
-    "sender": "Phòng CNTT <it@abccorp.vn>",
+    "sender": "Phòng CNTT <it@bingroup.vn>",
     "subject": "Quy định sử dụng email công ty, đọc và xác nhận trước thứ Hai",
-    "body": "Chào các bạn,\n\nPhòng CNTT vừa cập nhật quy định sử dụng email công ty. Đây là nội dung bắt buộc, vui lòng đọc trên cổng thông tin nội bộ và bấm xác nhận đã đọc trước thứ Hai.\n\nhttps://intranet.abccorp.vn/quy-dinh-email\n\nPhòng CNTT",
-    "red_flags": "Mail thật. Dù có chữ bắt buộc và hạn xác nhận, đường dẫn nằm trên tên miền intranet.abccorp.vn của công ty và không đòi mật khẩu."
+    "body": "Chào các bạn,\n\nPhòng CNTT vừa cập nhật quy định sử dụng email công ty. Đây là nội dung bắt buộc, vui lòng đọc trên cổng thông tin nội bộ và bấm xác nhận đã đọc trước thứ Hai.\n\nhttps://intranet.bingroup.vn/quy-dinh-email\n\nPhòng CNTT",
+    "red_flags": "Mail thật. Dù có chữ bắt buộc và hạn xác nhận, đường dẫn nằm trên tên miền intranet.bingroup.vn của công ty và không đòi mật khẩu. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 106,
     "category": "Thông báo nội bộ",
     "is_phishing": 0,
-    "sender": "Phòng CNTT <it@abccorp.vn>",
+    "sender": "Phòng CNTT <it@bingroup.vn>",
     "subject": "Bảo trì hệ thống mạng tối thứ Bảy",
     "body": "Hệ thống mạng nội bộ sẽ bảo trì từ 22h thứ Bảy đến 2h sáng Chủ nhật. Trong thời gian này, VPN và email có thể gián đoạn. Vui lòng lưu công việc trước khi ra về chiều thứ Bảy.\n\nPhòng CNTT",
-    "red_flags": "Mail thật. Chỉ thông báo lịch bảo trì, không yêu cầu đăng nhập, không đính kèm tệp lạ."
+    "red_flags": "Mail thật. Chỉ thông báo lịch bảo trì, không yêu cầu đăng nhập, không đính kèm tệp lạ. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 107,
     "category": "Thông báo nội bộ",
     "is_phishing": 0,
-    "sender": "Phòng Nhân sự <nhansu@abccorp.vn>",
+    "sender": "Phòng Nhân sự <nhansu@bingroup.vn>",
     "subject": "Khảo sát hài lòng nhân viên 2026",
-    "body": "Mời các bạn tham gia khảo sát nội bộ năm 2026, ẩn danh và mất khoảng 5 phút. Kết quả giúp công ty cải thiện môi trường làm việc.\n\nLink khảo sát: https://intranet.abccorp.vn/khaosat2026\n\nPhòng Nhân sự",
-    "red_flags": "Mail thật. Link khảo sát nằm trong hệ thống nội bộ của công ty, không đòi mật khẩu hay thông tin nhạy cảm."
+    "body": "Mời các bạn tham gia khảo sát nội bộ năm 2026, ẩn danh và mất khoảng 5 phút. Kết quả giúp công ty cải thiện môi trường làm việc.\n\nLink khảo sát: https://intranet.bingroup.vn/khaosat2026\n\nPhòng Nhân sự",
+    "red_flags": "Mail thật. Link khảo sát nằm trong hệ thống nội bộ của công ty, không đòi mật khẩu hay thông tin nhạy cảm. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 108,
     "category": "Thông báo nội bộ",
     "is_phishing": 0,
-    "sender": "Phòng Hành chính <hanhchinh@abccorp.vn>",
+    "sender": "Phòng Hành chính <hanhchinh@bingroup.vn>",
     "subject": "Đổi chỗ ngồi tầng 3 từ thứ Hai tuần sau",
     "body": "Do sắp xếp lại không gian làm việc, các bộ phận ở tầng 3 sẽ đổi chỗ ngồi từ thứ Hai tuần sau. Sơ đồ chỗ ngồi mới được dán ở khu vực pantry. Mọi người dọn đồ cá nhân trước chiều thứ Sáu.\n\nPhòng Hành chính",
-    "red_flags": "Mail thật. Thông tin nội bộ thuần túy về chỗ ngồi, không có link, không có yêu cầu bất thường."
+    "red_flags": "Mail thật. Thông tin nội bộ thuần túy về chỗ ngồi, không có link, không có yêu cầu bất thường. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 109,
     "category": "Thông báo nội bộ",
     "is_phishing": 0,
-    "sender": "Ban Tổ chức sự kiện <sukien@abccorp.vn>",
+    "sender": "Ban Tổ chức sự kiện <sukien@bingroup.vn>",
     "subject": "Đăng ký tham dự tiệc cuối năm",
     "body": "Tiệc cuối năm sẽ diễn ra tối thứ Bảy 19/12 tại nhà hàng Hoa Sen. Các bạn đăng ký tham dự và ghi chú món ăn đặc biệt (nếu có) bằng cách trả lời email này trước ngày 05/12.\n\nBan Tổ chức",
-    "red_flags": "Mail thật. Thông tin sự kiện cụ thể, trả lời bằng cách phản hồi mail nội bộ, không có link lạ hay yêu cầu thông tin nhạy cảm."
+    "red_flags": "Mail thật. Thông tin sự kiện cụ thể, trả lời bằng cách phản hồi mail nội bộ, không có link lạ hay yêu cầu thông tin nhạy cảm. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 110,
     "category": "Thông báo nội bộ",
     "is_phishing": 0,
-    "sender": "Phòng Kế toán <ketoan@abccorp.vn>",
+    "sender": "Phòng Kế toán <ketoan@bingroup.vn>",
     "subject": "Nhắc nộp chứng từ công tác phí trước ngày 28, khẩn",
     "body": "Chào các bạn,\n\nPhòng Kế toán nhắc ai có công tác phí tháng này cần nộp chứng từ gốc cho chị Mai trước ngày 28. Nộp muộn sẽ chuyển sang kỳ thanh toán sau.\n\nPhòng Kế toán",
-    "red_flags": "Mail thật. Có chữ khẩn và hạn nộp nhưng là việc quen thuộc hằng tháng, từ đúng tên miền công ty, nộp trực tiếp cho người phụ trách quen biết."
+    "red_flags": "Mail thật. Có chữ khẩn và hạn nộp nhưng là việc nhắc theo kỳ, gửi từ đúng tên miền công ty, không có link, tệp hay yêu cầu thông tin nhạy cảm. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 111,
     "category": "Công việc hằng ngày",
     "is_phishing": 0,
-    "sender": "Nguyễn Văn Hùng <hung.nguyen@abccorp.vn>",
+    "sender": "Nguyễn Văn Hùng <hung.nguyen@bingroup.vn>",
     "subject": "Soạn báo cáo tuần giúp anh",
-    "body": "Chào em,\n\nEm tổng hợp báo cáo tuần này của nhóm, gửi anh trước 16h thứ Sáu nhé. Nhớ đưa số liệu doanh thu tuần và tiến độ các việc đang làm.\n\nCảm ơn em.\nHùng",
-    "red_flags": "Mail thật. Địa chỉ đúng tên miền công ty, yêu cầu công việc bình thường, không có đường dẫn hay yêu cầu tiền bạc hay mật khẩu."
+    "body": "Chào {ten},\n\nEm tổng hợp báo cáo tuần này của nhóm, gửi anh trước 16h thứ Sáu nhé. Nhớ đưa số liệu doanh thu tuần và tiến độ các việc đang làm.\n\nCảm ơn em.\nHùng",
+    "red_flags": "Mail thật. Địa chỉ đúng tên miền công ty, yêu cầu công việc bình thường, không có đường dẫn hay yêu cầu tiền bạc hay mật khẩu. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 112,
     "category": "Công việc hằng ngày",
     "is_phishing": 0,
-    "sender": "Lê Thị Hoa <hoa.le@abccorp.vn>",
+    "sender": "Lê Thị Hoa <hoa.le@bingroup.vn>",
     "subject": "Xác nhận lịch hẹn với khách hàng thứ Ba",
-    "body": "Em ơi,\n\nChị xác nhận lịch gặp khách hàng Sao Mai lúc 10h thứ Ba tại văn phòng họ. Em chuẩn bị bản demo và đặt xe giúp chị nhé.\n\nHoa",
-    "red_flags": "Mail thật. Người gửi và tên miền khớp với công ty, nội dung công việc cụ thể và hợp lý."
+    "body": "{ten} ơi,\n\nChị xác nhận lịch gặp khách hàng Sao Mai lúc 10h thứ Ba tại văn phòng họ. Em chuẩn bị bản demo và đặt xe giúp chị nhé.\n\nHoa",
+    "red_flags": "Mail thật. Người gửi và tên miền khớp với công ty, nội dung công việc cụ thể, không có link, tệp hay yêu cầu thông tin nhạy cảm. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết.",
+    "target": "EMP03,EMP04"
   },
   {
     "id": 113,
     "category": "Công việc hằng ngày",
     "is_phishing": 0,
-    "sender": "Trần Quốc Bảo <bao.tran@abccorp.vn>",
+    "sender": "Trần Quốc Bảo <bao.tran@bingroup.vn>",
     "subject": "Nhờ review tài liệu thiết kế",
-    "body": "Chào cả nhóm,\n\nMình vừa cập nhật tài liệu thiết kế hệ thống trên thư mục chung của nhóm. Mọi người xem giúp và góp ý trước chiều mai nhé.\n\nhttps://intranet.abccorp.vn/docs/thiet-ke-v2\n\nBảo",
-    "red_flags": "Mail thật. Link nằm trên tên miền nội bộ intranet.abccorp.vn, đồng nghiệp quen biết gửi, không đòi mật khẩu."
+    "body": "Chào cả nhóm,\n\nMình vừa cập nhật tài liệu thiết kế hệ thống trên thư mục chung của nhóm. Mọi người xem giúp và góp ý trước chiều mai nhé.\n\nhttps://intranet.bingroup.vn/docs/thiet-ke-v2\n\nBảo",
+    "red_flags": "Mail thật. Người gửi dùng đúng tên miền công ty, link nằm trên tên miền nội bộ intranet.bingroup.vn và thư không đòi mật khẩu. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết.",
+    "target": "EMP03"
   },
   {
     "id": 114,
     "category": "Công việc hằng ngày",
     "is_phishing": 0,
-    "sender": "Phạm Thu Trang <trang.pham@abccorp.vn>",
+    "sender": "Phạm Thu Trang <trang.pham@bingroup.vn>",
     "subject": "Biên bản họp hôm qua",
-    "body": "Chào mọi người,\n\nMình gửi biên bản cuộc họp dự án hôm qua trong tệp đính kèm. Ai thấy thiếu hoặc sai thì phản hồi cho mình trước trưa mai.\n\nĐính kèm: BienBan_Hop_2510.pdf\n\nTrang",
-    "red_flags": "Mail thật. Tệp là PDF thông thường, người gửi là đồng nghiệp tham gia cuộc họp, tên miền đúng."
+    "body": "Chào mọi người,\n\nMình gửi biên bản cuộc họp dự án hôm qua trong tệp đính kèm. Ai thấy thiếu hoặc sai thì phản hồi cho mình trước trưa mai.\n\nĐính kèm: BienBan_Hop.pdf\n\nTrang",
+    "red_flags": "Mail thật. Tệp là PDF thông thường, tên miền người gửi đúng của công ty, thư không có link lạ hay yêu cầu thông tin nhạy cảm. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 115,
     "category": "Công việc hằng ngày",
     "is_phishing": 0,
-    "sender": "Đỗ Minh Khôi <khoi.do@abccorp.vn>",
-    "subject": "Xin phê duyệt nghỉ phép 2 ngày",
-    "body": "Anh ơi,\n\nEm xin nghỉ phép ngày 12 và 13 tháng 11 để giải quyết việc gia đình. Việc đang làm em đã bàn giao cho Nam. Anh phê duyệt giúp em trên hệ thống nhé.\n\nKhôi",
-    "red_flags": "Mail thật. Yêu cầu nghỉ phép thông thường từ đồng nghiệp, có bàn giao rõ ràng, không có đường dẫn lạ."
+    "sender": "Đỗ Minh Khôi <khoi.do@bingroup.vn>",
+    "subject": "Thông báo nghỉ phép 2 ngày",
+    "body": "Chào mọi người,\n\nEm xin nghỉ phép thứ Năm và thứ Sáu tuần sau để giải quyết việc gia đình. Việc đang làm em đã bàn giao cho Nam, ai cần gì cứ nhắn Nam giúp em nhé.\n\nKhôi",
+    "red_flags": "Mail thật. Thông báo nghỉ phép thông thường từ đồng nghiệp, có bàn giao rõ ràng, không có đường dẫn lạ hay yêu cầu thông tin nhạy cảm. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 116,
     "category": "Công việc hằng ngày",
     "is_phishing": 0,
-    "sender": "Phòng Kế toán <ketoan@abccorp.vn>",
-    "subject": "Gửi file đối soát chi phí tháng 10",
-    "body": "Chào anh chị,\n\nKế toán gửi file đối soát chi phí tháng 10 để các bộ phận kiểm tra. Ai thấy chênh lệch thì báo lại cho Kế toán trước ngày 03/11.\n\nĐính kèm: DoiSoat_ChiPhi_T10.xlsx",
-    "red_flags": "Mail thật. File Excel thông thường từ đúng tên miền công ty, quy trình đối soát hằng tháng quen thuộc."
+    "sender": "Phòng Kế toán <ketoan@bingroup.vn>",
+    "subject": "Gửi file đối soát chi phí tháng trước",
+    "body": "Chào anh chị,\n\nKế toán gửi file đối soát chi phí tháng trước để các bộ phận kiểm tra. Ai thấy chênh lệch thì báo lại cho Kế toán trước thứ Tư tuần sau.\n\nĐính kèm: DoiSoat_ChiPhi.xlsx",
+    "red_flags": "Mail thật. File Excel thông thường từ đúng tên miền công ty, quy trình đối soát hằng tháng quen thuộc. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 117,
     "category": "Công việc hằng ngày",
     "is_phishing": 0,
-    "sender": "Vũ Hải Đăng <dang.vu@abccorp.vn>",
+    "sender": "Vũ Hải Đăng <dang.vu@bingroup.vn>",
     "subject": "Nhắc deadline gửi slide thuyết trình",
     "body": "Mọi người ơi,\n\nHạn gửi slide cho buổi thuyết trình thứ Hai là 17h thứ Sáu này. Ai chưa xong báo mình để sắp xếp lại thời gian nhé.\n\nĐăng",
-    "red_flags": "Mail thật. Lời nhắc công việc nội bộ, không có link hay tệp lạ."
+    "red_flags": "Mail thật. Lời nhắc công việc nội bộ, không có link hay tệp lạ. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 118,
     "category": "Công việc hằng ngày",
     "is_phishing": 0,
-    "sender": "Nguyễn Thanh Tùng <tung.nguyen@abccorp.vn>",
+    "sender": "Nguyễn Thanh Tùng <tung.nguyen@bingroup.vn>",
     "subject": "Hỏi tiến độ dự án Alpha, cần gấp",
-    "body": "Em ơi,\n\nKhách hàng vừa hỏi tiến độ dự án Alpha, em cập nhật giúp anh tình hình hiện tại và các việc còn lại trước 15h chiều nay để anh trả lời họ.\n\nTùng",
-    "red_flags": "Mail thật. Có chữ gấp nhưng là yêu cầu cập nhật tiến độ bình thường từ đồng nghiệp, không đòi tiền bạc hay thông tin nhạy cảm."
+    "body": "{ten} ơi,\n\nKhách hàng vừa hỏi tiến độ dự án Alpha, em cập nhật giúp anh tình hình hiện tại và các việc còn lại trước 15h chiều nay để anh trả lời họ.\n\nTùng",
+    "red_flags": "Mail thật. Có chữ gấp nhưng là yêu cầu cập nhật tiến độ bình thường từ đồng nghiệp, không đòi tiền bạc hay thông tin nhạy cảm. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   },
   {
     "id": 119,
@@ -1068,15 +1081,16 @@
     "sender": "Công ty Sao Mai <kinhdoanh@saomai.com.vn>",
     "subject": "Yêu cầu báo giá bổ sung cho đơn tháng sau",
     "body": "Chào anh chị,\n\nTheo trao đổi hôm thứ Hai, bên em cần báo giá bổ sung cho đơn hàng tháng sau. Anh chị gửi giúp em báo giá cập nhật trước thứ Năm nhé.\n\nNgô Thị Lan\nCông ty Sao Mai",
-    "red_flags": "Mail thật. Khách hàng quen biết, có nhắc đến cuộc trao đổi trước đó, chỉ nhờ gửi báo giá như thường lệ."
+    "red_flags": "Mail thật. Địa chỉ gửi là tên miền doanh nghiệp rõ ràng, thư nêu cuộc trao đổi cụ thể và chỉ nhờ gửi báo giá, không có link, tệp hay yêu cầu mật khẩu. Nếu không biết người này, có thể hỏi đồng nghiệp phụ trách khách hàng. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết.",
+    "target": "EMP04"
   },
   {
     "id": 120,
     "category": "Công việc hằng ngày",
     "is_phishing": 0,
-    "sender": "Hoàng Văn Nam <nam.hoang@abccorp.vn>",
+    "sender": "Hoàng Văn Nam <nam.hoang@bingroup.vn>",
     "subject": "Rủ cà phê sau giờ làm",
     "body": "Mọi người ơi, chiều nay 5h30 nhóm mình đi cà phê ở quán gần công ty nhé, mừng dự án Alpha xong giai đoạn 1. Ai đi thì trả lời mail để mình đặt chỗ.\n\nNam",
-    "red_flags": "Mail thật. Lời rủ thông thường của đồng nghiệp, không có link hay yêu cầu đặc biệt."
+    "red_flags": "Mail thật. Lời rủ thông thường của đồng nghiệp, không có link hay yêu cầu đặc biệt. Đây là nhận định trong phạm vi diễn tập; các đặc điểm trên không bảo đảm email an toàn trong thực tế. Nếu còn nghi ngờ, hãy xác minh qua kênh đã biết."
   }
 ]
